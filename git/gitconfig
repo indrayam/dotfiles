@@ -1,0 +1,56 @@
+[user]
+	name = Anand Sharma
+	email = anasharm@cisco.com
+[alias]
+    s = status --short
+    st = status
+    lol = log --graph --decorate --oneline
+    lola = log --graph --decorate --oneline --all
+    h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue[%an]%Creset' --abbrev-commit --date=relative
+    ha = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue[%an]%Creset' --abbrev-commit --date=relative --all
+    co = checkout
+    br = branch
+    pom = push origin master
+    fom = fetch origin master
+    spr = !sh -c \"git fetch origin pull-requests/${1}/from:pr/${1}\" -
+    gpr = !sh -c \"git fetch origin pull/${1}/head:pr/${1}\" -
+    rv = remote -v
+    caa = commit -a --amend -C HEAD
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	create-pull-request = !sh -c 'stash pull-request $0'
+[core]
+    editor = vim
+	excludesfile = /Users/anasharm/.gitignore_global
+    autocrlf = input
+[color]
+    ui = auto
+[push]
+    default = simple
+[mergetool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+[mergetool]
+    prompt = false
+[merge]
+    tool = p4merge
+    keepBackup = false
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+    prompt = false
+[diff]
+    tool = Kaleidoscope
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[pull]
+	ff = only
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

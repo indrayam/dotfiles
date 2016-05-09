@@ -1,0 +1,818 @@
+####  L I N O D E   N O D E S ####
+Host lin
+    Hostname 45.33.67.133
+    Port 22
+    User root
+Host lin1
+    Hostname 45.33.65.133
+    Port 22
+    User root
+Host nlin
+    Hostname 45.33.73.133
+    Port 22
+    User root
+Host nlin1
+    Hostname 45.33.81.133
+    Port 22
+    User root
+
+####  S A N D B O X   N O D E S ####
+
+## INDRAYAM Sandbox Nodes ##
+Host in
+    Hostname indrayam.cisco.com
+    Port 22
+    User anand
+Host ind
+    Hostname indrayam.cisco.com
+    Port 22
+    User dftjenkins
+Host in1
+    Hostname indrayam1.cisco.com
+    Port 22
+    User anand
+Host in1d
+    Hostname indrayam1.cisco.com
+    Port 22
+    User dftjenkins
+Host in2
+    Hostname indrayam2.cisco.com
+    Port 22
+    User anand
+Host in2d
+    Hostname indrayam2.cisco.com
+    Port 22
+    User dftjenkins
+Host in3
+    Hostname indrayam3.cisco.com
+    Port 22
+    User anand
+Host in3d
+    Hostname indrayam3.cisco.com
+    Port 22
+    User dftjenkins
+Host in4
+    Hostname indrayam4.cisco.com
+    Port 22
+    User anand
+Host in4d
+    Hostname indrayam4.cisco.com
+    Port 22
+    User dftjenkins
+
+## CI Sandbox Nodes ##
+Host cimsb1
+    Hostname ci-sb-master1.cisco.com
+    Port 22
+    User root
+Host cimsb1d
+    Hostname ci-sb-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cimsb2
+    Hostname ci-sb-master2.cisco.com
+    Port 22
+    User root
+Host cimsb2d
+    Hostname ci-sb-master2.cisco.com
+    Port 22
+    User dftjenkins
+Host cinsb1
+    Hostname ci-sb-node1.cisco.com
+    Port 22
+    User root
+Host cinsb1d
+    Hostname ci-sb-node1.cisco.com
+    Port 22
+    User dftjenkins
+Host cinsb2
+    Hostname ci-sb-node2.cisco.com
+    Port 22
+    User root
+Host cinsb2d
+    Hostname ci-sb-node2.cisco.com
+    Port 22
+    User dftjenkins
+
+## CSQI Sandbox Nodes ##
+Host csqisb1
+    Hostname dev-csqi-master1.cisco.com
+    Port 22
+    User root
+Host csqisb1d
+    Hostname dev-csqi-master1.cisco.com
+    Port 22
+    User dftsonar
+
+## Stash Sandbox Nodes ##
+Host gitsb
+    Hostname stash-sandbox1.cisco.com
+    Port 22
+    User root
+Host gitsbd
+    Hostname stash-sandbox1.cisco.com
+    Port 22
+    User dftscm
+Host gitsb1
+    Hostname stash-dc-sb-1.cisco.com
+    Port 22
+    User root
+Host gitsb1d
+    Hostname stash-dc-sb-1.cisco.com
+    Port 22
+    User dftscm
+Host gitsb2
+    Hostname stash-dc-sb-2.cisco.com
+    Port 22
+    User root
+Host gitsb2d
+    Hostname stash-dc-sb-2.cisco.com
+    Port 22
+    User dftscm
+Host gitsb3
+    Hostname stash-dc-sb-3.cisco.com
+    Port 22
+    User root
+Host gitsb3d
+    Hostname stash-dc-sb-3.cisco.com
+    Port 22
+    User dftscm
+
+## Crucible Sandbox Nodes ##
+Host crusb1
+    Hostname crucible-sandbox1.cisco.com
+    Port 22
+    User root
+Host crusb1d
+    Hostname crucible-sandbox1.cisco.com
+    Port 22
+    User dftscm
+Host crusb2
+    Hostname crucible-sandbox2.cisco.com
+    Port 22
+    User root
+Host crusb2d
+    Hostname crucible-sandbox2.cisco.com
+    Port 22
+    User dftscm
+
+## EP3 Sandbox Nodes ##
+
+## MongoDB Sandbox Nodes ##
+Host monsb1
+    Hostname dft-mongo-sb-1.cisco.com
+    Port 22
+    User root
+Host monsb1d
+    Hostname dft-mongo-sb-1.cisco.com
+    Port 22
+    User dftmongo
+
+## Web App Sandbox Nodes ##
+Host appsb1
+    Hostname cdanalytics-sb-1.cisco.com
+    Port 22
+    User root
+Host appsb1d
+    Hostname cdanalytics-sb-1.cisco.com
+    Port 22
+    User analytics
+
+## Web API Sandbox Nodes ##
+Host apisb1
+    Hostname apidft-stg.cisco.com
+    Port 22
+    User root
+Host apisb1d
+    Hostname apidft-stg.cisco.com
+    Port 22
+    User apidft
+
+## Worker Sandbox Nodes ##
+
+## Telemetry Sandbox Nodes ##
+Host telsb1
+    Hostname cdtelemetry-sb-1.cisco.com
+    Port 22
+    User root
+Host telsb2
+    Hostname cdtelemetry-sb-2.cisco.com
+    Port 22
+    User root
+
+
+####  P R O D U C T I O N   N O D E S ####
+
+## CI Production Nodes ##
+Host cim1
+    Hostname ci-master1.cisco.com
+    Port 22
+    User anasharm
+Host cim1d
+    Hostname ci-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cim2
+    Hostname ci-master2.cisco.com
+    Port 22
+    User anasharm
+Host cim2d
+    Hostname ci-master2.cisco.com
+    Port 22
+    User dftjenkins
+Host cimr1
+    Hostname ci-rcdn-master1.cisco.com
+    Port 22
+    User anasharm
+Host cimr1d
+    Hostname ci-rcdn-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cin1
+    Hostname ci-node1.cisco.com
+    Port 22
+    User anasharm
+Host cin1d
+    Hostname ci-node1.cisco.com
+    Port 22
+    User dftjenkins
+Host cin2
+    Hostname ci-node2.cisco.com
+    Port 22
+    User anasharm
+Host cin2d
+    Hostname ci-node2.cisco.com
+    Port 22
+    User dftjenkins
+Host cin3
+    Hostname ci-node3.cisco.com
+    Port 22
+    User anasharm
+Host cin3d
+    Hostname ci-node3.cisco.com
+    Port 22
+    User dftjenkins
+Host cin4
+    Hostname ci-node4.cisco.com
+    Port 22
+    User anasharm
+Host cin4d
+    Hostname ci-node4.cisco.com
+    Port 22
+    User dftjenkins
+Host cin5
+    Hostname ci-node5.cisco.com
+    Port 22
+    User anasharm
+Host cin5d
+    Hostname ci-node5.cisco.com
+    Port 22
+    User dftjenkins
+Host cin6
+    Hostname ci-node6.cisco.com
+    Port 22
+    User anasharm
+Host cin6d
+    Hostname ci-node6.cisco.com
+    Port 22
+    User dftjenkins
+Host cin7
+    Hostname ci-node7.cisco.com
+    Port 22
+    User anasharm
+Host cin7d
+    Hostname ci-node7.cisco.com
+    Port 22
+    User dftjenkins
+Host cin8
+    Hostname ci-alln-node8.cisco.com
+    Port 22
+    User anasharm
+Host cin8d
+    Hostname ci-alln-node8.cisco.com
+    Port 22
+    User dftjenkins
+Host cin9
+    Hostname ci-alln-node9.cisco.com
+    Port 22
+    User anasharm
+Host cin9d
+    Hostname ci-alln-node9.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr1
+    Hostname ci-rcdn-node1.cisco.com
+    Port 22
+    User anasharm
+Host cinr1d
+    Hostname ci-rcdn-node1.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr2
+    Hostname ci-rcdn-node2.cisco.com
+    Port 22
+    User anasharm
+Host cinr2d
+    Hostname ci-rcdn-node2.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr3
+    Hostname ci-rcdn-node3.cisco.com
+    Port 22
+    User anasharm
+Host cinr3d
+    Hostname ci-rcdn-node3.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr4
+    Hostname ci-rcdn-node4.cisco.com
+    Port 22
+    User anasharm
+Host cinr4d
+    Hostname ci-rcdn-node4.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr5
+    Hostname ci-rcdn-node5.cisco.com
+    Port 22
+    User anasharm
+Host cinr5d
+    Hostname ci-rcdn-node5.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr6
+    Hostname ci-rcdn-node6.cisco.com
+    Port 22
+    User anasharm
+Host cinr6d
+    Hostname ci-rcdn-node6.cisco.com
+    Port 22
+    User dftjenkins
+Host cinr7
+    Hostname ci-rcdn-node7.cisco.com
+    Port 22
+    User anasharm
+Host cinr7d
+    Hostname ci-rcdn-node7.cisco.com
+    Port 22
+    User dftjenkins
+Host cina
+    Hostname ci-appscan.cisco.com
+    Port 22
+    User anasharm
+Host cinad
+    Hostname ci-appscan.cisco.com
+    Port 22
+    User dftjenkins
+
+## CSQI Production Nodes ##
+Host csqi1
+    Hostname csqi-master1.cisco.com
+    Port 22
+    User anasharm
+Host csqi1d
+    Hostname csqi-master1.cisco.com
+    Port 22
+    User dftsonar
+
+## Stash Production Nodes ##
+Host git1
+    Hostname gitscm-prd-1.cisco.com
+    Port 22
+    User anasharm
+Host git1d
+    Hostname gitscm-prd-1.cisco.com
+    Port 22
+    User dftscm
+Host git2
+    Hostname gitscm-prd-2.cisco.com
+    Port 22
+    User anasharm
+Host git2d
+    Hostname gitscm-prd-2.cisco.com
+    Port 22
+    User dftscm
+Host git3
+    Hostname gitscm-prd-3.cisco.com
+    Port 22
+    User anasharm
+Host git3d
+    Hostname gitscm-prd-3.cisco.com
+    Port 22
+    User dftscm
+
+## Crucible Production Nodes ##
+Host cru1
+    Hostname prd-codeanalysis-1.cisco.com
+    Port 22
+    User anasharm
+Host cru1d
+    Hostname prd-codeanalysis-1.cisco.com
+    Port 22
+    User dftscm
+Host cru2
+    Hostname prd-codeanalysis-2.cisco.com
+    Port 22
+    User anasharm
+Host cru2d
+    Hostname prd-codeanalysis-2.cisco.com
+    Port 22
+    User dftscm
+
+## EP3 Production Nodes ##
+Host ep1
+    Hostname ep3-master1.cisco.com
+    Port 22
+    User anasharm
+Host ep1d
+    Hostname ep3-master1.cisco.com
+    Port 22
+    User dftep3
+Host ep2
+    Hostname ep3-master2.cisco.com
+    Port 22
+    User anasharm
+Host ep2d
+    Hostname ep3-master2.cisco.com
+    Port 22
+    User dftep3
+
+## MongoDB Production Nodes ##
+Host mon1
+    Hostname dft-mongo.cisco.com
+    Port 22
+    User anasharm
+Host mon1d
+    Hostname dft-mongo.cisco.com
+    Port 22
+    User dftmongo
+
+## Web App Production Nodes ##
+Host app1
+    Hostname dft-webapps-prd-1.cisco.com
+    Port 22
+    User anasharm
+Host app1d
+    Hostname dft-webapps-prd-1.cisco.com
+    Port 22
+    User dftapp
+Host app2
+    Hostname dft-webapps-prd-2.cisco.com
+    Port 22
+    User anasharm
+Host app2d
+    Hostname dft-webapps-prd-2.cisco.com
+    Port 22
+    User dftapp
+
+## Web API Production Nodes ##
+Host api0
+    Hostname dftapi-ha-1.cisco.com
+    Port 22
+    User anasharm
+Host api0d
+    Hostname dftapi-ha-1.cisco.com
+    Port 22
+    User dftapi
+Host api1
+    Hostname dftapi-prd-1.cisco.com
+    Port 22
+    User anasharm
+Host api1d
+    Hostname dftapi-prd-1.cisco.com
+    Port 22
+    User dftapi
+Host api2
+    Hostname dftapi-prd-2.cisco.com
+    Port 22
+    User anasharm
+Host api2d
+    Hostname dftapi-prd-2.cisco.com
+    Port 22
+    User dftapi
+
+## Worker Production Nodes ##
+Host wor1
+    Hostname dft-prod-worker-1.cisco.com
+    Port 22
+    User anasharm
+Host wor1d
+    Hostname dft-prod-worker-1.cisco.com
+    Port 22
+    User dftwork
+Host wor2
+    Hostname dft-prod-worker-2.cisco.com
+    Port 22
+    User anasharm
+Host wor2d
+    Hostname dft-prod-worker-2.cisco.com
+    Port 22
+    User dftwork
+
+## Telemetry Production Nodes ##
+Host tel1
+    Hostname dft-telemetry-prd-1.cisco.com
+    Port 22
+    User anasharm
+Host tel1d
+    Hostname dft-telemetry-prd-1.cisco.com
+    Port 22
+    User dfttel
+Host tel2
+    Hostname dft-telemetry-prd-2.cisco.com
+    Port 22
+    User anasharm
+Host tel2d
+    Hostname dft-telemetry-prd-2.cisco.com
+    Port 22
+    User dfttel
+
+#### S T A G E   N O D E S ####
+
+## CI Stage Nodes ##
+Host cims1
+    Hostname ci-stg1-master1.cisco.com
+    Port 22
+    User anasharm
+Host cims1d
+    Hostname ci-stg1-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cims2
+    Hostname ci-stg2-master1.cisco.com
+    Port 22
+    User anasharm
+Host cims2d
+    Hostname ci-stg2-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cins11
+    Hostname ci-stg1-node01.cisco.com
+    Port 22
+    User anasharm
+Host cins11d
+    Hostname ci-stg1-node01.cisco.com
+    Port 22
+    User dftjenkins
+Host cins12
+    Hostname ci-stg1-node02.cisco.com
+    Port 22
+    User anasharm
+Host cins12d
+    Hostname ci-stg1-node02.cisco.com
+    Port 22
+    User dftjenkins
+Host cins13
+    Hostname ci-stg1-node03.cisco.com
+    Port 22
+    User anasharm
+Host cins13d
+    Hostname ci-stg1-node03.cisco.com
+    Port 22
+    User dftjenkins
+Host cins21
+    Hostname ci-stg2-node01.cisco.com
+    Port 22
+    User anasharm
+Host cins21d
+    Hostname ci-stg2-node01.cisco.com
+    Port 22
+    User dftjenkins
+Host cins22
+    Hostname ci-stg2-node02.cisco.com
+    Port 22
+    User anasharm
+Host cins22d
+    Hostname ci-stg2-node02.cisco.com
+    Port 22
+    User dftjenkins
+
+## CSQI Stage Nodes ##
+Host csqis1
+    Hostname stg-csqi-master1.cisco.com
+    Port 22
+    User anasharm
+Host csqis1d
+    Hostname stg-csqi-master1.cisco.com
+    Port 22
+    User dftsonar
+
+## Stash Stage Nodes ##
+Host gits1
+    Hostname gitscm-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host gits1d
+    Hostname gitscm-stg-1.cisco.com
+    Port 22
+    User dftscm
+Host gits2
+    Hostname gitscm-stg-2.cisco.com
+    Port 22
+    User anasharm
+Host gits2d
+    Hostname gitscm-stg-2.cisco.com
+    Port 22
+    User dftscm
+Host gits3
+    Hostname gitscm-stg-3.cisco.com
+    Port 22
+    User anasharm
+Host gits3d
+    Hostname gitscm-stg-3.cisco.com
+    Port 22
+    User dftscm
+
+## Crucible Stage Nodes ##
+Host crus1
+    Hostname codeanalysis-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host crus1d
+    Hostname codeanalysis-stg-1.cisco.com
+    Port 22
+    User dftscm
+Host crus2
+    Hostname codeanalysis-stg-2.cisco.com
+    Port 22
+    User anasharm
+Host crus2d
+    Hostname codeanalysis-stg-2.cisco.com
+    Port 22
+    User dftscm
+
+## EP3 Stage Nodes ##
+Host eps1
+    Hostname stg-ep3-master1.cisco.com
+    Port 22
+    User anasharm
+Host eps1d
+    Hostname stg-ep3-master1.cisco.com
+    Port 22
+    User dftep3
+Host eps2
+    Hostname stg-ep3-master2.cisco.com
+    Port 22
+    User anasharm
+Host eps2d
+    Hostname stg-ep3-master2.cisco.com
+    Port 22
+    User dftep3
+
+## MongoDB Stage Nodes ##
+
+## Web App Stage Nodes ##
+Host apps1
+    Hostname dft-webapps-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host apps1d
+    Hostname dft-webapps-stg-1.cisco.com
+    Port 22
+    User dftapp
+Host apps2
+    Hostname dft-webapps-stg-2.cisco.com
+    Port 22
+    User anasharm
+Host apps2d
+    Hostname dft-webapps-stg-2.cisco.com
+    Port 22
+    User dftapp
+
+## Web API Stage Nodes ##
+Host apis0
+    Hostname dftapi-ha-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host apis0d
+    Hostname dftapi-ha-stg-1.cisco.com
+    Port 22
+    User dftapi
+Host apis1
+    Hostname dftapi-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host apis1d
+    Hostname dftapi-stg-1.cisco.com
+    Port 22
+    User dftapi
+Host apis2
+    Hostname dftapi-stg-2.cisco.com
+    Port 22
+    User anasharm
+Host apis2d
+    Hostname dftapi-stg-2.cisco.com
+    Port 22
+    User dftapi
+
+## Worker Production Nodes ##
+Host wors1
+    Hostname dft-stg-worker-01.cisco.com
+    Port 22
+    User anasharm
+Host wors1d
+    Hostname dft-stg-worker-01.cisco.com
+    Port 22
+    User dftwork
+Host wors2
+    Hostname dft-stg-worker-02.cisco.com
+    Port 22
+    User anasharm
+Host wors2d
+    Hostname dft-stg-worker-02.cisco.com
+    Port 22
+    User dftwork
+
+## Telemetry Production Nodes ##
+Host tels1
+    Hostname dft-telemetry-stg-1.cisco.com
+    Port 22
+    User anasharm
+Host tels1d
+    Hostname dft-telemetry-stg-1.cisco.com
+    Port 22
+    User dfttel
+Host tels2
+    Hostname dft-telemetry-stg-2.cisco.com
+    Port 22
+    User anasharm
+Host tels2d
+    Hostname dft-telemetry-stg-2.cisco.com
+    Port 22
+    User dfttel
+
+#### D I S A S T E R  R E C O V E R Y  N O D E S ####
+
+## CI DR Nodes ##
+Host cimdr1
+    Hostname ci-rtp-master1.cisco.com
+    Port 22
+    User anasharm
+Host cimdr1d
+    Hostname ci-rtp-master1.cisco.com
+    Port 22
+    User dftjenkins
+Host cimdr2
+    Hostname ci-rtp-master2.cisco.com
+    Port 22
+    User anasharm
+Host cimdr2d
+    Hostname ci-rtp-master2.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr1
+    Hostname ci-rtp-node1.cisco.com
+    Port 22
+    User anasharm
+Host cindr1d
+    Hostname ci-rtp-node1.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr2
+    Hostname ci-rtp-node2.cisco.com
+    Port 22
+    User anasharm
+Host cindr2d
+    Hostname ci-rtp-node2.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr3
+    Hostname ci-rtp-node3.cisco.com
+    Port 22
+    User anasharm
+Host cindr3d
+    Hostname ci-rtp-node3.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr4
+    Hostname ci-rtp-node4.cisco.com
+    Port 22
+    User anasharm
+Host cindr4d
+    Hostname ci-rtp-node4.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr5
+    Hostname ci-rtp-node5.cisco.com
+    Port 22
+    User anasharm
+Host cindr5d
+    Hostname ci-rtp-node5.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr6
+    Hostname ci-rtp-node6.cisco.com
+    Port 22
+    User anasharm
+Host cindr6d
+    Hostname ci-rtp-node6.cisco.com
+    Port 22
+    User dftjenkins
+Host cindr7
+    Hostname ci-rtp-node7.cisco.com
+    Port 22
+    User anasharm
+Host cindr7d
+    Hostname ci-rtp-node7.cisco.com
+    Port 22
+    User dftjenkins

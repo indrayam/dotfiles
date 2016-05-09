@@ -1,0 +1,286 @@
+" .vimrc
+" Maintained by: Anand Sharma
+" anand.sharma@gmail.com
+" Heavily borrowed from https://github.com/zanshin/dotfiles
+" Need more studying: https://bitbucket.org/sjl/dotfiles/src/4e6f3d36c2417fd778f30192b90c51795bdcd368/vim/vimrc?at=default
+"
+" -------------------------------------------------------------------
+" Forget compatibility with vi
+" -------------------------------------------------------------------
+set nocompatible
+
+" -------------------------------------------------------------------
+" setup Vundle to manage plugins
+" -------------------------------------------------------------------
+" turn filetype on so that we can turn if off without generating an exit code
+" of 1 when quiting vim.
+filetype on                     " best to have it on before turning it off
+filetype off                    " needs to be off to setup Vundle
+set rtp+=~/.vim/bundle/Vundle.vim   " add vundle to run time path
+call vundle#rc()
+
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+
+" Tim Pope's Plugin for surrounding text
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+
+" Git related Bundles
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" Bundles for Text Search
+Plugin 'rking/ag.vim'
+
+" Bundles related to Themes
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'sjl/badwolf.git'
+Plugin 'altercation/vim-colors-solarized'
+
+" Bundle for Fuzzy Search across files
+Plugin 'kien/ctrlp.vim'
+
+" Vim airline (as a replacement for vim-powerline)
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+
+if has('autocmd')
+  filetype plugin indent on    " enable plugins, detection and indenting
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax on
+endif
+
+" -------------------------------------------------------------------
+"  change map <leader> from \ to ,
+"  ------------------------------------------------------------------
+:let mapleader = ","
+
+" -------------------------------------------------------------------
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" -------------------------------------------------------------------
+cmap w!! w !sudo tee > /dev/null %
+
+" -------------------------------------------------------------------
+" time out mappings after 1 second (1000) 
+" and key codes after 1/2 a second (500)
+" -------------------------------------------------------------------
+set timeout timeoutlen=1000 ttimeoutlen=500
+
+" -------------------------------------------------------------------
+" Trying to break a very old habit...
+" ex mode commands made easy
+" -------------------------------------------------------------------
+nnoremap ; :
+nnoremap Q <nop>
+
+" -------------------------------------------------------------------
+" basic options
+" -------------------------------------------------------------------
+set laststatus=2                  " always show the status line
+set cmdheight=2                   " and use a two-line tall status line
+set showcmd                       " show the command
+set noshowmode                    " don't show the mode, vim-airline will do that for us
+set autoindent                    " turns it on
+set smartindent                   " does the right thing (mostly) in programs
+set linespace=3                   " prefer a slight higher line height
+set linebreak                     " wrap intelligently, won't insert hard line breaks
+set wrap                          " use line wrapping
+set textwidth=79                  " at column 79
+set ruler                         " display current cursor position
+set list                          " show invisible characters
+set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:␣,extends:❯,precedes:❮
+set showmatch                     " show matching brackets
+set relativenumber                " use relative line numbers
+set number                        " all lines show their relative numbers, except the line you're currently on
+set backspace=indent,eol,start    " make backspace behave in a sane manner
+set mousehide                     " hide mouse when typing
+set foldenable                    " enable code folding
+set history=1000
+set ffs=unix,mac,dos              " default file types
+set autoread                      " automatically update file when editted outside of vim
+
+" Setup automatic text formatting/wrapping (previously: grn1 )
+set formatoptions=
+set formatoptions-=t              " don't autowrap text
+set formatoptions+=c              " do autowrap comments
+set formatoptions+=r              " automatically continue comments
+set formatoptions+=o              " automatically continue comments when hitting 'o' or 'O'
+set formatoptions+=q              " allow formating of comments with 'gq'
+set formatoptions+=n              " recognize numbered lists
+set formatoptions+=l              " don't break long lines that were already there
+
+" -------------------------------------------------------------------
+" Navigation and movement
+" -------------------------------------------------------------------
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" use <C>hjkl to switch between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" -------------------------------------------------------------------
+" Encoding
+" -------------------------------------------------------------------
+set termencoding=utf-8  " we like utf-8
+set encoding=utf-8
+
+" -------------------------------------------------------------------
+" What to do with files and focus
+" -------------------------------------------------------------------
+set autowrite           " write out old file when switching between files
+set autoread            " reload files changed on disk, i.e. via `git checkout`
+au FocusLost * :wa      " save file when Vim loses focus
+set hidden              " switch beteen buffers without saving
+
+" -------------------------------------------------------------------
+" With Git who needs backup files?
+" -------------------------------------------------------------------
+set nobackup
+set noswapfile
+
+" -------------------------------------------------------------------
+" Set tab stuff
+" -------------------------------------------------------------------
+set tabstop=2           " 2 spaces for a tab
+set shiftwidth=2        " 2 spaces for autoindenting
+set softtabstop=2       " when <BS>, pretend a tab is removed even if spaces
+set expandtab           " expand tabs to spaces (overloadable by file type)
+
+" -------------------------------------------------------------------
+" Scrolling
+" -------------------------------------------------------------------
+set scrolloff=5         " show context above/below cursor line
+set sidescrolloff=10    " number of cols from horizontal edge to  start scrolling
+set sidescroll=1        " number of cols to scroll at a time
+
+" -------------------------------------------------------------------
+" Miscellaneous
+" -------------------------------------------------------------------
+" toggle listchars on or off
+noremap <Leader>i :set list!<CR>
+
+" Paste mode to prevent autoindentation of pasted lines
+set pastetoggle=<F2>
+
+" Better pasting from clipboard
+" http://tilvim.com/2014/03/18/a-better-paste.html
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+
+set clipboard=unnamed   " yank and paste with the system clipboard
+
+" show cursorline only in active window
+if has("autocmd")
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter * set cursorline
+endif
+
+" Map escape to jj -- much faster to reach and type
+imap jj <esc>
+
+" -------------------------------------------------------------------
+" Searching
+" -------------------------------------------------------------------
+set incsearch           " use incremental search
+set hlsearch            " highlight search results
+set ignorecase          " ignore case when searching
+set smartcase           " ignore case if search string is all lower case, case-sensitve otherwise
+" remove search highlighting with <F3>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
+
+" -------------------------------------------------------------------
+" Completion
+" -------------------------------------------------------------------
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" -------------------------------------------------------------------
+" Splits
+" -------------------------------------------------------------------
+nnoremap <leader>v <C-w>v<C-w>l   " open a vertical split and switch to it (,v)
+nnoremap <leader>h <C-w>s<C-w>j   " open a horizontal split and switch to it (,h)
+
+" -------------------------------------------------------------------
+" vimrc shortcuts
+" -------------------------------------------------------------------
+" open vimrc in new tab for editing
+nmap <leader>ev :tabedit $MYVIMRC<cr>
+
+" automatically source .vimrc when it is saved (from vimcasts.org #24)
+if has("autocmd")
+  autocmd! bufwritepost .vimrc source $MYVIMRC
+endif
+
+" reload .vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" -------------------------------------------------------------------
+" Stuff for Bundles
+" -------------------------------------------------------------------
+
+" Settings for 'tpope/vim-surround'
+" Settings for 'tpope/vim-commentary'
+" Settings for 'tpope/vim-fugitive'
+" Settings for 'airblade/vim-gitgutter'
+
+" Settings for 'rking/ag.vim' https://github.com/rking/ag.vim for commands
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" Settings for 'sjl/badwolf.git'
+set background=dark
+silent! colorscheme badwolf
+let g:badwolf_darkgutter = 1 " Make the gutters darker than the background
+
+" Settings for 'nanotech/jellybeans.vim'
+" color jellybeans
+
+" Settings for Solarized Colorscheme
+" set background=light
+" colorscheme solarized
+
+" Settings for  'kien/ctrlp.vim' https://github.com/kien/ctrlp.vim for commands
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" Set no max file limit
+let g:ctrlp_max_files = 0
+" Search from current directory instead of project root
+let g:ctrlp_working_path_mode = 0
+
+" vim-airline configurations
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
