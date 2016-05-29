@@ -9,6 +9,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias gpg='gpg2'
+alias m='maven'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
@@ -45,8 +46,8 @@ alias j='java'
 alias jc='javac'
 alias gr='groovy'
 alias grc='groovyc'
-alias gj='java -cp $GROOVY_HOME/embeddable/groovy-all-2.3.7.jar:.'
 alias grd='gradle -q --daemon'
+alias grq='gradle -q'
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home"
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
