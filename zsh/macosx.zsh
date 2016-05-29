@@ -9,7 +9,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias gpg='gpg2'
-alias m='maven'
+alias m='mvn'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
