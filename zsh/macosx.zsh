@@ -10,6 +10,7 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias gpg='gpg2'
 alias m='mvn'
+alias mq='mvn -q'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
@@ -46,8 +47,9 @@ alias j='java'
 alias jc='javac'
 alias gr='groovy'
 alias grc='groovyc'
-alias grd='gradle -q --daemon'
+alias grd='gradle'
 alias grq='gradle -q'
+alias grqd='gradle -q --daemon'
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home"
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
