@@ -81,6 +81,7 @@ alias p2='python'
 alias p='python3'
 alias d='docker'
 alias dm='docker-machine'
+alias i='influx -username anand -password cisco123 -host play2.indrayam.com -port 8086'
 
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
