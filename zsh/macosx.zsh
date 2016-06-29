@@ -11,6 +11,9 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias gpg='gpg2'
 alias m='mvn'
 alias mq='mvn -q'
+alias k='kotlin'
+alias kc='kotlinc'
+alias ki='kotlinc-jvm'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
@@ -47,6 +50,7 @@ alias j='java'
 alias jc='javac'
 alias gr='groovy'
 alias grc='groovyc'
+alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.6.jar:.'
 alias grd='gradle'
 alias grq='gradle -q'
 alias grqd='gradle -q --daemon'
