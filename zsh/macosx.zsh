@@ -85,7 +85,7 @@ alias p2='python'
 alias p='python3'
 alias d='docker'
 alias dm='docker-machine'
-alias g='go'
+alias g='go run'
 
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
