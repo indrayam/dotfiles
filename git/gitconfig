@@ -1,6 +1,7 @@
 [user]
 	name = Anand Sharma
 	email = anasharm@cisco.com
+	signingkey = A190E97F52B7DBAC
 [alias]
     s = status --short
     st = status
@@ -54,3 +55,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[gpg]
+	program = gpg2

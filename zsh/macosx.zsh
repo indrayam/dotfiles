@@ -85,7 +85,7 @@ alias p2='python'
 alias p='python3'
 alias d='docker'
 alias dm='docker-machine'
-alias i='influx -username anand -password cisco123 -host play2.indrayam.com -port 8086'
+alias g='go'
 
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
@@ -93,3 +93,4 @@ export CATALINA_HOME="/Library/Tomcat"
 
 # Adding local bin folder for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
+source /usr/local/bin/aws_zsh_completer.sh
