@@ -14,6 +14,7 @@ alias mq='mvn -q'
 alias k='kotlin'
 alias kc='kotlinc'
 alias ki='kotlinc-jvm'
+alias cr='crystal'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
