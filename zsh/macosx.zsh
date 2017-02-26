@@ -90,6 +90,7 @@ alias d='docker'
 alias dm='docker-machine'
 alias g='go run'
 alias b='brackets'
+alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
 
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
@@ -98,7 +99,6 @@ export CATALINA_HOME="/Library/Tomcat"
 # Adding local bin folder for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-source /usr/local/bin/aws_zsh_completer.sh
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
