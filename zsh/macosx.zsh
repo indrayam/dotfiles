@@ -15,6 +15,7 @@ alias k='kotlin'
 alias kc='kotlinc'
 alias ki='kotlinc-jvm'
 alias cr='crystal'
+alias ls='/bin/ls -G'
 
 # aliases specific to vagrant
 alias tc='tmux new -s'
@@ -59,8 +60,8 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Hom
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-export M2_HOME="/usr/local/Cellar/maven/3.3.3/libexec"
-export GOPATH=$HOME/workspace/go-apps
+export M2_HOME="/usr/local/Cellar/maven/3.3.9/libexec"
+export GOPATH=$HOME/workspace/golang-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin:$GROOVY_HOME/bin
 
 # Adding entries for Oracle Instant Client, TOAD, sqlplus
@@ -72,7 +73,7 @@ export TNS_ADMIN="$HOME/local/oracle/network/admin"
 export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
 
 # Adding Swift entries
-export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/"
+export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
 # My personal aliases
 alias a='ansible'
@@ -82,11 +83,13 @@ alias grch='generaterandomchanges'
 alias cjp='createjavaproject'
 alias csp='createsublimeproject'
 alias cig='creategitignore'
-alias p2='python'
-alias p='python3'
+alias p='python'
+alias p3='python3'
+alias r='ruby'
 alias d='docker'
 alias dm='docker-machine'
 alias g='go run'
+alias b='brackets'
 
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
@@ -94,4 +97,12 @@ export CATALINA_HOME="/Library/Tomcat"
 
 # Adding local bin folder for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 source /usr/local/bin/aws_zsh_completer.sh
+export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
+alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
+alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
+alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
+alias top10da='du -Sh | sort -rh | head -n 10'
+alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
+ulimit -n 8192
