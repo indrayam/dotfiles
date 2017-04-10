@@ -65,7 +65,7 @@ alias kc='kotlinc'
 alias ki='kotlinc-jvm'
 alias gr='groovy'
 alias grc='groovyc'
-alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.6.jar:.'
+alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.10.jar:.'
 alias m='mvn'
 alias mq='mvn -q'
 alias grd='gradle'
@@ -76,6 +76,7 @@ alias r='ruby'
 
 alias d='docker'
 alias dm='docker-machine'
+alias s='subl'
 alias b='brackets'
 
 # Aliases specific to being productive on MacOS X
