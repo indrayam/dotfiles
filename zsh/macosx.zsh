@@ -1,28 +1,3 @@
-# aliases specific to MacOSX
-alias c='clear'
-alias arc='clang -fobjc-arc *.m'
-alias v='mvim --remote-silent'
-alias t='tmux'
-alias tm='/usr/bin/time'
-alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
-alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias gpg='gpg2'
-alias m='mvn'
-alias mq='mvn -q'
-alias k='kotlin'
-alias kc='kotlinc'
-alias ki='kotlinc-jvm'
-alias cr='crystal'
-alias ls='/bin/ls -G'
-
-# aliases specific to vagrant
-alias tc='tmux new -s'
-alias ta='tmux attach -t'
-alias tk='tmux kill-session -t'
-alias tl='tmux ls'
-
 # svn aliases (good ideas here: https://github.com/grexi/snippets/blob/master/svnaliases/branchit.rc)
 export SVN_EDITOR="/usr/local/bin/vim"
 alias sva='svn add'
@@ -48,20 +23,12 @@ export EDITOR='subl -w'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Adding entries for Java, Groovy and Gradle
-alias j='java'
-alias jc='javac'
-alias gr='groovy'
-alias grc='groovyc'
-alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.6.jar:.'
-alias grd='gradle'
-alias grq='gradle -q'
-alias grqd='gradle -q --daemon'
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home"
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export M2_HOME="/usr/local/Cellar/maven/3.3.9/libexec"
-export GOPATH=$HOME/workspace/golang-apps
+export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin:$GROOVY_HOME/bin
 
 # Adding entries for Oracle Instant Client, TOAD, sqlplus
@@ -75,23 +42,6 @@ export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
 # Adding Swift entries
 export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
-# My personal aliases
-alias a='ansible'
-alias ap='ansible-playbook'
-alias gll='gitloglive'
-alias grch='generaterandomchanges'
-alias cjp='createjavaproject'
-alias csp='createsublimeproject'
-alias cig='creategitignore'
-alias p='python'
-alias p3='python3'
-alias r='ruby'
-alias d='docker'
-alias dm='docker-machine'
-alias g='go run'
-alias b='brackets'
-alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-
 # Adding path for Tomcat8 startup.sh and shutdown.sh
 export PATH=$PATH:/Library/Tomcat/bin
 export CATALINA_HOME="/Library/Tomcat"
@@ -100,9 +50,61 @@ export CATALINA_HOME="/Library/Tomcat"
 export PATH=$PATH:$HOME/workspace/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
+ulimit -n 8192
+
+# Aliases specific to software development
+alias p='python3'
+alias p2='python2'
+alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+alias g='go run'
+alias n='node'
+alias j='java'
+alias jc='javac'
+alias k='kotlin'
+alias kc='kotlinc'
+alias ki='kotlinc-jvm'
+alias gr='groovy'
+alias grc='groovyc'
+alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.6.jar:.'
+alias m='mvn'
+alias mq='mvn -q'
+alias grd='gradle'
+alias grq='gradle -q'
+alias grqd='gradle -q --daemon'
+alias cr='crystal'
+alias r='ruby'
+
+alias d='docker'
+alias dm='docker-machine'
+alias b='brackets'
+
+# Aliases specific to being productive on MacOS X
+alias c='clear'
+alias arc='clang -fobjc-arc *.m'
+alias v='mvim --remote-silent'
+alias t='tmux'
+alias tm='/usr/bin/time'
+alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
+alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias gpg='gpg2'
+alias ls='/bin/ls -G'
+alias a='ansible'
+alias ap='ansible-playbook'
+alias gll='gitloglive'
+alias grch='generaterandomchanges'
+alias cjp='createjavaproject'
+alias csp='createsublimeproject'
+alias cig='creategitignore'
 alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10da='du -Sh | sort -rh | head -n 10'
 alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
-ulimit -n 8192
+
+# Aliases specific to tmux
+alias tc='tmux new -s'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'
+alias tl='tmux ls'
