@@ -23,7 +23,7 @@ export EDITOR='subl -w'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Adding entries for Java, Groovy and Gradle
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home"
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
