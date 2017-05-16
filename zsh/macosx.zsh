@@ -76,6 +76,7 @@ alias r='ruby'
 
 alias d='docker'
 alias dm='docker-machine'
+alias dco='docker-compose'
 alias s='subl'
 alias b='brackets'
 
