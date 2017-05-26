@@ -83,7 +83,7 @@ alias b='brackets'
 # Aliases specific to being productive on MacOS X
 alias c='clear'
 alias arc='clang -fobjc-arc *.m'
-alias v='mvim --remote-silent'
+alias v='vagrant'
 alias t='tmux'
 alias tm='/usr/bin/time'
 alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
