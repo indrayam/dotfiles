@@ -27,7 +27,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Ho
 export GRADLE_HOME="/usr/local/opt/gradle/libexec"
 export GRADLE_OPTS="-Xmx1024m"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-export M2_HOME="/usr/local/Cellar/maven/3.3.9/libexec"
+export M2_HOME="/usr/local/opt/maven/libexec"
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin:$GROOVY_HOME/bin
 
@@ -48,7 +48,7 @@ export CATALINA_HOME="/Library/Tomcat"
 
 # Adding local bin folder for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 ulimit -n 8192
 
@@ -65,7 +65,7 @@ alias kc='kotlinc'
 alias ki='kotlinc-jvm'
 alias gr='groovy'
 alias grc='groovyc'
-alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.10.jar:.'
+alias g_java='java -cp /usr/local/opt/groovy/libexec/lib/groovy-2.4.12.jar:.'
 alias m='mvn'
 alias mq='mvn -q'
 alias grd='gradle'
