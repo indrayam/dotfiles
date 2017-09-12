@@ -104,6 +104,7 @@ alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10da='du -Sh | sort -rh | head -n 10'
 alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
+alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`; do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1`\\t$k; done | sort -r'
 
 # Aliases specific to tmux
 alias tc='tmux new -s'
