@@ -19,6 +19,7 @@
     caa = commit -a --amend -C HEAD
 	up = "!git remote update -p; git merge --ff-only @{u}"
 	create-pull-request = !sh -c 'stash pull-request $0'
+	upr = pull --rebase --autostash
 [core]
     editor = vim
 	excludesfile = /Users/anasharm/.gitignore_global
