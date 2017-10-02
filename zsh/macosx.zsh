@@ -90,7 +90,6 @@ alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias gpg='gpg2'
 alias ls='/bin/ls -G'
 alias a='ansible'
 alias ap='ansible-playbook'
