@@ -41,7 +41,7 @@
     smudge = git-lfs smudge %f
     required = true
 [gpg]
-    program = gpg2
+    program = gpg
 [mergetool "Kaleidoscope"]
     cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
     trustexitcode = true

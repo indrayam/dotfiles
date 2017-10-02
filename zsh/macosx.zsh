@@ -18,9 +18,9 @@ function _svnbl {
 alias sbl=_svnbl
 
 # Basic Environment variables
-export VIM_APP_DIR="/Applications/MacVim-snapshot-73"
 export EDITOR='subl -w'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+export GPG_TTY=$(tty)
 
 # Adding entries for Java, Groovy and Gradle
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home"
