@@ -1,3 +1,6 @@
+# Colored ls output
+alias ls='ls --color=auto'
+
 # svn aliases (good ideas here: https://github.com/grexi/snippets/blob/master/svnaliases/branchit.rc)
 export SVN_EDITOR="/usr/local/bin/vim"
 alias sva='svn add'
