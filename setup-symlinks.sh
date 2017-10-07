@@ -1,9 +1,7 @@
 #!/bin/bash
-# For MacOSX machines
-# DOTFILES_HOME=$HOME/.macosx
 
-# For Linux machines
-DOTFILES_HOME=$HOME/.linux
+# Dotfiles Home 
+DOTFILES_HOME=$HOME/.dotfiles
 
 # Git related setup
 rm -f $HOME/.gitconfig
