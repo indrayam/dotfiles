@@ -21,7 +21,7 @@ ln -s $DOTFILES_HOME/tmux/tmux.conf .tmux.conf
 
 # Zsh
 rm -f $HOME/.zshrc
-ln -s $DOTFILES_HOME/zsh/zshrc .zshrc
+ln -s $DOTFILES_HOME/zsh/zshrc .zshrc.linux
 
 
 
