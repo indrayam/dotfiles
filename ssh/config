@@ -1,6 +1,6 @@
 Host *
-   ServerAliveInterval 300
-   ServerAliveCountMax 3
+   ServerAliveInterval 100
+   ServerAliveCountMax 100
 
 ####  P L A Y   N O D E S ####
 ## Outside Cisco ##
@@ -20,4 +20,10 @@ Host c
     Hostname c.indrayam.com
     Port 22
     User zach
+    IdentityFile ~/.ssh/c_id_rsa
+
+Host d
+    Hostname 138.197.108.242
+    Port 22
+    User root
     IdentityFile ~/.ssh/c_id_rsa
