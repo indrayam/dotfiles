@@ -14,16 +14,16 @@ Host b
     Hostname b.indrayam.com
     Port 22
     User emma
-    IdentityFile ~/.ssh/b_id_rsa
+    IdentityFile ~/.ssh/id_rsa
 
 Host c
     Hostname c.indrayam.com
     Port 22
     User zach
-    IdentityFile ~/.ssh/c_id_rsa
+    IdentityFile ~/.ssh/id_rsa
 
 Host d
     Hostname 138.197.108.242
     Port 22
-    User root
-    IdentityFile ~/.ssh/c_id_rsa
+    User shan
+    IdentityFile ~/.ssh/id_rsa
