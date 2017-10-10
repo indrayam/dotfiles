@@ -27,6 +27,10 @@ export PATH=$PATH:$HOME/workspace/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 
+# Adding entries for Google Cloud SDK
+export PATH=$PATH:/usr/local/google-cloud-sdk/bin
+source /usr/local/google-cloud-sdk/completion.zsh.inc
+
 # Aliases specific to being productive
 alias ls='ls --color=auto'
 alias c='clear'
