@@ -12,6 +12,7 @@ export GRADLE_HOME="/usr/local/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/maven"
 export GOPATH=$HOME/workspace/go-apps
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
 
 # Adding local bin folder and other "stuff" for custom scripts
