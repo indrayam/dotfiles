@@ -110,7 +110,6 @@ alias t='tmux'
 
 # Aliases specific to Public Cloud
 alias dco='doctl compute'
-alias dcod='doctl compute droplet'
 
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 # Add the following to your shell init to set up gpg-agent automatically for every shell
