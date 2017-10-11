@@ -14,7 +14,7 @@ export M2_HOME="/usr/local/maven"
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/snap/bin
-export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
+export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:/usr/local/kotlinc/bin
 
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
