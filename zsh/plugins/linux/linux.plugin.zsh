@@ -18,6 +18,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:
 
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
+export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 
 # Aliases specific to being productive
 alias ls='ls --color=auto'
