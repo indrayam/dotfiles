@@ -49,6 +49,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " Emoji in Vim :-)
 Plugin 'junegunn/vim-emoji'
 
+" Visual Code Dark Scheme
+" Plugin 'tomasiser/vim-code-dark'
+
 if has('autocmd')
   filetype plugin indent on    " enable plugins, detection and indenting
 endif
@@ -272,6 +275,11 @@ let g:badwolf_darkgutter = 1 " Make the gutters darker than the background
 " Settings for Solarized Colorscheme
 " set background=light
 " colorscheme solarized
+
+" Settings for Vim Code Dark Scheme (Visual Code Dark)
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
+
 
 " Settings for  'kien/ctrlp.vim' https://github.com/kien/ctrlp.vim for commands
 let g:ctrlp_map = '<c-p>'
