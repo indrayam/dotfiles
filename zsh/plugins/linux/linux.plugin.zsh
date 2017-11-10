@@ -51,7 +51,7 @@ alias grd='gradle'
 # Aliases specific to Python based development
 alias p='python3'
 alias p2='python2'
-alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+alias pipup='sudo pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs sudo pip3 install -U'
 
 # Aliases specific to Node based development
 alias n='node'
