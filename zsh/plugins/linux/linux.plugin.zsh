@@ -61,7 +61,7 @@ alias cr='crystal'
 alias r='ruby'
 
 # Aliases specific to DevOps tools
-alias d='docker'
+alias d='sudo docker'
 alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'
