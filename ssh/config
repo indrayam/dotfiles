@@ -29,13 +29,13 @@ Host d
     IdentityFile ~/.ssh/id_rsa
 
 Host ag
-    Hostname 35.194.71.129
+    Hostname a.ezplay.io
     Port 22
     User anand
     IdentityFile ~/.ssh/id_rsa
 
 Host bg
-    Hostname 35.199.45.255
+    Hostname b.ezplay.io
     Port 22
     User anand
     IdentityFile ~/.ssh/id_rsa
