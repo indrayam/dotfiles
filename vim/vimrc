@@ -39,6 +39,9 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'sjl/badwolf.git'
 Plugin 'altercation/vim-colors-solarized'
 
+" Bundles related to saving sessions
+Plugin 'tpope/vim-obsession'
+
 " Bundle for Fuzzy Search across files
 Plugin 'kien/ctrlp.vim'
 
