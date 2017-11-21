@@ -271,3 +271,6 @@ set -g @continuum-restore 'on'
 
 # vim-resurrect configurations (https://github.com/tmux-plugins/tmux-resurrect)
 set -g @resurrect-strategy-vim 'session'
+
+# Set synchronize panes to a key
+bind -n C-x setw synchronize-panes
