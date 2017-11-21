@@ -17,7 +17,9 @@ ln -s $DOTFILES_HOME/vim/vimrc $HOME/.vimrc
 
 # Tmux
 rm -f $HOME/.tmux.conf
+rm -f $HOME/.tmux.conf.local
 ln -s $DOTFILES_HOME/tmux/tmux.conf $HOME/.tmux.conf
+ln -s $DOTFILES_HOME/tmux/tmux.conf.local $HOME/.tmux.conf.local
 
 # Zsh
 rm -f $HOME/.zshrc
