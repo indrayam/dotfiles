@@ -1,5 +1,8 @@
 ### Linux ###
 
+# Settings for tmux window renaming
+export DISABLE_AUTO_TITLE=true
+
 # Basic Environment variables
 export EDITOR='vim'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
