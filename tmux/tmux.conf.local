@@ -265,5 +265,3 @@ set -g mouse on
 
 # move status line to top
 #set -g status-position top
-
-setw -g automatic-rename off # do not rename window to reflect current program
