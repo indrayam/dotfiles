@@ -65,7 +65,7 @@ bind C-f command-prompt -p find-session 'switch-client -t %%'
 # split current window horizontally
 bind - split-window -v
 # split current window vertically
-bind _ split-window -h
+bind \ split-window -h
 
 # pane navigation
 bind -r h select-pane -L  # move left
@@ -166,6 +166,26 @@ if '[ -f ~/.tmux.conf.local ]' 'source ~/.tmux.conf.local'
 # -- 8< ------------------------------------------------------------------------
 
 run 'cut -c3- ~/.tmux.conf | sh -s _apply_configuration'
+
+# Source: https://github.com/tmux-plugins/tpm
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Themepack Plugin: https://github.com/jimeh/tmux-themepack
+# set -g @plugin 'jimeh/tmux-themepack'
+# set -g @themepack 'basic'
+# set -g @themepack 'powerline/block/blue'
+# set -g @themepack 'powerline/block/cyan'
+# set -g @themepack 'powerline/default/gray'
+# set -g @themepack 'powerline/double/yellow'
+
+# Installing tmux-resurrect and continuum to provide continuous saving of tmux environment
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+# set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
 
 
 # EOF
