@@ -125,3 +125,6 @@ if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/go
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
+
+# If you want to start a new tmux session remotely (while connecting using ssh)
+function ssht () {/usr/bin/ssh -t $@ "tmux attach -t development || tmux new -s development";}
