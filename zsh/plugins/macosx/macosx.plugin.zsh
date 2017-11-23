@@ -127,4 +127,4 @@ if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/go
 if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
 
 # If you want to start a new tmux session remotely (while connecting using ssh)
-function ssht () {/usr/bin/ssh -Y -t $@ "tmux attach -t development || tmux new -s development";}
+function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
