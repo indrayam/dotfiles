@@ -9,7 +9,7 @@ sudo pip3 freeze --local | grep -v ^-e | cut -d = -f 1  | xargs sudo pip3 instal
 # Ruby Gem Update
 sudo gem update
 # NodeJS Update
-sudo npm -g --unsafe-perm
+sudo npm -g --unsafe-perm update
 cd $HOME/workspace/node-apps/helloapp
 npm update
 cd $HOME
@@ -18,6 +18,7 @@ sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-
 echo "$(curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest.md5) /usr/local/bin/ecs-cli" | md5sum -c -
 sudo chmod 755 /usr/local/bin/ecs-cli
 cd /usr/local/bin
+sudo rm ./ecs
 sudo ln -s ./ecs-cli ./ecs
 # GCloud Update
 gcloud components update
