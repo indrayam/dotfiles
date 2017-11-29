@@ -1,4 +1,4 @@
-#!/bin/bash¬
+#!/bin/bash
 cd $HOME
 # Ubuntu Updates
 sudo apt update
