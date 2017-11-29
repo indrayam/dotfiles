@@ -4,7 +4,7 @@ cd $HOME
 echo "# Starting Ubuntu Updates..."
 sleep 1
 sudo apt update
-sudo apt upgrade
+sudo apt -y upgrade
 sudo apt list --upgradeable
 # Python Updates
 echo "# Starting Python module Updates..."
