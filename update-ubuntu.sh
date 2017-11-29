@@ -35,25 +35,39 @@ echo "#########################"
 echo
 echo "# Printing Versions..."
 # AWS CLI Versions
+echo "# aws version..."
 aws --version
+echo "# aws ecs-cli version..."
 ecs --version
 # Google Cloud Versions
+echo "# gcloud version..."
 gcloud --version
 # Azure Version
+echo "# az version..."
 az --version
 # Docker Version
+echo "# docker version..."
 docker version
 # Go Version
+echo "# go version..."
 go version
 # Python Version
+echo "# python3 version..."
 python3 --version
+echo "# pip3 version..."
 pip3 --version
 # Ruby Version
+echo "# ruby version..."
 ruby --version
+echo "# gem version..."
 gem --version
 # Node Version
+echo "# node version..."
 node --version
+echo "# npm version..."
 npm --version
 # Java Version
+echo "# java version..."
 java --version
+echo "# maven/mvn version..."
 mvn --version
