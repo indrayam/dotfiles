@@ -5,7 +5,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt list --upgradeable
 # Python Updates
-pipup
+sudo pip3 freeze --local | grep -v ^-e | cut -d = -f 1  | xargs sudo pip3 install -U
 # Ruby Gem Update
 sudo gem update
 # NodeJS Update
@@ -29,11 +29,11 @@ gcloud --version
 # Azure Version
 az --version
 # Docker Version
-d version
+docker version
 # Go Version
 go version
 # Python Version
-p --version
+python3 --version
 pip3 --version
 # Ruby Version
 ruby --version
