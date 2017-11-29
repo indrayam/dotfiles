@@ -32,8 +32,8 @@ echo "# Starting Google Cloud gcloud Updates..."
 gcloud components update
 echo
 echo "#########################"
-echo
 echo "# Printing Versions..."
+echo
 # AWS CLI Versions
 echo "# aws version..."
 aws --version
