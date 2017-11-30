@@ -29,7 +29,7 @@ sudo rm ./ecs
 sudo ln -s ./ecs-cli ./ecs
 # GCloud Update
 echo "# Starting Google Cloud gcloud Updates..."
-gcloud components update
+sudo gcloud components update
 echo
 echo "#########################"
 echo "# Printing Versions..."

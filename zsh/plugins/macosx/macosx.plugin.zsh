@@ -131,3 +131,6 @@ function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new 
 
 # Alias to run bare bones Vim
 alias vimn='vim -u .dotfiles/vim/vimrc-essential'
+
+# Alias for running update
+alias u="$HOME/.dotfiles/update-mac.sh"
