@@ -128,3 +128,6 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/lo
 
 # If you want to start a new tmux session remotely (while connecting using ssh)
 function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
+
+# Alias to run bare bones Vim
+alias vimn='vim -u .dotfiles/vim/vimrc-essential'
