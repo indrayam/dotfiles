@@ -2,6 +2,7 @@
 cd $HOME
 # Update dotfile repo
 echo "# Starting $HOME/.dotfiles repo update..."
+sleep 1
 git remote update
 git pull --rebase origin master
 source $HOME/.zshrc
