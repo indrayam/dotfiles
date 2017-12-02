@@ -1,6 +1,6 @@
 #!/bin/bash
 cd $HOME
-# Ubuntu Updates
+# MacOSX Updates
 echo "# Starting MacOSX Updates..."
 sleep 1
 brew update

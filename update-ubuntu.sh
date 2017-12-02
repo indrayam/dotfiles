@@ -1,6 +1,12 @@
 #!/bin/bash
 cd $HOME
+# Update dotfile repo
+echo "# Starting $HOME/.dotfiles repo update..."
+git remote update
+git pull --rebase origin master
+source $HOME/.zshrc
 # Ubuntu Updates
+cd $HOME
 echo "# Starting Ubuntu Updates..."
 sleep 1
 sudo apt update
