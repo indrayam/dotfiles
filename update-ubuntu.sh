@@ -26,6 +26,8 @@ cd $HOME/workspace/node-apps/helloapp
 echo "# Starting Node Module Updates (Local)..."
 npm update
 cd $HOME
+# Update npm 
+sudo npm i -g npm
 # AWS ECS CLI Update
 echo "# Starting ECS CLI Updates..."
 sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
@@ -48,7 +50,7 @@ echo "# aws ecs-cli version..."
 ecs --version
 # Google Cloud Versions
 echo "# gcloud version..."
-gcloud --version
+sudo gcloud --version
 # Azure Version
 echo "# az version..."
 az --version
