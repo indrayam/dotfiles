@@ -40,7 +40,7 @@ echo "# aws ecs-cli version..."
 ecs --version
 # Google Cloud Versions
 echo "# gcloud version..."
-gcloud --version
+sudo gcloud --version
 # Azure Version
 echo "# az version..."
 az --version
