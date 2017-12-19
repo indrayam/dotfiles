@@ -24,6 +24,7 @@ export PATH=$PATH:$HOME/workspace/bin
 export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 
 # Aliases specific to being productive
+alias svim='sudoedit'
 alias ls='ls --color=auto'
 alias c='clear'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'

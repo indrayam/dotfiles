@@ -23,7 +23,7 @@ ln -s $DOTFILES_HOME/tmux/tmux.conf.local.linux $HOME/.tmux.conf.local
 
 # Zsh
 rm -f $HOME/.zshrc
-ln -s $DOTFILES_HOME/zsh/zshrc.linux $HOME/.zshrc
+ln -s $DOTFILES_HOME/zsh/zshrc.centos $HOME/.zshrc
 
 
 
