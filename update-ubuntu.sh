@@ -77,6 +77,6 @@ echo "# npm version..."
 npm --version
 # Java Version
 echo "# java version..."
-java --version
+java -version
 echo "# maven/mvn version..."
-mvn --version
+mvn -version
