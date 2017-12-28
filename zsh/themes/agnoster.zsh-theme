@@ -61,24 +61,10 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   local user=`whoami`
+  local host=`uname`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$user@macbook-air"
-  fi
-}
-
-
-prompt_svn() {
-  if svn_is_inside; then
-    ZSH_THEME_SVN_PROMPT_DIRTY='±'
-    local ref dirty
-    if svn_parse_dirty; then
-      dirty=$ZSH_THEME_SVN_PROMPT_DIRTY
-      prompt_segment yellow black
-    else
-      prompt_segment green black
-    fi
-    echo -n "⭠ $(svn_branch_name) $(svn_rev)$dirty"
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$user@$host"
   fi
 }
 
@@ -189,7 +175,6 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_svn
   prompt_hg
   prompt_end
 }
