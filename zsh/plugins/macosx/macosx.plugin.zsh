@@ -76,7 +76,7 @@ alias sbl=_svnbl
 # Aliases specific to JVM based development
 alias j='java'
 alias jc='javac'
-alias k='kotlin'
+alias k='kubectl'
 alias kc='kotlinc'
 alias ki='kotlinc-jvm'
 alias gr='groovy'
