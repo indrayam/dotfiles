@@ -82,7 +82,8 @@ alias ki='kotlinc-jvm'
 alias gr='groovy'
 alias grc='groovyc'
 alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
-alias m='minishift'
+alias ms='minishift'
+alias mk='minikube'
 
 # Aliases specific to Python based development
 alias p='python3'
