@@ -77,6 +77,7 @@ alias sbl=_svnbl
 alias j='java'
 alias jc='javac'
 alias k='kubectl'
+alias kdo='kubectl --kubeconfig ~/.kube/config.do'
 alias kx='kubectx'
 alias kn='kubens'
 alias kt='kubetail'
