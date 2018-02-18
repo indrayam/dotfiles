@@ -81,7 +81,7 @@ alias dco='doctl compute'
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 # Add the following to your shell init to set up gpg-agent automatically for every shell
 # alias gpg="gpg2"
-eval $(gpg-agent --daemon)
+# eval $(gpg-agent --daemon)
 
 ulimit -n 8192
 
