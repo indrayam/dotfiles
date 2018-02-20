@@ -2,6 +2,7 @@
 
 # Settings for tmux window renaming
 export DISABLE_AUTO_TITLE=true
+export USER="anand"
 
 # Basic Environment variables
 export EDITOR='subl -w'
