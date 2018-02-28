@@ -49,6 +49,7 @@ alias kn='kubens'
 alias kt='kubetail'
 alias s="stern"
 alias gcssh="gcloud compute ssh"
+alias gclist="gcloud compute instances list"
 alias kon="kubeon"
 alias koff="kubeoff"
 alias cri="crictl"

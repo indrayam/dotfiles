@@ -88,6 +88,7 @@ alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
 alias gcssh="gcloud compute ssh"
+alias gclist="gcloud compute instances list"
 alias kc='kotlinc'
 alias ki='kotlinc-jvm'
 alias gr='groovy'
