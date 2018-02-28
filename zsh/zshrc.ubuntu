@@ -85,3 +85,4 @@ clear
 cat $DOTFILES_HOME/misc/om
 w
 . $DOTFILES_HOME/z/z.sh
+
