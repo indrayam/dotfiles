@@ -88,7 +88,20 @@ alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
 alias gcssh="gcloud compute ssh"
-alias dossh="doctl compute ssh"
+function dossh() {
+    if [[ ! -z $1 ]]; then
+        userid=$1
+    else
+        userid="anasharm"
+    fi
+    if [[ ! -z $2 ]]; then
+        instance=$2
+    else
+        instance="demo"
+    fi
+    doctl compute ssh "${instance}" --ssh-user "${userid}"
+    echo "${instance}"
+}
 alias gcls="gcloud compute instances list"
 alias dols="doctl compute droplet list"
 alias kc='kotlinc'

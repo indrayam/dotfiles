@@ -49,7 +49,11 @@ alias kn='kubens'
 alias kt='kubetail'
 alias s="stern"
 alias gcssh="gcloud compute ssh"
-alias dossh="doctl compute ssh"
+function dossh() {
+    INSTANCE=${2:-demo}
+    USERID=${1:-anasharm}
+    doctl compute ssh ${INSTANCE} --ssh-user ${USERID}
+}
 alias gcls="gcloud compute instances list"
 alias dols="doctl compute droplet list"
 alias kon="kubeon"
