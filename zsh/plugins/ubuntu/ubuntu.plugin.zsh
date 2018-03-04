@@ -114,3 +114,4 @@ LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
 KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
 source "$HOME/.kube-ps1.sh"
+
