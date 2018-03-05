@@ -50,8 +50,16 @@ alias kt='kubetail'
 alias s="stern"
 alias gcssh="gcloud compute ssh"
 function dossh() {
-    INSTANCE=${2:-demo}
-    USERID=${1:-anasharm}
+    if [[ ! -z $1 ]]; then
+        userid=$1
+    else
+        userid="anasharm"
+    fi
+    if [[ ! -z $2 ]]; then
+        instance=$2
+    else
+        instance="demo"
+    fi
     doctl compute ssh ${INSTANCE} --ssh-user ${USERID}
 }
 alias gcls="gcloud compute instances list"
