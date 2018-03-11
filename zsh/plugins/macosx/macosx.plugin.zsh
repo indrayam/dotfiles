@@ -90,17 +90,16 @@ alias koff="kubeoff"
 alias gcssh="gcloud compute ssh"
 function dossh() {
     if [[ ! -z $1 ]]; then
-        userid=$1
-    else
-        userid="anasharm"
-    fi
-    if [[ ! -z $2 ]]; then
-        instance=$2
+        instance=$1
     else
         instance="demo"
     fi
+    if [[ ! -z $2 ]]; then
+        userid=$2
+    else
+        userid="anasharm"
+    fi
     doctl compute ssh "${instance}" --ssh-user "${userid}"
-    echo "${instance}"
 }
 alias gcls="gcloud compute instances list"
 alias dols="doctl compute droplet list"
