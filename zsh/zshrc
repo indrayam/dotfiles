@@ -46,7 +46,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(npm git svn2 sublime macosx)
+plugins=(git sublime macosx)
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES_HOME/zsh
@@ -86,10 +86,4 @@ cat $DOTFILES_HOME/misc/om
 w
 . $DOTFILES_HOME/z/z.sh
 
-export PATH="/usr/local/opt/qt5/bin:$PATH"
 
-PATH="/Users/anasharm/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/anasharm/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/anasharm/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/anasharm/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/anasharm/perl5"; export PERL_MM_OPT;
