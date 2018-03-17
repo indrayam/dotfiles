@@ -49,6 +49,7 @@ alias kn='kubens'
 alias kt='kubetail'
 alias s="stern"
 alias gcssh="gcloud compute ssh"
+alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 function dossh() {
     if [[ ! -z $1 ]]; then
         instance=$1
