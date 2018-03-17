@@ -39,6 +39,13 @@ alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`
 alias gll='gitloglive'
 alias grch='generaterandomchanges'
 
+# Aliases specific to JVM based development
+alias j='java'
+alias jc='javac'
+alias m='mvn'
+alias mq='mvn -q'
+alias grd='gradle'
+
 # Aliases specific to Python based development
 alias p='python3'
 alias p2='python2'
@@ -57,6 +64,25 @@ alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'
 alias t='tmux'
+
+# Aliases specfic to public clouds
+alias gcssh="gcloud compute ssh"
+alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
+function dossh() {
+    if [[ ! -z $1 ]]; then
+        instance=$1
+    else
+        instance="demo"
+    fi
+    if [[ ! -z $2 ]]; then
+        userid=$2
+    else
+        userid="anasharm"
+    fi
+    doctl compute ssh "${instance}" --ssh-user "${userid}"
+}
+alias gcls="gcloud compute instances list"
+alias dols="doctl compute droplet list"
 
 ulimit -n 8192
 
