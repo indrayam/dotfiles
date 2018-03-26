@@ -60,6 +60,8 @@ alias r='ruby'
 
 # Aliases specific to DevOps tools
 alias d='docker'
+alias dm='docker-machine'
+alias ds='docker swarm'
 alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'

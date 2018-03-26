@@ -131,6 +131,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 # Aliases specific to DevOps tools
 alias v='vagrant'
 alias d='docker'
+alias dm='docker-machine'
 alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'
@@ -168,4 +169,9 @@ KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 kubeoff
+
+# Cloud Tokens
+export DOTOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
+export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
+export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 
