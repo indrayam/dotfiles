@@ -13,7 +13,7 @@ echo "# Starting Ruby Gems Updates..."
 sudo gem update
 # NodeJS Update
 echo "# Starting Node Module Updates (Global)..."
-sudo npm -g --unsafe-perm update
+npm -g --unsafe-perm update
 cd $HOME/workspace/node-apps/helloapp
 echo "# Starting Node Module Updates (Local)..."
 npm update
