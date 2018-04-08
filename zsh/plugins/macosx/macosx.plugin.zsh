@@ -159,6 +159,9 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/lo
 # The next line enables shell command completion for aws.
 if [ -f '/usr/local/bin/aws_zsh_completer.sh' ]; then source '/usr/local/bin/aws_zsh_completer.sh'; fi
 
+# kubectl completion
+source <(kubectl completion zsh)
+
 # If you want to start a new tmux session remotely (while connecting using ssh)
 function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
 
