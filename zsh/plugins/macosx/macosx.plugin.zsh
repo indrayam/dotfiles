@@ -114,6 +114,7 @@ alias h='helm'
 alias ky='ksync'
 alias dr='draft'
 alias o='openstack'
+alias rhc='rhc 2>/dev/null' #Or log into laeusr-prod2-01.cisco.com with anasharm
 
 # Aliases specific to Python based development
 alias p='python3'
