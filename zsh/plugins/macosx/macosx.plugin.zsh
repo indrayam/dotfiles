@@ -192,5 +192,6 @@ export OS_PROJECT_NAME="CICD-POC"
 export OS_PROJECT_DOMAIN_NAME="cisco"
 export OS_USERNAME="anasharm"
 export OS_USER_DOMAIN_NAME="cisco"
+#export OS_PASSWORD="" if you do not want to be prompted to enter your password again and again
 
 
