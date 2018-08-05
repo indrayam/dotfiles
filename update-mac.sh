@@ -13,15 +13,12 @@ echo "# Starting Ruby Gems Updates..."
 sudo gem update
 # NodeJS Update
 echo "# Starting Node Module Updates (Global)..."
-npm -g --unsafe-perm update
-cd $HOME/workspace/node-apps/helloapp
-echo "# Starting Node Module Updates (Local)..."
-npm update
-cd $HOME
+sudo npm -g --unsafe-perm update
+
 # AWS ECS CLI Update
 echo "# Starting ECS CLI Updates..."
-sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
-echo "$(curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest.md5) /usr/local/bin/ecs-cli" | md5sum -c -
+sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64-latest
+curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64-latest.md5 && md5 -q /usr/local/bin/ecs-cli
 sudo chmod 755 /usr/local/bin/ecs-cli
 cd /usr/local/bin
 sudo rm ./ecs
