@@ -35,7 +35,6 @@ export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 
 # Adding entries for Google Cloud SDK
 export PATH=$PATH:/usr/local/google-cloud-sdk/bin
-source /usr/local/google-cloud-sdk/completion.zsh.inc
 
 # Adding entries for AWS CLI
 export PATH=$PATH:$HOME/Library/Python/3.7/bin
