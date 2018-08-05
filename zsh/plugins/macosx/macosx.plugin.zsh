@@ -182,7 +182,7 @@ alias u="$HOME/.dotfiles/update-mac.sh"
 KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-kubeoff
+kubeon
 
 # Public Cloud Tokens
 export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
