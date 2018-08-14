@@ -106,7 +106,7 @@ alias dco='doctl compute'
 # alias gpg="gpg2"
 # eval $(gpg-agent --daemon)
 
-ulimit -n 8192
+# ulimit -n 8192
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi

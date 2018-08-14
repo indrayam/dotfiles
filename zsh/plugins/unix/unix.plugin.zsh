@@ -86,7 +86,7 @@ function dossh() {
 alias gcls="gcloud compute instances list"
 alias dols="doctl compute droplet list"
 
-ulimit -n 8192
+# ulimit -n 8192
 
 # Setting LSCOLORS. Set the folder colors to bold and yellow 
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
