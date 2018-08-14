@@ -65,7 +65,7 @@ function dossh() {
 }
 alias gcls="gcloud compute instances list"
 alias dols="doctl compute droplet list"
-alias awsls="aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_name: Tags[?Key=='Name'] | [0].Value, instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table"
+alias awsls="aws ec2 describe-instances --query Reservations[*].Instances[*].{instance_name: Tags[?Key=='Name'] | [0].Value, instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId} --output table"
 alias kon="kubeon"
 alias koff="kubeoff"
 alias cri="crictl"
