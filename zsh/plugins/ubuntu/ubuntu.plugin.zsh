@@ -127,6 +127,6 @@ LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
 # Kube PS1 configurations
 KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
-source "$HOME/.kube-ps1/share/kube-ps1.sh"
+source "$HOME/.kube-ps1/kube-ps1.sh"
 kubeon
 
