@@ -188,8 +188,8 @@ kubeon
 
 # Public Cloud Tokens
 export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
-SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
-export DO_SSH_KEY_FINGERPRINT=$(doctl compute ssh-key get $SSH_ID --format FingerPrint --no-header)
+#SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
+#export DO_SSH_KEY_FINGERPRINT=$(doctl compute ssh-key get $SSH_ID --format FingerPrint --no-header)
 export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
 export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 
