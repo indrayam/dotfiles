@@ -171,6 +171,9 @@ if [ -f '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh' ]; then so
 # kubectl completion
 source <(kubectl completion zsh)
 
+# stern completion
+source <(stern --completion=zsh)
+
 # If you want to start a new tmux session remotely (while connecting using ssh)
 function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
 
