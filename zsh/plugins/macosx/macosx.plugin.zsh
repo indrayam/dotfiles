@@ -41,6 +41,7 @@ export PATH=$PATH:$HOME/Library/Python/3.7/bin
 
 # Aliases specific to being productive
 alias ls='ls --color=auto'
+alias cat='bat'
 alias c='clear'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
