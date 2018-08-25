@@ -41,7 +41,9 @@ export PATH=$PATH:$HOME/Library/Python/3.7/bin
 
 # Aliases specific to being productive
 alias ls='ls --color=auto'
-alias cat='bat'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+alias pping='prettyping --nolegend'
 alias c='clear'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
@@ -174,6 +176,9 @@ source <(kubectl completion zsh)
 
 # stern completion
 source <(stern --completion=zsh)
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # If you want to start a new tmux session remotely (while connecting using ssh)
 function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}

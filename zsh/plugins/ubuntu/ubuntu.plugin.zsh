@@ -26,6 +26,8 @@ export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 # Aliases specific to being productive
 alias svim='sudoedit'
 alias ls='ls --color=auto'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias c='clear'
 alias top10fa='find . -type f -exec du -Sh {} + | sort -rh | head -n 10'
 alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o -type f -exec du -Sh {} + | sort -rh | head -n 10'
@@ -116,6 +118,15 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/lo
 
 # The next line enables shell command completion for aws.
 if [ -f '/usr/local/bin/aws_zsh_completer.sh' ]; then source '/usr/local/bin/aws_zsh_completer.sh'; fi
+
+# kubectl completion
+source <(kubectl completion zsh)
+
+# stern completion
+source <(stern --completion=zsh)
+
+# fzf 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Alias for running update
 alias u="$HOME/.dotfiles/update-ubuntu.sh"

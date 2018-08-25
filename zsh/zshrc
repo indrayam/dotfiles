@@ -86,6 +86,3 @@ cat $DOTFILES_HOME/misc/om
 w
 . $DOTFILES_HOME/z/z.sh
 
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
