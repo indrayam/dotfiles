@@ -15,6 +15,7 @@ export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export GOPATH=$HOME/workspace/go-apps
+export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
 
 # Adding entries for Oracle Instant Client, TOAD, sqlplus
