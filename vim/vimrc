@@ -180,7 +180,10 @@ set sidescroll=1        " number of cols to scroll at a time
 " Miscellaneous
 " -------------------------------------------------------------------
 " toggle listchars on or off
-noremap <Leader>i :set list!<CR>
+noremap <Leader>l :set list!<CR>
+
+" toggle relativenumber on or off
+noremap <Leader>n :set rnu! <bar> :set number!<CR>
 
 " Paste mode to prevent autoindentation of pasted lines
 set pastetoggle=<F2>
