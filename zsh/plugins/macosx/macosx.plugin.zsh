@@ -15,7 +15,6 @@ export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export GOPATH=$HOME/workspace/go-apps
-export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
 
 # Adding entries for Oracle Instant Client, TOAD, sqlplus
@@ -39,6 +38,10 @@ export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 
 # Adding entries for AWS CLI
 export PATH=$PATH:$HOME/Library/Python/3.7/bin
+export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
+
+# Adding entries for Istio
+export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
 
 # Aliases specific to being productive
 alias ls='ls --color=auto'
