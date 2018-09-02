@@ -23,6 +23,9 @@ export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:
 export PATH=$PATH:$HOME/workspace/bin
 export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 
+# Adding entries for Istio
+export PATH="$PATH:/home/ubuntu/workspace/istio/bin"
+
 # Aliases specific to being productive
 alias svim='sudoedit'
 alias ls='ls --color=auto'
