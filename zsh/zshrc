@@ -86,3 +86,10 @@ cat $DOTFILES_HOME/misc/om
 w
 . $DOTFILES_HOME/z/z.sh
 
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_MODE='nerdfont-complete'
+
+
+#ZSH_THEME="powerlevel9k/powerlevel9k"
