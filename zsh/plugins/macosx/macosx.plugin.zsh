@@ -194,6 +194,9 @@ alias vimn='vim -u .dotfiles/vim/vimrc-essential'
 alias u="$HOME/.dotfiles/update-mac.sh"
 
 # Kube PS1 configurations
+# KUBE_PS1_CTX_COLOR="black"
+# KUBE_PS1_NS_COLOR="blue"
+# KUBE_PS1_SYMBOL_COLOR="blue"
 KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
