@@ -25,9 +25,6 @@ export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$HOME/local/instantclient_11_2"
 export TNS_ADMIN="$HOME/local/oracle/network/admin"
 export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
 
-# Adding entries for OpenShift
-export MINISHIFT_HOME="/Users/anasharm/workspace/cloudy-apps/minishift"
-
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
@@ -124,6 +121,7 @@ alias gr='groovy'
 alias grc='groovyc'
 alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
 alias mk='minikube'
+alias ms='minishift'
 alias sk='skaffold'
 alias h='helm'
 alias ky='ksync'
