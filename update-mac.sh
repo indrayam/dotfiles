@@ -7,7 +7,7 @@ brew update
 brew upgrade
 # Python Updates
 echo "# Starting Python module Updates..."
-pip3 freeze --local | grep -v ^-e | cut -d = -f 1  | xargs pip3 install -U
+pip3 freeze --local | grep -v ^-e | cut -d = -f 1  | sudo xargs pip3 install -U
 # Ruby Gem Update
 echo "# Starting Ruby Gems Updates..."
 sudo gem update
