@@ -14,16 +14,9 @@ export GROOVY_HOME="/usr/local/opt/groovy"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
+export KUBE_EDITOR="subl"
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
-
-# Adding entries for Oracle Instant Client, TOAD, sqlplus
-export ORACLE_HOME="$HOME/local/oracle"
-export NLS_LANG="AMERICAN_AMERICA.UTF8"
-export PATH="$PATH:$HOME/local/instantclient_11_2"
-export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$HOME/local/instantclient_11_2"
-export TNS_ADMIN="$HOME/local/oracle/network/admin"
-export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
 
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
