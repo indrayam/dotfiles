@@ -34,6 +34,19 @@ export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
 export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
 
 # Aliases specific to being productive
+function dp() {
+    if [[ ! -z $1 ]]; then
+        podname=$1
+    else
+        podname="debugpod"
+    fi
+    if [[ ! -z $2 ]]; then
+        command=$2
+    else
+        command="bash"
+    fi
+    kubectl exec -it "${podname}" -- "${command}"
+}
 alias ls='ls --color=auto'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
@@ -133,13 +146,6 @@ alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
 
-# Aliases specific to Node based development
-alias n='node'
-
-# Aliases specific to Ruby based development
-alias cr='crystal'
-alias r='ruby'
-
 # Aliases specific to Swift based development
 export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
@@ -153,6 +159,7 @@ alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'
 alias t='tmux'
+alias r='redis-cli'
 
 # Aliases specific to Public Cloud
 alias dco='doctl compute'
