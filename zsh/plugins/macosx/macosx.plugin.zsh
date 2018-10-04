@@ -222,4 +222,20 @@ export OS_USERNAME="anasharm"
 export OS_USER_DOMAIN_NAME="cisco"
 #export OS_PASSWORD="" if you do not want to be prompted to enter your password again and again
 
+### EVERYTHING BELOW THIS LINE IS FOR LOCAL SPINNAKER INSTALL
+# NVM post-installation requirements
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+FRONT50=http://localhost:8080
+FIAT=http://localhost:7003
+ORCA=http://localhost:8083
+ROSCO=http://localhost:8087
+IGOR=http://localhost:8088
+REDIS=redis://localhost:6379
+ECHO=http://localhost:8089
+CLOUDDRIVER=http://localhost:7002
+DECK=http://localhost:9000
+GATE=http://localhost:8084
 
