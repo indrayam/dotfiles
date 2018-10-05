@@ -167,7 +167,7 @@ alias dco='doctl compute'
 
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 # Add the following to your shell init to set up gpg-agent automatically for every shell
-eval $(gpg-agent --daemon)
+# eval $(gpg-agent --daemon)
 
 ulimit -n 8192
 
@@ -181,10 +181,10 @@ if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/lo
 if [ -f '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh' ]; then source '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh'; fi
 
 # kubectl completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # stern completion
-source <(stern --completion=zsh)
+# source <(stern --completion=zsh)
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
