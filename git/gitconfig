@@ -3,22 +3,33 @@
 	email = anasharm@cisco.com
 	signingkey = A190E97F52B7DBAC
 [alias]
+    # basic
     s = status --short
     st = status
-    lol = log --graph --decorate --oneline
-    lola = log --graph --decorate --oneline --all
-    h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue[%an]%Creset' --abbrev-commit --date=relative
-    ha = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue[%an]%Creset' --abbrev-commit --date=relative --all
+    cl = clone
+    ci = commit
     co = checkout
     br = branch
-    pom = push origin master
-    fom = fetch origin master
-    spr = !sh -c \"git fetch origin pull-requests/${1}/from:pr/${1}\" -
-    gpr = !sh -c \"git fetch origin pull/${1}/head:pr/${1}\" -
+    brv = branch -va
+    r = reset
+    cp = cherry-pick
     rv = remote -v
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s" --decorate --date=relative
+    la = log --graph --decorate --oneline --all
     caa = commit -a --amend -C HEAD
+    # reset 
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
+    # remotes
     up = "!git remote update -p; git merge --ff-only @{u}"
-    create-pull-request = !sh -c 'stash pull-request $0'
+    # for github remotes
+    pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+    # for bitbucket/stash remotes
+    spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
 [core]
     editor = vim
     excludesfile = /Users/anasharm/.gitignore_global
