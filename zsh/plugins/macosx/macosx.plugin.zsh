@@ -99,6 +99,7 @@ alias kt='kubetail'
 alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
+alias ssha='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
 alias gcssh="gcloud compute ssh"
 function dossh() {
     if [[ ! -z $1 ]]; then
