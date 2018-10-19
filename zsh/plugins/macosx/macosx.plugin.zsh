@@ -99,10 +99,14 @@ alias kt='kubetail'
 alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
+alias sshrtpplay='ssh -o ProxyCommand="ssh ubuntu@64.102.181.58 nc %h %p"'
 alias sshalln='ssh -o ProxyCommand="ssh ubuntu@173.37.28.222 nc %h %p"'
 alias sshrtpstg='ssh -o ProxyCommand="ssh ubuntu@64.102.181.47 nc %h %p"'
+alias sshrtpprd='ssh -o ProxyCommand="ssh ubuntu@64.102.181.82 nc %h %p"'
 alias sshallnstg='ssh -o ProxyCommand="ssh ubuntu@173.37.28.233 nc %h %p"'
+alias sshallnprd='ssh -o ProxyCommand="ssh ubuntu@173.37.28.234 nc %h %p"'
 alias sshrcdnstg='ssh -o ProxyCommand="ssh ubuntu@173.37.68.30 nc %h %p"'
+alias sshrcdnprd='ssh -o ProxyCommand="ssh ubuntu@173.37.68.83 nc %h %p"'
 alias gcssh="gcloud compute ssh"
 function dossh() {
     if [[ ! -z $1 ]]; then
@@ -218,13 +222,7 @@ export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | 
 export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 
 # Cisco Cloud Login
-export OS_AUTH_URL="https://cloud-rtp-1.cisco.com:5000/v3"
-export OS_IDENTITY_API_VERSION=3
-export OS_PROJECT_NAME="CICD-POC"
-export OS_PROJECT_DOMAIN_NAME="cisco"
-export OS_USERNAME="anasharm"
-export OS_USER_DOMAIN_NAME="cisco"
-#export OS_PASSWORD="" if you do not want to be prompted to enter your password again and again
+source ~/.cec
 
 ### EVERYTHING BELOW THIS LINE IS FOR LOCAL SPINNAKER INSTALL
 # NVM post-installation requirements
