@@ -99,8 +99,8 @@ alias kt='kubetail'
 alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
+alias sshallnpoc='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
 alias sshrtpplay='ssh -o ProxyCommand="ssh ubuntu@64.102.181.58 nc %h %p"'
-alias sshalln='ssh -o ProxyCommand="ssh ubuntu@173.37.28.222 nc %h %p"'
 alias sshrtpstg='ssh -o ProxyCommand="ssh ubuntu@64.102.181.47 nc %h %p"'
 alias sshrtpprd='ssh -o ProxyCommand="ssh ubuntu@64.102.181.82 nc %h %p"'
 alias sshallnstg='ssh -o ProxyCommand="ssh ubuntu@173.37.28.233 nc %h %p"'
