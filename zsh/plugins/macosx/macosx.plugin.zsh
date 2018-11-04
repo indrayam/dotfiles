@@ -143,7 +143,6 @@ alias mk='minikube'
 alias ms='minishift'
 alias sk='skaffold'
 alias h='helm'
-export TILLER_NAMESPACE="tiller-code"
 alias ky='ksync'
 alias dr='draft'
 alias o='openstack'
