@@ -10,13 +10,13 @@ export GPG_TTY=$(tty)
 
 # Adding entries for Java, Groovy and Gradle
 export JAVA_HOME="/usr/local/java"
-export GROOVY_HOME="/usr/local/opt/groovy"
+export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
 export GOPATH=$HOME/workspace/go-apps
-export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin
+export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
 
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
