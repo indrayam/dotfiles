@@ -48,6 +48,7 @@ function dp() {
     kubectl exec -it "${podname}" -- "${command}"
 }
 alias ls='ls --color=auto'
+alias chromedark='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --force-dark-mode'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias pping='prettyping --nolegend'
