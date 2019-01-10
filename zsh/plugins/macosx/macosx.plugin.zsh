@@ -33,6 +33,9 @@ export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
 # Adding entries for Istio
 export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
 
+# Adding entries for Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Aliases specific to being productive
 function dp() {
     if [[ ! -z $1 ]]; then
