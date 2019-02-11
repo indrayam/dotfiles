@@ -17,6 +17,7 @@ export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # Adding local bin folder and other "stuff" for custom scripts
 export PATH=$PATH:$HOME/workspace/bin
@@ -229,20 +230,30 @@ export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_acces
 # Cisco Cloud Login
 source ~/.cec
 
+# Philip's goodies
+alias current-id='find-id git $(git config --get remote.origin.url)'
+function bit() {
+    chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
+}
+
+# Configure z.lua
+eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
+export _ZL_DATA=$HOME/.config/z.txt
+
 ### EVERYTHING BELOW THIS LINE IS FOR LOCAL SPINNAKER INSTALL
 # NVM post-installation requirements
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-FRONT50=http://localhost:8080
-FIAT=http://localhost:7003
-ORCA=http://localhost:8083
-ROSCO=http://localhost:8087
-IGOR=http://localhost:8088
-REDIS=redis://localhost:6379
-ECHO=http://localhost:8089
-CLOUDDRIVER=http://localhost:7002
-DECK=http://localhost:9000
-GATE=http://localhost:8084
+# FRONT50=http://localhost:8080
+# FIAT=http://localhost:7003
+# ORCA=http://localhost:8083
+# ROSCO=http://localhost:8087
+# IGOR=http://localhost:8088
+# REDIS=redis://localhost:6379
+# ECHO=http://localhost:8089
+# CLOUDDRIVER=http://localhost:7002
+# DECK=http://localhost:9000
+# GATE=http://localhost:8084
 

@@ -66,6 +66,7 @@ alias a='ansible'
 alias ap='ansible-playbook'
 alias tf='terraform'
 alias t='tmux'
+alias k="kubectl"
 
 # Aliases specfic to public clouds
 alias gcssh="gcloud compute ssh"
