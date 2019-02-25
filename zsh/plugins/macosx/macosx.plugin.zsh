@@ -240,6 +240,15 @@ function bit() {
 eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
 export _ZL_DATA=$HOME/.config/z.txt
 
+# TIMEFMT environment variable for zsh's built-in time function
+TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
+'avg shared (code):         %X KB'$'\n'\
+'avg unshared (data/stack): %D KB'$'\n'\
+'total (sum):               %K KB'$'\n'\
+'max memory:                %M MB'$'\n'\
+'page faults from disk:     %F'$'\n'\
+'other page faults:         %R'
+
 ### EVERYTHING BELOW THIS LINE IS FOR LOCAL SPINNAKER INSTALL
 # NVM post-installation requirements
 # export NVM_DIR="$HOME/.nvm"

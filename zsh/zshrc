@@ -103,3 +103,6 @@ cat $DOTFILES_HOME/misc/om
 w
 #. $DOTFILES_HOME/z/z.sh
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc
