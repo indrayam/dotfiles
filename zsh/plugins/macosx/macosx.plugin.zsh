@@ -17,6 +17,7 @@ export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
+export PATH=$PATH:/usr/local/graalvm/Contents/Home/bin
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # Adding local bin folder and other "stuff" for custom scripts
