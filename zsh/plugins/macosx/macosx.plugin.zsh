@@ -250,6 +250,9 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
+# Using SOPS for encrypting data
+export SOPS_PGP_FP="2A30D3C45B5C792CC603C82AA190E97F52B7DBAC"
+
 ### EVERYTHING BELOW THIS LINE IS FOR LOCAL SPINNAKER INSTALL
 # NVM post-installation requirements
 # export NVM_DIR="$HOME/.nvm"
