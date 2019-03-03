@@ -32,12 +32,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Bundles for Text Search
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 
 " Bundles related to Themes
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'sjl/badwolf.git'
-Plugin 'altercation/vim-colors-solarized'
 
 " Bundles related to saving sessions
 Plugin 'tpope/vim-obsession'
@@ -114,7 +112,7 @@ set mousehide                     " hide mouse when typing
 set foldenable                    " enable code folding
 set history=1000
 set ffs=unix,mac,dos              " default file types
-set autoread                      " automatically update file when editted outside of vim
+set autoread                      " automatically update file when edited outside of vim
 
 " Setup automatic text formatting/wrapping (previously: grn1 )
 set formatoptions=
@@ -376,3 +374,10 @@ endif
 
 " Set some defaults
 :set nolist
+
+" Ack.vim configuration
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
