@@ -52,6 +52,10 @@ Plugin 'vim-airline/vim-airline-themes'
 " Emoji in Vim :-)
 Plugin 'junegunn/vim-emoji'
 
+" Vim Go
+Plugin 'fatih/vim-go'
+Plugin 'AndrewRadev/splitjoin.vim'
+
 " Visual Code Dark Scheme
 " Plugin 'tomasiser/vim-code-dark'
 
@@ -240,7 +244,7 @@ nnoremap <leader>h <C-w>s<C-w>j   " open a horizontal split and switch to it (,h
 " vimrc shortcuts
 " -------------------------------------------------------------------
 " open vimrc in new tab for editing
-nmap <leader>ev :tabedit $MYVIMRC<cr>
+nmap <leader>ev :edit $MYVIMRC<cr>
 
 " automatically source .vimrc when it is saved (from vimcasts.org #24)
 if has("autocmd")
@@ -254,46 +258,10 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " Stuff for Bundles
 " -------------------------------------------------------------------
 
-" Settings for 'tpope/vim-surround'
-" Settings for 'tpope/vim-commentary'
-" Settings for 'tpope/vim-fugitive'
-" Settings for 'airblade/vim-gitgutter'
-
-" Settings for 'rking/ag.vim' https://github.com/rking/ag.vim for commands
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " Settings for 'sjl/badwolf.git'
 set background=dark
 silent! colorscheme badwolf
 let g:badwolf_darkgutter = 1 " Make the gutters darker than the background
-
-" Settings for 'nanotech/jellybeans.vim'
-" color jellybeans
-
-" Settings for Solarized Colorscheme
-" set background=light
-" colorscheme solarized
-
-" Settings for Vim Code Dark Scheme (Visual Code Dark)
-" colorscheme codedark
-" let g:airline_theme = 'codedark'
-
-
-" Settings for  'kien/ctrlp.vim' https://github.com/kien/ctrlp.vim for commands
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" Set no max file limit
-let g:ctrlp_max_files = 0
-" Search from current directory instead of project root
-let g:ctrlp_working_path_mode = 0
 
 " vim-airline configurations
 let g:airline#extensions#tabline#enabled = 1
@@ -301,6 +269,110 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 
-" Making the clipboard work between iTerm2, tmux, vim and OS X.
-" Source: https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
-set clipboard=unnamed
+
+" Settings for vim-go
+
+" Enable to copy to clipboard for operations like yank, delete, change and put
+" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+if has('unnamedplus')
+  set clipboard^=unnamed
+  set clipboard^=unnamedplus
+endif
+
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
+" Open :GoDeclsDir with ctrl-g
+nmap <C-g> :GoDeclsDir<cr>
+imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+
+augroup go
+  autocmd!
+
+  " Show by default 4 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+  " :GoBuild and :GoTestCompile
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+  " :GoTest
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+  " :GoRun
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+  " :GoDoc
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+
+  " :GoCoverageToggle
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " :GoInfo
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+  " :GoMetaLinter
+  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+
+  " :GoDef but opens in a vertical split
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+  " :GoAlternate  commands :A, :AV, :AS and :AT
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup END
+
+" build_go_files is a custom function that builds or compiles the test file.
+" It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+" CtrlP configuration
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " bind K to grep word under cursor
+  nnoremap <C-d> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" Dealing with Buffers more efficiently
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+:nnoremap <C-X> :bdelete<CR>
+
+" Set some defaults
+:set nolist
