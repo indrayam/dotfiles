@@ -64,7 +64,7 @@ alias top10da='du -Sh | sort -rh | head -n 10'
 alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
 
 # MacBook specific
-alias tm='/usr/bin/time'
+# alias tm='/usr/bin/time'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
