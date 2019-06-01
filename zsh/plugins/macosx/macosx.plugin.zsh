@@ -15,6 +15,7 @@ export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
+
 export GOPATH=$HOME/workspace/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/graalvm/Contents/Home/bin
@@ -34,6 +35,10 @@ export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
 
 # Adding entries for Istio
 export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
+
+# Adding entries for Linkerd
+export PATH=$PATH:$HOME/.linkerd2/bin
+
 
 # Adding entries for Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
