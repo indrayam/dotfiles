@@ -278,3 +278,10 @@ FCEDIT="vim"
 # DECK=http://localhost:9000
 # GATE=http://localhost:8084
 
+# Bazel Zsh completion
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Buildfier (To complie Envoy)
+export BUILDIFIER_BIN="/home/ubuntu/workspace/go-apps/bin"
+
