@@ -157,4 +157,7 @@ kubeon
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
+# Buildfier (To complie Envoy)
+BUILDIFIER_BIN="/home/ubuntu/workspace/go-apps/bin"
+
 
