@@ -153,4 +153,8 @@ KUBE_PS1_SYMBOL_USE_IMG="true"
 source "$HOME/.kube-ps1/kube-ps1.sh"
 kubeon
 
+# Bazel Zsh completion
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
 
