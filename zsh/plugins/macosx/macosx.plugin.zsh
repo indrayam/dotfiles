@@ -149,7 +149,7 @@ alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subne
 alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}" --output table'
 alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}" --output table'
 alias kc='kotlinc'
-alias ki='kotlinc-jvm'
+alias kj='kotlinc-jvm'
 alias gr='groovy'
 alias grc='groovyc'
 alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
@@ -176,6 +176,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 # Aliases specific to DevOps tools
 alias v='vagrant'
 alias d='docker'
+alias lzd='lazydocker'
 alias dm='docker-machine'
 alias a='ansible'
 alias ap='ansible-playbook'
