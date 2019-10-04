@@ -39,6 +39,9 @@ export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
 # Adding entries for Linkerd
 export PATH=$PATH:$HOME/.linkerd2/bin
 
+# Adding entries for Kafka
+export PATH=$PATH:/usr/local/Cellar/kafka/2.3.0/bin
+
 
 # Adding entries for Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
