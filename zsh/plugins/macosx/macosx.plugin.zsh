@@ -72,6 +72,7 @@ alias top10f='find . -type d \( -iregex ".*git" -o -iregex ".*svn" \) -prune -o 
 alias top10da='du -Sh | sort -rh | head -n 10'
 alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
 alias tree='tree -C'
+alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 
 # MacBook specific
 # alias tm='/usr/bin/time'
