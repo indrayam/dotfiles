@@ -29,9 +29,8 @@ export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 # Adding entries for Google Cloud SDK
 export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 
-# Adding entries for AWS CLI
-export PATH=$PATH:$HOME/Library/Python/3.7/bin
-export PATH=$PATH:$HOME/workspace/python-apps/heighlinerenv/bin
+# Adding entries for AWS CLI v2
+export PATH=$PATH:/usr/local/aws-cli/v2/current/bin
 
 # Adding entries for Istio
 export PATH="$PATH:/Users/anasharm/workspace/istio/bin"
@@ -73,6 +72,7 @@ alias top10da='du -Sh | sort -rh | head -n 10'
 alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
+alias aws='aws2'
 
 # MacBook specific
 # alias tm='/usr/bin/time'
