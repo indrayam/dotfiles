@@ -16,13 +16,13 @@ export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
 
-export GOPATH=$HOME/workspace/go-apps
+export GOPATH=$HOME/workspace/2020/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/graalvm/Contents/Home/bin
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # Adding local bin folder and other "stuff" for custom scripts
-export PATH=$PATH:$HOME/workspace/bin
+export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
 
@@ -290,6 +290,4 @@ FCEDIT="vim"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-# Buildfier (To complie Envoy)
-export BUILDIFIER_BIN="/home/ubuntu/workspace/go-apps/bin"
 
