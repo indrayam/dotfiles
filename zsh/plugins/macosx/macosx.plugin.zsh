@@ -290,19 +290,34 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Switch Azure, AWS and GCP Profile to Cisco
-function sw2() {
-    if [[ ! -z $1 ]]; then
-        profile=$1
-        az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
-    else
-        profile="cisco"
-        az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
-    fi
-    export AWS_PROFILE="${profile}"
-    gcloud config configurations activate "${profile}"
-    az account set --subscription "${az_subscription_id}"
+function csco() {
+    profile="cisco"
+    az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
+
+    export AWS_PROFILE="${profile}" # switch AWS profile
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
+
+function my() {
+    profile="default"
+    az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
+
+    export AWS_PROFILE="${profile}" # switch AWS profile
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
+
+function showcloud() {
+    echo "AWS Profile Settings: "
     aws configure list
+    echo
+    echo "GCP Profile Settings: "
     gcloud config configurations list
+    echo
+    echo "Azure Profile Settings: "
     az account show
 }
 
