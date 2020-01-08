@@ -41,7 +41,6 @@ export PATH=$PATH:$HOME/.linkerd2/bin
 # Adding entries for Kafka
 export PATH=$PATH:/usr/local/Cellar/kafka/2.3.0/bin
 
-
 # Adding entries for Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -145,6 +144,7 @@ function rand() {
 }
 
 alias gcls="gcloud compute instances list"
+alias azls='az vm list'
 alias dols="doctl compute droplet list"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
@@ -162,7 +162,6 @@ alias mk='minikube'
 alias ms='minishift'
 alias sk='skaffold'
 alias h='helm'
-export TILLER_NAMESPACE="tiller-world"
 alias ky='ksync'
 alias dr='draft'
 alias o='openstack'
@@ -289,5 +288,8 @@ FCEDIT="vim"
 # Bazel Zsh completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# AWS Profile
+export AWS_PROFILE="cisco"
 
 
