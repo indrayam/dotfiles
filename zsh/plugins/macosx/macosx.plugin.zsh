@@ -289,7 +289,16 @@ FCEDIT="vim"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-# AWS Profile
-export AWS_PROFILE="cisco"
+# Switch Azure, AWS and GCP Profile to Cisco
+function sw2() {
+    if [[ ! -z $1 ]]; then
+        profile=$1
+    else
+        profile="cisco"
+    fi
+    export AWS_PROFILE="${profile}"
+    gcloud config configurations activate "${profile}"
+}
+
 
 
