@@ -293,11 +293,17 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 function sw2() {
     if [[ ! -z $1 ]]; then
         profile=$1
+        az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
     else
         profile="cisco"
+        az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
     fi
     export AWS_PROFILE="${profile}"
     gcloud config configurations activate "${profile}"
+    az account set --subscription "${az_subscription_id}"
+    aws configure list
+    gcloud config configurations list
+    az account show
 }
 
 
