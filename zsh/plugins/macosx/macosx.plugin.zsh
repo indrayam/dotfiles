@@ -4,7 +4,7 @@
 export DISABLE_AUTO_TITLE=true
 
 # Basic Environment variables
-export EDITOR='subl -w'
+export EDITOR='vim'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export GPG_TTY=$(tty)
 
@@ -320,6 +320,13 @@ function showcloud() {
     echo "Azure Profile Settings: "
     az account show
 }
+
+# Broot, a better tree
+source /Users/anasharm/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+# Auto-completion (throws an error)
+# /Users/anasharm/.pack/completion:type:724: bad option: -t
+# source $(pack completion)
 
 
 
