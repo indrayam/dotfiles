@@ -224,15 +224,6 @@ alias vimn='vim -u .dotfiles/vim/vimrc-essential'
 # Alias for running update
 alias u="$HOME/.dotfiles/update-mac.sh"
 
-# Kube PS1 configurations
-# KUBE_PS1_CTX_COLOR="black"
-# KUBE_PS1_NS_COLOR="blue"
-# KUBE_PS1_SYMBOL_COLOR="blue"
-KUBE_PS1_CTX_COLOR="yellow"
-KUBE_PS1_SYMBOL_USE_IMG="true"
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-kubeon
-
 # Public Cloud Tokens
 export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
 #SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
@@ -322,7 +313,7 @@ function showcloud() {
 }
 
 # Broot, a better tree
-source /Users/anasharm/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# source /Users/anasharm/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Auto-completion (throws an error)
 # /Users/anasharm/.pack/completion:type:724: bad option: -t
