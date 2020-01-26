@@ -15,6 +15,9 @@ export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven@3.5"
 export KUBE_EDITOR="subl"
+export KUBECONFIG="/Users/anasharm/.kube/config"
+# export KUBECONFIG="/Users/anasharm/.kube/config.cisco"
+# export KUBECONFIG="/Users/anasharm/.kube/config:/Users/anasharm/.kube/config.cisco"
 
 export GOPATH=$HOME/workspace/2020/go-apps
 export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
