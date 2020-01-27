@@ -75,6 +75,7 @@ alias top10d='du -Sh --exclude=".git" --exclude=".svn" | sort -rh | head -n 10'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 alias aws='aws2'
+alias m='multipass'
 
 # MacBook specific
 # alias tm='/usr/bin/time'
