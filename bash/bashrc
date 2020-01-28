@@ -23,3 +23,11 @@ alias ap='ansible-playbook'
 alias tf='terraform'
 alias t='tmux'
 
+# Get the terminal ready
+clear
+
+# Set this correctly please..;-)
+DOTFILES_HOME=$HOME/.dotfiles
+cat $DOTFILES_HOME/misc/om
+w
+
