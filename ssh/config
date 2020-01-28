@@ -10,32 +10,3 @@ Host a
     User anand
     IdentityFile ~/.ssh/id_rsa
 
-Host b
-    Hostname b.indrayam.com
-    Port 22
-    User anand
-    IdentityFile ~/.ssh/id_rsa
-
-Host c
-    Hostname c.indrayam.com
-    Port 22
-    User anand
-    IdentityFile ~/.ssh/id_rsa
-
-Host d
-    Hostname d.indrayam.com
-    Port 22
-    User anand
-    IdentityFile ~/.ssh/id_rsa
-
-Host ag
-    Hostname a.ezplay.io
-    Port 22
-    User anand
-    IdentityFile ~/.ssh/id_rsa
-
-Host bg
-    Hostname b.ezplay.io
-    Port 22
-    User anand
-    IdentityFile ~/.ssh/id_rsa
