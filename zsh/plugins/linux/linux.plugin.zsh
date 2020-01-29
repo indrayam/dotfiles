@@ -238,6 +238,14 @@ function dp() {
     fi
     kubectl exec -it "${podname}" -- "${command}"
 }
+# Kube PS1 configurations
+# KUBE_PS1_CTX_COLOR="black"
+# KUBE_PS1_NS_COLOR="blue"
+# KUBE_PS1_SYMBOL_COLOR="blue"
+KUBE_PS1_CTX_COLOR="yellow"
+KUBE_PS1_SYMBOL_USE_IMG="true"
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+kubeon
 
 ################
 ### DevOps Tools
@@ -299,4 +307,22 @@ alias current-id='find-id git $(git config --get remote.origin.url)'
 function bit() {
     chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
 }
+
+
+###############################
+### Let's make it look right...
+###############################
+
+# Get the terminal ready
+clear
+
+# Set this correctly please..;-)
+DOTFILES_HOME=$HOME/.dotfiles
+cat $DOTFILES_HOME/misc/om
+. $DOTFILES_HOME/z/z.sh
+w
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 

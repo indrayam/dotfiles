@@ -23,13 +23,6 @@ function rand() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
 }
 ulimit -n 8192
-# Setting LSCOLORS. Set the folder colors to bold and yellow 
-# Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
-LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
-
-## Bash
-# Colorful PS1
-export PS1="➜ \[\e[01;35m\]\u\[\e[m\] at \[\e[33m\]\h\[\e[m\] in \[\e[32m\]\w\[\e[m\] "
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -44,11 +37,6 @@ export DISABLE_AUTO_TITLE=true
 function ssht () {
     /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
 }
-
-## z
-# Configure z.lua
-#eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
-#export _ZL_DATA=$HOME/.config/z.txt
 
 
 ###################################
@@ -292,3 +280,23 @@ alias current-id='find-id git $(git config --get remote.origin.url)'
 function bit() {
     chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
 }
+
+
+###############################
+### Let's make it look right...
+###############################
+
+# Colorful PS1
+export PS1="➜ \[\e[01;35m\]\u\[\e[m\] at \[\e[33m\]\h\[\e[m\] in \[\e[32m\]\w\[\e[m\] "
+# Setting LSCOLORS. Set the folder colors to bold and yellow 
+# Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
+LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+
+# Get the terminal ready
+clear
+
+# Set this correctly please..;-)
+DOTFILES_HOME=$HOME/.dotfiles
+cat $DOTFILES_HOME/misc/om
+. $DOTFILES_HOME/z/z.sh
+w

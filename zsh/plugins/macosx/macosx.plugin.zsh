@@ -64,12 +64,9 @@ alias t='tmux'
 # Settings for tmux window renaming
 export DISABLE_AUTO_TITLE=true
 # If you want to start a new tmux session remotely (while connecting using ssh)
-function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
-
-## z
-# Configure z.lua
-eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
-export _ZL_DATA=$HOME/.config/z.txt
+function ssht () {
+    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
+}
 
 
 ###################################
@@ -102,6 +99,8 @@ alias kj='kotlinc-jvm'
 alias gr='groovy'
 alias grc='groovyc'
 alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
+export SDKMAN_DIR="/Users/anasharm/.sdkman"
+[[ -s "/Users/anasharm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/anasharm/.sdkman/bin/sdkman-init.sh"
 
 ## Go
 export GOPATH=$HOME/workspace/2020/go-apps
@@ -254,6 +253,14 @@ function dp() {
     fi
     kubectl exec -it "${podname}" -- "${command}"
 }
+# Kube PS1 configurations
+# KUBE_PS1_CTX_COLOR="black"
+# KUBE_PS1_NS_COLOR="blue"
+# KUBE_PS1_SYMBOL_COLOR="blue"
+KUBE_PS1_CTX_COLOR="yellow"
+KUBE_PS1_SYMBOL_USE_IMG="true"
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+kubeon
 
 ################
 ### DevOps Tools
@@ -315,4 +322,21 @@ alias current-id='find-id git $(git config --get remote.origin.url)'
 function bit() {
     chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
 }
+
+
+###############################
+### Let's make it look right...
+###############################
+
+# Get the terminal ready
+clear
+
+# Set this correctly please..;-)
+DOTFILES_HOME=$HOME/.dotfiles
+cat $DOTFILES_HOME/misc/om
+. $DOTFILES_HOME/z/z.sh
+w
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
