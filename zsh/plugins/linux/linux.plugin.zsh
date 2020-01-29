@@ -181,6 +181,8 @@ function dossh() {
 
 ## OpenStack
 alias o='openstack'
+# Source into Cisco RTP Cluster
+#source ~/rtp
 # Cisco Cloud Login
 #source ~/.cec
 

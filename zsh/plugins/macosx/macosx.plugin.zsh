@@ -197,6 +197,8 @@ export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
 
 ## OpenStack
 alias o='openstack'
+# Source into Cisco RTP Cluster
+source ~/rtp
 # Cisco Cloud Login
 source ~/.cec
 
