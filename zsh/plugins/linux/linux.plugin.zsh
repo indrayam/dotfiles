@@ -52,8 +52,8 @@ function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new 
 
 ## z
 # Configure z.lua
-eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
-export _ZL_DATA=$HOME/.config/z.txt
+#eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
+#export _ZL_DATA=$HOME/.config/z.txt
 
 
 ###################################
@@ -143,8 +143,8 @@ alias gcls="gcloud compute instances list"
 alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 
 ## AWS
-export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
-export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
+#export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
+#export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 export PATH=$PATH:/usr/local/aws-cli/v2/current/bin
 alias aws='aws2'
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
@@ -175,14 +175,14 @@ function dossh() {
     fi
     doctl compute ssh "${instance}" --ssh-user "${userid}"
 }
-export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
+#export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
 #SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
 #export DO_SSH_KEY_FINGERPRINT=$(doctl compute ssh-key get $SSH_ID --format FingerPrint --no-header)
 
 ## OpenStack
 alias o='openstack'
 # Cisco Cloud Login
-source ~/.cec
+#source ~/.cec
 
 ## LocalVMs
 alias m='multipass'
