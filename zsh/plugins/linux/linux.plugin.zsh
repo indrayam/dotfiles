@@ -244,7 +244,7 @@ function dp() {
 # KUBE_PS1_SYMBOL_COLOR="blue"
 KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "$HOME/.kube-ps1/kube-ps1.sh"
 kubeon
 
 ################
