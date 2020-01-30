@@ -408,6 +408,8 @@ function bit() {
 
 # Colorful PS1
 export PS1="➜ \[\e[01;35m\]\u\[\e[m\] at \[\e[33m\]\h\[\e[m\] in \[\e[32m\]\w\[\e[m\] "
+NEWLINE=$'\n'
+export PS1='$(kube_ps1) '${NEWLINE}$PS1
 # Setting LSCOLORS. Set the folder colors to bold and yellow 
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
