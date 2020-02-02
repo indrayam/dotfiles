@@ -6,17 +6,6 @@ DOTFILES_HOME=$HOME/.dotfiles
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Setup SSH keys
-# cd /tmp
-# curl -L https://storage.googleapis.com/seaz/bionic-lite.tar.gz.enc -H 'Accept: application/octet-stream' --output bionic-lite.tar.gz.enc
-# openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt -d -in bionic-lite.tar.gz.enc -out bionic-lite.tar.gz
-# tar -xvzf bionic-lite.tar.gz
-# mkdir -p ~/.kube
-# mv dotfiles/kube/* ~/.kube/
-# mv dotfiles/ssh/* ~/.ssh/
-# chmod 700 ~/.ssh/
-# ssh -o "StrictHostKeyChecking no" -T git@github.com
-
 # Git related setup
 rm -f $HOME/.gitconfig
 ln -s $DOTFILES_HOME/git/gitconfig $HOME/.gitconfig
