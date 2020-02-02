@@ -3,11 +3,34 @@
 # Dotfiles Home (for my MacBook) 
 DOTFILES_HOME=$HOME/.dotfiles
 
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Setup SSH keys
+# cd /tmp
+# curl -L https://storage.googleapis.com/seaz/bionic-lite.tar.gz.enc -H 'Accept: application/octet-stream' --output bionic-lite.tar.gz.enc
+# openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt -d -in bionic-lite.tar.gz.enc -out bionic-lite.tar.gz
+# tar -xvzf bionic-lite.tar.gz
+# mkdir -p ~/.kube
+# mv dotfiles/kube/* ~/.kube/
+# mv dotfiles/ssh/* ~/.ssh/
+# chmod 700 ~/.ssh/
+# ssh -o "StrictHostKeyChecking no" -T git@github.com
+
 # Git related setup
 rm -f $HOME/.gitconfig
 ln -s $DOTFILES_HOME/git/gitconfig $HOME/.gitconfig
 rm -f $HOME/.gitignore_global
 ln -s $DOTFILES_HOME/git/gitignore_global $HOME/.gitignore_global
+
+# Pull down my .dotfiles repo and setup vim, kube-ps1
+# git clone git@github.com:indrayam/dotfiles.git ~/.dotfiles
+# cd ~/.dotfiles
+# ~/.dotfiles/setup-symlinks-mac.sh
+rm -rf ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim -c 'PluginInstall' -c 'qall'
+git clone git@github.com:jonmosco/kube-ps1.git ~/.kube-ps1
 
 # Tmux
 rm -f $HOME/.tmux.conf
