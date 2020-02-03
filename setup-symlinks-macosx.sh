@@ -19,7 +19,6 @@ ln -s $DOTFILES_HOME/git/gitignore_global $HOME/.gitignore_global
 rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -c 'PluginInstall' -c 'qall'
-git clone git@github.com:jonmosco/kube-ps1.git ~/.kube-ps1
 
 # Tmux
 rm -f $HOME/.tmux.conf
@@ -38,13 +37,15 @@ rm -f $HOME/.zshrc
 ln -s $DOTFILES_HOME/zsh/zshrc $HOME/.zshrc
 
 # Stuff
-rm -f $HOME/.kube
-git@github.com:indrayam/dotkube.git $HOME/.dotkube
+rm -rf $HOME/.kube
+git clone git@github.com:indrayam/dotkube.git $HOME/.dotkube
+ln -s $HOME/.dotkube $HOME/.kube
 rm -f $HOME/.hal
-git@github.com:indrayam/dothal.git $HOME/.dothal
-ln -s $HOME/.hal $HOME/.dothal
+git clone git@github.com:indrayam/dothal.git $HOME/.dothal
+ln -s $HOME/.dothal $HOME/.hal
 rm -f $HOME/.kube-ps1
 ln -s /usr/local/opt/kube-ps1/share $HOME/.kube-ps1
+ln -s $HOME/.dothal $HOME/.hal
 rm -f $HOME/.p10k.zsh
 ln -s $HOME/p10k/p10k.zsh $HOME/.p10k.zsh
 rm -f $HOME/workspace
