@@ -24,7 +24,7 @@ export EDITOR='vim'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 #alias ls='ls --color=auto'
 alias c='clear'
 alias tree='tree -C'
@@ -67,7 +67,6 @@ function ssht () {
     /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
 }
 
-
 ###################################
 ### Editos and Software Programming
 ###################################
@@ -102,6 +101,9 @@ alias kj='kotlinc-jvm'
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+
+## Ruby
+export PATH=/usr/local/opt/ruby/bin:$PATH
 
 #################
 ### Public Clouds 
@@ -141,7 +143,6 @@ function showcloud() {
 }
 
 ## GCP
-export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
@@ -290,7 +291,7 @@ alias tf='terraform'
 ### Data-Intensive App Tools
 ############################
 
-export PATH=$PATH:/usr/local/Cellar/kafka/2.4.0/bin
+export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
 alias r='redis-cli'
 
 ##################
