@@ -82,21 +82,21 @@ alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`
 alias gll='gitloglive'
 alias grch='generaterandomchanges'
 
+## Go
+export GOPATH=$HOME/workspace/2020/go-apps
+
 ## JVM Languages
 export JAVA_HOME="/usr/local/java"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven"
-export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$PATH
+export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH
 alias j='java'
 alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
-
-## Go
-export GOPATH=$HOME/workspace/2020/go-apps
 
 ## Python
 alias p='python3'
