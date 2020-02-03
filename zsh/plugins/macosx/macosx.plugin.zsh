@@ -25,7 +25,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/l
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-#alias ls='ls --color=auto'
+alias ls='ls --color=auto'
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
