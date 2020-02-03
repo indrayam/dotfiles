@@ -26,7 +26,7 @@ export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
 export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
-alias ls='ls --color=auto'
+alias ls='ls --color=auto '
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
@@ -95,11 +95,6 @@ alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
-alias gr='groovy'
-alias grc='groovyc'
-alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
-export SDKMAN_DIR="/Users/anasharm/.sdkman"
-[[ -s "/Users/anasharm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/anasharm/.sdkman/bin/sdkman-init.sh"
 
 ## Go
 export GOPATH=$HOME/workspace/2020/go-apps
@@ -159,7 +154,7 @@ alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/co
 ## AWS
 export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
 export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
-export PATH=$PATH:/usr/local/aws-cli/v2/current/bin
+export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias aws='aws2'
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
@@ -297,7 +292,7 @@ alias tf='terraform'
 ### Data-Intensive App Tools
 ############################
 
-export PATH=$PATH:/usr/local/Cellar/kafka/2.3.0/bin
+export PATH=$PATH:/usr/local/Cellar/kafka/2.4.0/bin
 alias r='redis-cli'
 
 ##################
