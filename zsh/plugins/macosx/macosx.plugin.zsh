@@ -148,7 +148,7 @@ if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/go
 if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
 alias gcssh="gcloud compute ssh"
 alias gcls="gcloud compute instances list"
-alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
+#alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 
 ## AWS
 # export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
@@ -168,7 +168,7 @@ alias azls='az vm list'
 
 ## DigitalOcean
 alias dols="doctl compute droplet list"
-alias dco='doctl compute'
+alias dco="doctl compute"
 function dossh() {
     if [[ ! -z $1 ]]; then
         instance=$1
@@ -188,6 +188,7 @@ export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
 
 ## OpenStack
 alias o='openstack'
+alias ols='openstack server list'
 # Source into Cisco RTP Cluster
 source ~/rtp
 # Cisco Cloud Login
