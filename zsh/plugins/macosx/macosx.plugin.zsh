@@ -197,8 +197,6 @@ source ~/.cec
 ## LocalVMs
 alias m='multipass'
 alias v='vagrant'
-#sudo multipass set local.driver=virtualbox
-multipass set client.primary-name=bionic
 
 ########################################
 ### Containers & Container Orchestrators 
