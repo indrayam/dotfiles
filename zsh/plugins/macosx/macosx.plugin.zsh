@@ -182,7 +182,7 @@ function dossh() {
     fi
     doctl compute ssh "${instance}" --ssh-user "${userid}"
 }
-export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
+#export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
 #SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
 #export DO_SSH_KEY_FINGERPRINT=$(doctl compute ssh-key get $SSH_ID --format FingerPrint --no-header)
 
