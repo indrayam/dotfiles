@@ -213,9 +213,7 @@ alias lzd='lazydocker'
 # stern completion
 # source <(stern --completion=zsh)
 export KUBE_EDITOR="subl"
-export KUBECONFIG="/Users/anasharm/.kube/config"
-# export KUBECONFIG="/Users/anasharm/.kube/config.cisco"
-# export KUBECONFIG="/Users/anasharm/.kube/config:/Users/anasharm/.kube/config.cisco"
+# export KUBECONFIG="merge:/Users/anasharm/.kube/config:/Users/anasharm/.kube/config.cisco"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
 alias kx='kubectx'
