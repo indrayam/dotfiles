@@ -97,4 +97,3 @@ KUBE_PS1_CTX_COLOR="yellow"
 KUBE_PS1_SYMBOL_USE_IMG="true"
 source "$HOME/.kube-ps1/kube-ps1.sh"
 kubeon
-
