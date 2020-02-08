@@ -194,10 +194,6 @@ source ~/rtp
 # Cisco Cloud Login
 source ~/.cec
 
-## LocalVMs
-alias m='multipass'
-alias v='vagrant'
-
 ########################################
 ### Containers & Container Orchestrators 
 ########################################
@@ -259,6 +255,8 @@ alias ap='ansible-playbook'
 ## Terraform
 alias tf='terraform'
 
+## Va
+
 ## Spinnaker
 # Everything below is for a local Spinnaker install
 # NVM post-installation requirements
@@ -276,6 +274,15 @@ alias tf='terraform'
 # CLOUDDRIVER=http://localhost:7002
 # DECK=http://localhost:9000
 # GATE=http://localhost:8084
+
+## Multipass
+alias m='multipass'
+
+## Vangrant
+alias v='vagrant'
+
+## VirtualBox
+alias vb='vboxmanage'
 
 ############################
 ### Data-Intensive App Tools
