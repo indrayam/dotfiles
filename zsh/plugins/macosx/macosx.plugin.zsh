@@ -243,19 +243,10 @@ function dp() {
     fi
     kubectl exec -it "${podname}" -- "${command}"
 }
-# Kube PS1 configurations
-# KUBE_PS1_CTX_COLOR="black"
-# KUBE_PS1_NS_COLOR="blue"
-# KUBE_PS1_SYMBOL_COLOR="blue"
-KUBE_PS1_CTX_COLOR="yellow"
-KUBE_PS1_SYMBOL_USE_IMG="true"
-KUBE_PS1_SYMBOL_COLOR="yellow"
-#KUBE_PS1_SYMBOL_IMG="☸️ "
-source "$HOME/.kube-ps1/kube-ps1.sh"
-kubeon
 
 ## Local Kubernetes Configurations: Minishift
 export PATH="/Users/anasharm/.minishift/cache/oc/v3.11.0/darwin:$PATH"
+alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
 
 ################
 ### DevOps Tools
