@@ -8,8 +8,7 @@ export EDITOR='vim'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:$PATH"
-export PATH=$PATH:$HOME/workspace/cmdline-apps/sonarlint-cli-2.0/bin
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
 alias c='clear'
 alias tree='tree -C'
@@ -48,13 +47,9 @@ alias t='tmux'
 # Settings for tmux window renaming
 export DISABLE_AUTO_TITLE=true
 # If you want to start a new tmux session remotely (while connecting using ssh)
-function ssht () {/usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";}
-
-## z
-# Configure z.lua
-#eval "$(lua /Users/anasharm/.zlua/z.lua --init zsh enhanced once)"
-#export _ZL_DATA=$HOME/.config/z.txt
-
+function ssht () {
+    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
+}
 
 ###################################
 ### Editos and Software Programming
@@ -70,30 +65,42 @@ alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`
 alias gll='gitloglive'
 alias grch='generaterandomchanges'
 
+## Go
+export GOPATH=$HOME/workspace/2020/go-apps
+export PATH=$GOPATH/bin:$PATH
+
 ## JVM Languages
 export JAVA_HOME="/usr/local/java"
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
-export M2_HOME="/usr/local/opt/maven@3.5"
-export PATH=$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$GOPATH/bin:$HOME/.cargo/bin
-export PATH=$PATH:/usr/local/graalvm/Contents/Home/bin
+export M2_HOME="/usr/local/opt/maven"
+export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$HOME/.cargo/bin:$PATH
 alias j='java'
 alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
-alias gr='groovy'
-alias grc='groovyc'
-alias g_java='java -cp /usr/local/groovy/libexec/lib/groovy-2.4.12.jar:.'
-
-## Go
-export GOPATH=$HOME/workspace/2020/go-apps
 
 ## Python
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+
+## Ruby
+export PATH=/usr/local/opt/ruby/bin:$PATH
+
+## JavaScript/Node
+alias n='node'
+
+## Cisco (codectl)
+## codectl install or upgrade
+function getcodectl () {
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl
+  rm codectl-darwin-amd64
+  codectl
+}
+alias ctl='codectl'
 
 #################
 ### Public Clouds 
@@ -133,20 +140,18 @@ function showcloud() {
 }
 
 ## GCP
-export PATH=$PATH:/usr/local/google-cloud-sdk/bin
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
 alias gcssh="gcloud compute ssh"
 alias gcls="gcloud compute instances list"
-alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
+#alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 
 ## AWS
 #export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
-export PATH=$PATH:/usr/local/aws-cli/v2/current/bin
-alias aws='aws2'
+export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}" --output table'
@@ -161,7 +166,7 @@ alias azls='az vm list'
 
 ## DigitalOcean
 alias dols="doctl compute droplet list"
-alias dco='doctl compute'
+alias dco="doctl compute"
 function dossh() {
     if [[ ! -z $1 ]]; then
         instance=$1
@@ -181,14 +186,11 @@ function dossh() {
 
 ## OpenStack
 alias o='openstack'
+alias ols='openstack server list'
 # Source into Cisco RTP Cluster
 #source ~/rtp
 # Cisco Cloud Login
 #source ~/.cec
-
-## LocalVMs
-alias m='multipass'
-alias v='vagrant'
 
 ########################################
 ### Containers & Container Orchestrators 
@@ -278,11 +280,20 @@ alias tf='terraform'
 # DECK=http://localhost:9000
 # GATE=http://localhost:8084
 
+## Multipass
+alias m='multipass'
+
+## Vangrant
+alias v='vagrant'
+
+## VirtualBox
+alias vb='vboxmanage'
+
 ############################
 ### Data-Intensive App Tools
 ############################
 
-export PATH=$PATH:/usr/local/Cellar/kafka/2.3.0/bin
+export PATH=$PATH:/usr/local/kafka/2.4.0/bin
 alias r='redis-cli'
 
 ##################

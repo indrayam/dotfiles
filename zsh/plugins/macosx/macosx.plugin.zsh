@@ -82,6 +82,7 @@ alias grch='generaterandomchanges'
 
 ## Go
 export GOPATH=$HOME/workspace/2020/go-apps
+export PATH=$GOPATH/bin:$PATH
 
 ## JVM Languages
 export JAVA_HOME="/usr/local/java"
@@ -89,7 +90,7 @@ export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven"
-export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH
+export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$HOME/.cargo/bin:$PATH
 alias j='java'
 alias jc='javac'
 alias kt='kotlin'
@@ -103,6 +104,18 @@ alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 
 
 ## Ruby
 export PATH=/usr/local/opt/ruby/bin:$PATH
+
+## JavaScript/Node
+alias n='node'
+
+## Cisco (codectl)
+## codectl install or upgrade
+function getcodectl () {
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl
+  rm codectl-darwin-amd64
+  codectl
+}
+alias ctl='codectl'
 
 #################
 ### Public Clouds 
@@ -151,8 +164,8 @@ alias gcls="gcloud compute instances list"
 #alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 
 ## AWS
-# export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
-# export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
+#export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
+#export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
@@ -254,8 +267,6 @@ alias ap='ansible-playbook'
 
 ## Terraform
 alias tf='terraform'
-
-## Va
 
 ## Spinnaker
 # Everything below is for a local Spinnaker install
