@@ -102,6 +102,12 @@ function getcodectl () {
 }
 alias ctl='codectl'
 
+## Rust
+alias r='rustc'
+
+## Fortran
+alias f='gfortran'
+
 #################
 ### Public Clouds 
 #################
@@ -294,7 +300,6 @@ alias vb='vboxmanage'
 ############################
 
 export PATH=$PATH:/usr/local/kafka/2.4.0/bin
-alias r='redis-cli'
 
 ##################
 ### Security Tools
