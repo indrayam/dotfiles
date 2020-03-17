@@ -314,7 +314,7 @@ alias sshallnpoc='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
 ## GPG
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 # Add the following to your shell init to set up gpg-agent automatically for every shell
-# eval $(gpg-agent --daemon)
+eval $(gpg-agent --daemon)
 
 #########################
 ### Miscellaneous Goodies
