@@ -315,7 +315,7 @@ export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
 alias sshallnpoc='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
 
 ## SOPS
-export SOPS_PGP_FP="2A30D3C45B5C792CC603C82AA190E97F52B7DBAC"
+#export SOPS_PGP_FP="2A30D3C45B5C792CC603C82AA190E97F52B7DBAC"
 
 ## GPG
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
