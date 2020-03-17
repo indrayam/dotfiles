@@ -259,7 +259,7 @@ function dp() {
     kubectl exec -it "${podname}" -- "${command}"
 }
 
-## Local Kubernetes Configurations: Minishift
+## Local Kubernetes Configurations: Minikube and Minishift
 export PATH="/Users/anasharm/.minishift/cache/oc/v3.11.0/darwin:$PATH"
 alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
 
