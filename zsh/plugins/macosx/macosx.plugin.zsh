@@ -321,7 +321,17 @@ alias sshallnpoc='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
 ## GPG
 # Source: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 # Add the following to your shell init to set up gpg-agent automatically for every shell
-eval $(gpg-agent --daemon)
+# In order for gpg to find gpg-agent, gpg-agent must be running, and there must be an env
+# variable pointing GPG to the gpg-agent socket. This little script, which must be sourced
+# in your shell's init script (ie, .bash_profile, .zshrc, whatever), will either start
+# gpg-agent or set up the GPG_AGENT_INFO variable if it's already running.
+
+# Add the following to your shell init to set up gpg-agent automatically for every shell
+if [ -n "$(pgrep gpg-agent)" ]; then
+    echo "GnuPG Agent is running"
+else
+    eval $(gpg-agent --daemon --default-cache-ttl 31536000)
+fi
 
 #########################
 ### Miscellaneous Goodies
