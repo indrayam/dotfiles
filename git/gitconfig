@@ -6,3 +6,5 @@
   path = ~/.dotfiles/git/gitconfig.anasharm
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.dotfiles/git/gitconfig.anasharm
+[includeIf "gitdir:~/.dotkube/"]
+  path = ~/.dotfiles/git/gitconfig.anasharm
