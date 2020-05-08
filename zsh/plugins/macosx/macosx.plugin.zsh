@@ -112,11 +112,20 @@ alias n='node'
 ## Cisco (codectl)
 ## codectl install or upgrade
 function getcodectl () {
-  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-stable
   rm codectl-darwin-amd64
   codectl
 }
-alias ctl='codectl'
+
+function getcodectlnightly () {
+  nightly_date=$1
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/nightly/${nightly_date}000000+0000/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-nightly
+  rm codectl-darwin-amd64
+  codectl
+}
+
+alias ctln='codectl-nightly'
+alias ctls='codectl-stable'
 
 ## Rust
 alias r='rustc'
