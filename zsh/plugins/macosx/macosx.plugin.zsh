@@ -112,9 +112,9 @@ alias n='node'
 ## Cisco (codectl)
 ## codectl install or upgrade
 function getstable () {
-  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-stable
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/stable/latest/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl
   rm codectl-darwin-amd64
-  codectl-stable
+  codectl
 }
 
 function getnightly () {
@@ -132,7 +132,6 @@ function getrc () {
 }
 
 alias ctln='codectl-nightly'
-alias ctls='codectl-stable'
 alias ctlr='codectl-rc'
 alias ctl='codectl'
 
