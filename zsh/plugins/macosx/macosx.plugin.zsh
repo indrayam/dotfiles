@@ -118,14 +118,14 @@ function getstable () {
 }
 
 function getnightly () {
-  nightly_date=$1
-  curl -LO https://repo-art.cisco.com/artifactory/codectl/nightly/${nightly_date}000000+0000/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-nightly
+  nightly_date=$(curl -s https://repo-art.cisco.com/artifactory/codectl/nightly/version.json | jq -r .latestVersion)
+  curl -LO https://repo-art.cisco.com/artifactory/codectl/nightly/${nightly_date}/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-nightly
   rm codectl-darwin-amd64
   codectl-nightly
 }
 
 function getrc () {
-  rc_version=$1
+  rc_version=$(curl -s https://repo-art.cisco.com/artifactory/codectl/rc/version.json | jq -r .latestVersion)
   curl -LO https://repo-art.cisco.com/artifactory/codectl/rc/${rc_version}/codectl-darwin-amd64 && sudo install codectl-darwin-amd64 /usr/local/bin/codectl-rc
   rm codectl-darwin-amd64
   codectl-rc
@@ -134,6 +134,7 @@ function getrc () {
 alias ctln='codectl-nightly'
 alias ctls='codectl-stable'
 alias ctlr='codectl-rc'
+alias ctl='codectl'
 
 ## Rust
 alias r='rustc'
