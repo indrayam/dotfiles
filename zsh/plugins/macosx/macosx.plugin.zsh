@@ -133,8 +133,6 @@ function getrc () {
 
 alias ctln='codectl-nightly'
 alias ctlr='codectl-rc'
-alias cltr='codectl-rc'
-alias ctrl='codectl-rc'
 alias ctl='codectl'
 
 ## Rust
