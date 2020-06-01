@@ -227,7 +227,7 @@ function dossh() {
 alias o='openstack'
 alias ols='openstack server list'
 # Source into Cisco RTP Cluster
-source ~/rtp
+source ~/bin/rtp
 # Cisco Cloud Login
 source ~/.cec
 
@@ -324,6 +324,7 @@ alias vb='vboxmanage'
 ############################
 
 export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
+source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 ##################
 ### Security Tools
