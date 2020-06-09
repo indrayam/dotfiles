@@ -231,14 +231,15 @@ source ~/bin/rtp
 # Cisco Cloud Login
 source ~/.cec
 
-########################################
-### Containers & Container Orchestrators 
-########################################
+##############################################
+### VMs, Containers & Container Orchestrators 
+##############################################
 
 ## Containers
 alias d='docker'
 alias dm='docker-machine'
 alias lzd='lazydocker'
+alias vbox='vboxmanage'
 
 ## Kubectl and related K8s tools
 # kubectl completion
@@ -280,6 +281,9 @@ function dp() {
 ## Local Kubernetes Configurations: Minikube and Minishift
 export PATH="/Users/anasharm/.minishift/cache/oc/v3.11.0/darwin:$PATH"
 alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
+
+# VMWare Fusion Command Line Tools
+export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/Applications/VMware\ Fusion.app/Contents/Library"
 
 ################
 ### DevOps Tools

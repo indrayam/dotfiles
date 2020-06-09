@@ -198,9 +198,9 @@ alias ols='openstack server list'
 # Cisco Cloud Login
 #source ~/.cec
 
-########################################
-### Containers & Container Orchestrators 
-########################################
+##############################################
+### VMs, Containers & Container Orchestrators 
+##############################################
 
 ## Containers
 alias d='docker'
