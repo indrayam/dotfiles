@@ -1,0 +1,126 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "hg_branch",
+    "docker_context",
+    "package",
+    "dotnet",
+    "elixir",
+    "elm",
+    "erlang",
+    "golang",
+    "haskell",
+    "java",
+    "julia",
+    "nim",
+    "nodejs",
+    "ocaml",
+    "php",
+    "purescript",
+    "python",
+    "ruby",
+    "rust",
+    "terraform",
+    "zig",
+    "nix_shell",
+    "conda",
+    "memory_usage",
+    "kubernetes",
+    "aws",
+    "env_var",
+    "crystal",
+    "cmd_duration",
+    "custom",
+    "line_break",
+    "jobs",
+    "battery",
+    "time",
+    "character",
+]
+
+[aws]
+style = "bold blue"
+symbol = "🅰 "
+displayed_items = "region"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]      # The name of the module we are configuring is "character"
+symbol = "➜"     # The "symbol" segment is being set to "➜"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# Kubernetes Configuration
+[kubernetes]
+symbol = "⛵"
+#symbol = "☸️ "
+style = "bold fg:purple"
+disabled = false
+
+# Rust configuration
+[rust]
+symbol = "🦀 "
+style = "bold red"
+disabled = false
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[directory]
+truncation_length = 4
+
+[docker_context]
+symbol = "🐋 "
+only_with_files = true
+style = "bold blue"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed = "👅"
+deleted = "🗑"
+
+[hostname]
+ssh_only = false
+prefix = "⟪"
+suffix = "⟫"
+trim_at = ".cisco.com"
+disabled = false
+
+[time]
+style = "bold yellow"
+use_12hr = true
+disabled = false
+format = "🕙[ %T ]"
+utc_time_offset = "local"
+time_range = "10:00:00-14:00:00"
+
+[username]
+disabled = false
+style_root = "bold red"
+style_user = "bold yellow"
+show_always = true

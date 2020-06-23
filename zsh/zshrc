@@ -93,7 +93,10 @@ source $ZSH/oh-my-zsh.sh
 # KUBE_PS1_CTX_COLOR="black"
 # KUBE_PS1_NS_COLOR="blue"
 # KUBE_PS1_SYMBOL_COLOR="blue"
-KUBE_PS1_CTX_COLOR="yellow"
-KUBE_PS1_SYMBOL_USE_IMG="true"
-source "$HOME/.kube-ps1/kube-ps1.sh"
-kubeon
+# KUBE_PS1_CTX_COLOR="yellow"
+# KUBE_PS1_SYMBOL_USE_IMG="true"
+# source "$HOME/.kube-ps1/kube-ps1.sh"
+# kubeon
+
+# Starship CLI Prompt
+eval "$(starship init zsh)"

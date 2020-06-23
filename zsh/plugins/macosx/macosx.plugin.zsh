@@ -102,6 +102,7 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+alias h='heighliner'
 
 ## Ruby
 export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -260,7 +261,6 @@ alias i='istioctl'
 alias mk='minikube'
 alias ms='minishift'
 alias sk='skaffold'
-alias h='helm'
 alias ky='ksync'
 alias dr='draft'
 alias rhc='rhc 2>/dev/null' #Or log into laeusr-prod2-01.cisco.com with anasharm
@@ -295,6 +295,10 @@ alias ap='ansible-playbook'
 
 ## Terraform
 alias tf='terraform'
+
+## Vault
+export VAULT_ADDR='https://internal-keeper.cisco.com'
+export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
 
 ## Spinnaker
 # Everything below is for a local Spinnaker install
