@@ -29,8 +29,13 @@ alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 alias pping='prettyping --nolegend'
-# Alias for running update
-alias u="$HOME/.dotfiles/update-mac.sh"
+
+# Alias for fd
+alias fda='fd -IH'
+
+# Alias for ripgrep
+alias rga='rg -uuu'
+
 function rand() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
 }
