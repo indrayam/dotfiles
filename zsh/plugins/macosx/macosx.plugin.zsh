@@ -303,7 +303,8 @@ alias tf='terraform'
 
 ## Vault
 export VAULT_ADDR='https://internal-keeper.cisco.com'
-export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
+# export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
+export VAULT_NAMESPACE='ciscoit/ns_ciscoit-vaultnerds'
 
 ## Spinnaker
 # Everything below is for a local Spinnaker install
