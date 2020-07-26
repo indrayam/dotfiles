@@ -109,7 +109,7 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-alias h='heighliner'
+source ~/workspace/python-apps/bin/activate
 
 ## Ruby
 export PATH=/usr/local/opt/ruby/bin:$PATH
