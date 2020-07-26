@@ -25,6 +25,7 @@ export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
+# alias ls='exa'
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
@@ -87,7 +88,7 @@ alias gll='gitloglive'
 alias grch='generaterandomchanges'
 
 ## Go
-export GOPATH=$HOME/workspace/2020/go-apps
+export GOPATH=$HOME/workspace/go-apps
 export PATH=$GOPATH/bin:$PATH
 
 ## JVM Languages
