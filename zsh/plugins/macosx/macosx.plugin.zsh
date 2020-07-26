@@ -29,6 +29,7 @@ alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 alias pping='prettyping --nolegend'
+export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
 
 # Alias for fd
 alias fda='fd -IH'
