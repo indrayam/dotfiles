@@ -31,6 +31,7 @@ alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 alias pping='prettyping --nolegend'
 export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
+alias sshc='ssh -F ~/.ssh/config-code'
 
 # Alias for fd
 alias fda='fd -IH'
