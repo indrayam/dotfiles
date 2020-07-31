@@ -1,9 +1,11 @@
-# Don't print a new line at the start of the prompt
+# Print a new line at the start of the prompt
 add_newline = true
+# Don't print a new line at the start of the prompt
+# add_newline = false
 
 prompt_order = [
     "username",
-    "hostname",
+    # "hostname",
     "directory",
     "git_branch",
     "git_commit",
@@ -104,12 +106,12 @@ staged_count.style = "green"
 renamed = "👅"
 deleted = "🗑"
 
-[hostname]
-ssh_only = false
-prefix = "⟪"
-suffix = "⟫"
-trim_at = ".cisco.com"
-disabled = false
+# [hostname]
+# ssh_only = false
+# prefix = "⟪"
+# suffix = "⟫"
+# trim_at = ".cisco.com"
+# disabled = false
 
 [time]
 style = "bold yellow"
