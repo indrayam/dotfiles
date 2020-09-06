@@ -51,7 +51,10 @@ prompt_order = [
 [aws]
 style = "bold blue"
 symbol = "🅰 "
-displayed_items = "region"
+displayed_items = "all"
+
+[aws.region_aliases]
+us-east-1 = "N. Virginia"
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
