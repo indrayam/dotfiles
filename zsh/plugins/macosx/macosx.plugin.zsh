@@ -312,6 +312,27 @@ alias tf='terraform'
 
 ## Vault
 export VAULT_ADDR='https://internal-keeper.cisco.com'
+alias v='vault'
+function vls() {
+    if [[ ! -z $1 ]]; then
+        secret_path="secret/$1"
+    else 
+        secret_path="secret/"
+    fi
+    vault kv list "${secret_path}"
+}
+function vget() {
+    if [[ ! -z $1 ]]; then
+        secret_path="secret/$1"
+    else 
+        secret_path="secret/"
+    fi
+    vault kv get "${secret_path}"
+}
+alias vpls='vault policy list'
+alias cta='export VAULT_TOKEN=$CTA_TOKEN'
+alias ctos='export VAULT_TOKEN=$CTOS_TOKEN'
+alias ctu='export VAULT_TOKEN=$CTU_TOKEN'
 # export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
 # export VAULT_NAMESPACE='ciscoit/ns_ciscoit-vaultnerds'
 
@@ -343,7 +364,7 @@ alias ungron="gron --ungron"
 alias m='multipass'
 
 ## Vangrant
-alias v='vagrant'
+# alias v='vagrant'
 
 ## VirtualBox
 alias vb='vboxmanage'
