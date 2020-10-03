@@ -3,96 +3,47 @@ add_newline = true
 # Don't print a new line at the start of the prompt
 # add_newline = false
 
-prompt_order = [
-    "username",
-    # "hostname",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "hg_branch",
-    "docker_context",
-    "package",
-    "dotnet",
-    "elixir",
-    "elm",
-    "erlang",
-    "golang",
-    "haskell",
-    "java",
-    "julia",
-    "nim",
-    "nodejs",
-    "ocaml",
-    "php",
-    "purescript",
-    "python",
-    "ruby",
-    "rust",
-    "terraform",
-    "zig",
-    "nix_shell",
-    "conda",
-    "memory_usage",
-    "kubernetes",
-    "aws",
-    "env_var",
-    "crystal",
-    "cmd_duration",
-    "custom",
-    "line_break",
-    "jobs",
-    "battery",
-    "time",
-    "character",
-]
+format = """\
+  $username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $go\
+  $rust\
+  $java\
+  $python\
+  $terraform\
+  $kubernetes\
+  $aws\
+  $gcloud\
+  $cmd_duration\
+  $custom\
+  $line_break\
+  $jobs\
+  $battery\
+  $time\
+  $character\
+"""
 
-[aws]
-style = "bold blue"
-symbol = "🅰 "
-displayed_items = "all"
-
-[aws.region_aliases]
-us-east-1 = "N. Virginia"
-
-# Replace the "❯" symbol in the prompt with "➜"
-[character]      # The name of the module we are configuring is "character"
-symbol = "➜"     # The "symbol" segment is being set to "➜"
-
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
-
-# Kubernetes Configuration
-[kubernetes]
-symbol = "⛵"
-#symbol = "☸️ "
-style = "bold fg:purple"
+[username]
+style_root = "bold red"
+style_user = "bold yellow"
+show_always = true
+format = "[$user]($style) "
 disabled = false
 
-# Rust configuration
-[rust]
-symbol = "🦀 "
-style = "bold red"
+[hostname]
+ssh_only = false
+format =  "on [macbook-pro](bold red) "
+trim_at = ".cisco.com"
 disabled = false
-
-[battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
-
-[[battery.display]]
-threshold = 10
-style = "bold red"
 
 [directory]
-truncation_length = 4
-
-[docker_context]
-symbol = "🐋 "
-only_with_files = true
-style = "bold blue"
+truncation_length = 8
+format = "in [$path]($style)[$read_only]($read_only_style) "
 
 [git_status]
 conflicted = "🏳"
@@ -109,12 +60,58 @@ staged_count.style = "green"
 renamed = "👅"
 deleted = "🗑"
 
-# [hostname]
-# ssh_only = false
-# prefix = "⟪"
-# suffix = "⟫"
-# trim_at = ".cisco.com"
-# disabled = false
+[go]
+symbol = "🏎💨 "
+style = "bold cyan"
+format = "[|]($style) [$symbol$version]($style) "
+
+[rust]
+symbol = "🦀 "
+style = "bold red"
+disabled = false
+
+[java]
+style = "bold bright-white"
+format = "[|]($style) [java ${version}]($style) "
+
+[python]
+symbol = "🐍 "
+format = "[|]($style) [${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
+
+[terraform]
+symbol = "💠 "
+# format = "[🏎💨 $version$workspace]($style) "
+style = "bold 105"
+format = "[|]($style) [$symbol$workspace]($style) "
+
+[kubernetes]
+#symbol = "⛵"
+symbol = "☸️ "
+style = "bold fg:purple"
+format = "[|]($style) [$symbol $context( \\($namespace\\))]($style) in "
+disabled = false
+
+[aws]
+format = "[|]($style) [$symbol$profile(\\($region\\))]($style) "
+style = "bold blue"
+symbol = "🅰 "
+displayed_items = "all"
+
+[aws.region_aliases]
+us-east-1 = "N. Virginia"
+
+[gcloud]
+style = "bold cyan"
+format = "[|]($style) [$symbol $active]($style) "
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
 
 [time]
 style = "bold yellow"
@@ -124,8 +121,10 @@ format = "🕙[ %T ]"
 utc_time_offset = "local"
 time_range = "10:00:00-14:00:00"
 
-[username]
-disabled = false
-style_root = "bold red"
-style_user = "bold yellow"
-show_always = true
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+# Additional Configurations
+[package]
+disabled = true
