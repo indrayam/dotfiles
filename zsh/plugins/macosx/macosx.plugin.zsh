@@ -106,11 +106,11 @@ alias kc='kotlinc'
 alias kj='kotlinc-jvm'
 
 ## Python
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+#export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-source ~/workspace/python-apps/bin/activate
+source ~/local-workspace/python-apps/env/python38/bin/activate
 
 ## Ruby
 export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -161,6 +161,7 @@ function awsbootstrap() {
     export AWS_PROFILE="${profile}" # switch AWS profile
     showcloud
 }
+
 # Switch to Cisco Cloud Account(s)
 function csco() {
     profile="cisco"
@@ -205,7 +206,9 @@ alias gcls="gcloud compute instances list"
 ## AWS
 #export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
-export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
+#export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
+alias a="aws"
+alias a1="awsv1"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}" --output table'
@@ -304,8 +307,7 @@ export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/App
 ################
 
 ## Ansible
-alias a='ansible'
-alias ap='ansible-playbook'
+alias an='ansible'
 
 ## Terraform
 alias tf='terraform'
@@ -406,10 +408,10 @@ fi
 #########################
 
 # Philip's goodies
-alias current-id='find-id git $(git config --get remote.origin.url)'
-function bit() {
-    chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
-}
+# alias current-id='find-id git $(git config --get remote.origin.url)'
+# function bit() {
+#     chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
+# }
 
 
 ###############################

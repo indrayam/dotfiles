@@ -30,19 +30,21 @@ format = """\
 
 [username]
 style_root = "bold red"
-style_user = "bold yellow"
+style_user = "#fca311"
 show_always = true
 format = "[$user]($style) "
 disabled = false
 
 [hostname]
 ssh_only = false
-format =  "on [macbook-pro](bold red) "
+style = "#fca311"
+format =  "on [macbook-pro]($style) "
 trim_at = ".cisco.com"
 disabled = false
 
 [directory]
 truncation_length = 8
+style = "#fca311"
 format = "in [$path]($style)[$read_only]($read_only_style) "
 
 [git_status]
@@ -62,47 +64,50 @@ deleted = "🗑"
 
 [go]
 symbol = "🏎💨 "
-style = "bold cyan"
+style = "cyan"
 format = "[|]($style) [$symbol$version]($style) "
 
 [rust]
 symbol = "🦀 "
-style = "bold red"
+style = "red"
 disabled = false
 
 [java]
-style = "bold bright-white"
+style = "bright-white"
 format = "[|]($style) [java ${version}]($style) "
 
 [python]
 symbol = "🐍 "
+style = "#4ecdc4"
 format = "[|]($style) [${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
 
 [terraform]
 symbol = "💠 "
 # format = "[🏎💨 $version$workspace]($style) "
-style = "bold 105"
-format = "[|]($style) [$symbol$workspace]($style) "
+style = "105"
+format = "[|]($style) [$symbol $workspace]($style) "
 
 [kubernetes]
 #symbol = "⛵"
 symbol = "☸️ "
-style = "bold fg:purple"
-format = "[|]($style) [$symbol $context( \\($namespace\\))]($style) in "
+style = "fg:purple"
+format = "[|]($style) [$symbol $context( \\($namespace\\))]($style) "
 disabled = false
 
 [aws]
 format = "[|]($style) [$symbol$profile(\\($region\\))]($style) "
-style = "bold blue"
-symbol = "🅰 "
+style = "#fb5607"
+# symbol = "🅰 "
+symbol = "AWS "
 displayed_items = "all"
 
 [aws.region_aliases]
-us-east-1 = "N. Virginia"
+us-east-1 = "us-east-1"
 
 [gcloud]
-style = "bold cyan"
-format = "[|]($style) [$symbol $active]($style) "
+symbol = "GCP "
+style = "#3a86ff"
+format = "[|]($style) [$symbol\\($active\\)]($style) "
 
 [battery]
 full_symbol = "🔋"
@@ -114,10 +119,10 @@ threshold = 10
 style = "bold red"
 
 [time]
-style = "bold yellow"
+style = "bold #ff006e"
 use_12hr = true
 disabled = false
-format = "🕙[ %T ]"
+format = "🕙 [$time]($style) "
 utc_time_offset = "local"
 time_range = "10:00:00-14:00:00"
 
