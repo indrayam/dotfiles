@@ -89,7 +89,7 @@ alias gll='gitloglive'
 alias grch='generaterandomchanges'
 
 ## Go
-export GOPATH=$HOME/workspace/go-apps
+export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
 
 ## JVM Languages
@@ -110,7 +110,7 @@ alias kj='kotlinc-jvm'
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-source ~/local-workspace/python-apps/env/python38/bin/activate
+source ~/local-workspace/python-apps/env/python3-app/bin/activate
 
 ## Ruby
 export PATH=/usr/local/opt/ruby/bin:$PATH

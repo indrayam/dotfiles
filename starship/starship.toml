@@ -43,7 +43,7 @@ trim_at = ".cisco.com"
 disabled = false
 
 [directory]
-truncation_length = 8
+truncation_length = 4
 style = "#fca311"
 format = "in [$path]($style)[$read_only]($read_only_style) "
 
