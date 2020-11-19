@@ -303,7 +303,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
 alias kx='kubectx'
 alias kn='kubens'
-alias kt='kubetail'
 alias s="stern"
 alias kon="kubeon"
 alias koff="kubeoff"
