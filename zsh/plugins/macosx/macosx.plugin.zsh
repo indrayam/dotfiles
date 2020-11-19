@@ -104,6 +104,40 @@ alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
+function genk() {
+    name="kotlin-app"
+    group="me.anandsharma"
+    lang="kotlin"
+    build="maven"
+    deps="devtools,web,thymeleaf,jdbc,h2"
+    if [[ ! -z $1 ]]; then
+        name=$1
+    fi
+    if [[ ! -z $2 ]]; then
+        build=$2
+    fi
+    if [[ ! -z $3 ]]; then
+        deps=$3
+    fi
+    spring init -a ${name} -g ${group} -l ${lang} -d ${deps} --build ${build} ${name}
+}
+function genj() {
+    name="java-app"
+    group="me.anandsharma"
+    lang="java"
+    build="maven"
+    deps="devtools,web,thymeleaf,jdbc,h2"
+    if [[ ! -z $1 ]]; then
+        name=$1
+    fi
+    if [[ ! -z $2 ]]; then
+        build=$2
+    fi
+    if [[ ! -z $3 ]]; then
+        deps=$3
+    fi
+    spring init -a ${name} -g ${group} -l ${lang} -d ${deps} --build ${build} ${name}
+}
 
 ## Python
 #export PATH="/usr/local/opt/python@3.9/bin:$PATH"
