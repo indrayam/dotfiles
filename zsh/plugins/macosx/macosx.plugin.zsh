@@ -105,7 +105,7 @@ alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
 function genk() {
-    name="kotlin-app"
+    name="sample-web-app"
     group="me.anandsharma"
     lang="kotlin"
     build="gradle"
