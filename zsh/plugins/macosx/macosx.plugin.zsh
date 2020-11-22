@@ -108,33 +108,13 @@ function genk() {
     name="kotlin-app"
     group="me.anandsharma"
     lang="kotlin"
-    build="maven"
-    deps="devtools,web,thymeleaf,jdbc,h2"
+    build="gradle"
+    deps="web,thymeleaf"
     if [[ ! -z $1 ]]; then
         name=$1
     fi
     if [[ ! -z $2 ]]; then
-        build=$2
-    fi
-    if [[ ! -z $3 ]]; then
-        deps=$3
-    fi
-    spring init -a ${name} -g ${group} -l ${lang} -d ${deps} --build ${build} ${name}
-}
-function genj() {
-    name="java-app"
-    group="me.anandsharma"
-    lang="java"
-    build="maven"
-    deps="devtools,web,thymeleaf,jdbc,h2"
-    if [[ ! -z $1 ]]; then
-        name=$1
-    fi
-    if [[ ! -z $2 ]]; then
-        build=$2
-    fi
-    if [[ ! -z $3 ]]; then
-        deps=$3
+        lang=$2
     fi
     spring init -a ${name} -g ${group} -l ${lang} -d ${deps} --build ${build} ${name}
 }
