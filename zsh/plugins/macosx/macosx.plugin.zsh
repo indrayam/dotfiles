@@ -9,6 +9,7 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
 alias chromedark='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --force-dark-mode'
+alias matrix='cmatrix'
 
 ## Swift
 export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
@@ -104,20 +105,6 @@ alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
-function genk() {
-    name="sample-web-app"
-    group="me.anandsharma"
-    lang="kotlin"
-    build="gradle"
-    deps="web,thymeleaf"
-    if [[ ! -z $1 ]]; then
-        name=$1
-    fi
-    if [[ ! -z $2 ]]; then
-        lang=$2
-    fi
-    spring init -a ${name} -g ${group} -l ${lang} -d ${deps} --build ${build} ${name}
-}
 
 ## Python
 #export PATH="/usr/local/opt/python@3.9/bin:$PATH"
