@@ -7,6 +7,7 @@ format = """\
   $username\
   $hostname\
   $directory\
+  $line_break\
   $git_branch\
   $git_commit\
   $git_state\
@@ -43,7 +44,7 @@ trim_at = ".cisco.com"
 disabled = false
 
 [directory]
-truncation_length = 4
+truncation_length = 8
 style = "#fca311"
 format = "in [$path]($style)[$read_only]($read_only_style) "
 
