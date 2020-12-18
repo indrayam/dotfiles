@@ -106,6 +106,7 @@ alias jc='javac'
 alias kt='kotlin'
 alias kc='kotlinc'
 alias kj='kotlinc-jvm'
+alias jsb='java -Djarmode=layertools -jar'
 
 ## Python
 #export PATH="/usr/local/opt/python@3.9/bin:$PATH"
@@ -258,6 +259,7 @@ source ~/.cec
 alias d='docker'
 alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias dls='docker image ls'
+alias dcls='docker container ls -a'
 alias dm='docker-machine'
 alias lzd='lazydocker'
 alias vbox='vboxmanage'
