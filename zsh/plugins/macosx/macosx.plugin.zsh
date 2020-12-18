@@ -256,6 +256,8 @@ source ~/.cec
 
 ## Containers
 alias d='docker'
+alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias dls='docker image ls'
 alias dm='docker-machine'
 alias lzd='lazydocker'
 alias vbox='vboxmanage'
