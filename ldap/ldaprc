@@ -1,0 +1,3 @@
+HOST ds.cisco.com
+PORT 686
+TLS_REQCERT ALLOW
