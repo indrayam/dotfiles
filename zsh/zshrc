@@ -98,6 +98,9 @@ source $ZSH/oh-my-zsh.sh
 # source "$HOME/.kube-ps1/kube-ps1.sh"
 # kubeon
 
+# Add sqlite3
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
 # Starship CLI Prompt
 eval "$(starship init zsh)"
 autoload -U +X bashcompinit && bashcompinit

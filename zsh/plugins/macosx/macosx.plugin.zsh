@@ -17,6 +17,7 @@ export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDe
 alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
 alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
 
+
 ###################
 ### Unix-y specific
 ###################
@@ -386,9 +387,6 @@ source /usr/local/lib/bazel/bin/bazel-complete.bash
 ### Security Tools
 ##################
 
-## SSH
-alias sshallnpoc='ssh -o ProxyCommand="ssh ubuntu@173.37.28.89 nc %h %p"'
-
 ## SOPS
 #export SOPS_PGP_FP="2A30D3C45B5C792CC603C82AA190E97F52B7DBAC"
 
@@ -431,6 +429,4 @@ cat $DOTFILES_HOME/misc/om
 . $DOTFILES_HOME/z/z.sh
 w
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
