@@ -101,7 +101,7 @@ export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 export GRADLE_HOME="/usr/local/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
 export M2_HOME="/usr/local/opt/maven"
-export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$HOME/.cargo/bin:$PATH
+export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$PATH
 alias j='java'
 alias jc='javac'
 alias kt='kotlin'
@@ -110,7 +110,7 @@ alias kj='kotlinc-jvm'
 alias jsb='java -Djarmode=layertools -jar'
 
 ## Python
-#export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+export PATH="/Users/anasharm/Library/Python/2.7/bin:$PATH"
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
@@ -150,6 +150,7 @@ alias ctl='codectl'
 
 ## Rust
 alias r='rustc'
+source $HOME/.cargo/env
 
 ## Fortran
 alias f='gfortran'
@@ -381,7 +382,7 @@ alias vb='vboxmanage'
 ############################
 
 export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
-source /usr/local/lib/bazel/bin/bazel-complete.bash
+#source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 ##################
 ### Security Tools
