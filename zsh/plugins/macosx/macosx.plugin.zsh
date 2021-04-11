@@ -122,6 +122,21 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 ## JavaScript/Node
 alias n='node'
 
+## Clang/LLVM/Web Assembly
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export PATH="/usr/local/opt/llvm/bin:/opt/wabt/bin:$PATH"
+export WASI_SDK_PATH="/opt/wasi-sdk"
+## Wasm Runtime: Wasmtime
+export WASMTIME_HOME="$HOME/.wasmtime"
+export PATH="$WASMTIME_HOME/bin:$PATH"
+## Wasm Runtime: Wasmer
+source /Users/anasharm/.wasmer/wasmer.sh
+## Also installed 
+## 1. Emscripten (brew install emscripten)
+## 2. Binaryen (brew install binaryen)
+## 3. wasm-pack (cargo install wasm-pack)
+
 ## Cisco (codectl)
 ## codectl install or upgrade
 function getstable () {
@@ -150,7 +165,9 @@ alias ctl='codectl'
 
 ## Rust
 alias r='rustc'
+alias m='miniserve'
 source $HOME/.cargo/env
+
 
 ## Fortran
 alias f='gfortran'
@@ -160,44 +177,54 @@ alias f='gfortran'
 #################
 
 ## All Clouds
-# Switch to AWS Bootstrap AWS Profile
-function awsbootstrap() {
-    profile="awsbootstrap"
-    export AWS_PROFILE="${profile}" # switch AWS profile
-    showcloud
-}
-
 # Switch to Cisco Cloud Account(s)
-function csco() {
-    profile="cisco"
-    az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
 
-    export AWS_PROFILE="${profile}" # switch AWS profile
-    gcloud config configurations activate "${profile}" # switch GCP profile
-    az account set --subscription "${az_subscription_id}" # switch Azure profile
-    showcloud
+function 2aws() {
+    if [[ ! -z $1 ]]; then
+        profile="$1"
+    else
+        profile="me"
+    fi
+    if [[ ! -z $2 ]]; then
+        region="$2"
+    else
+        region="us-east-1"
+    fi
+    export AWS_PROFILE=$profile
+    export AWS_DEFAULT_REGION=$region
+    echo "Switching to using $AWS_PROFILE of AWS..."
+    echo "Switching to using $AWS_DEFAULT_REGION of AWS..."
 }
+
+# function csco() {
+#     profile="cisco"
+#     gcloud config configurations activate "${profile}" # switch GCP profile
+#     az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
+#     az account set --subscription "${az_subscription_id}" # switch Azure profile
+#     showcloud
+# }
+
 # Switch to Personal Cloud Account(s)
-function my() {
-    profile="default"
-    az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
+# function my() {
+#     profile="default"
+#     az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
 
-    export AWS_PROFILE="${profile}" # switch AWS profile
-    gcloud config configurations activate "${profile}" # switch GCP profile
-    az account set --subscription "${az_subscription_id}" # switch Azure profile
-    showcloud
-}
+#     export AWS_PROFILE="${profile}" # switch AWS profile
+#     gcloud config configurations activate "${profile}" # switch GCP profile
+#     az account set --subscription "${az_subscription_id}" # switch Azure profile
+#     showcloud
+# }
 # Show Current Cloud Settings
-function showcloud() {
-    echo "AWS Profile Settings: "
-    aws configure list
-    echo
-    echo "GCP Profile Settings: "
-    gcloud config configurations list
-    echo
-    echo "Azure Profile Settings: "
-    az account show
-}
+# function showcloud() {
+#     echo "AWS Profile Settings: "
+#     aws configure list
+#     echo
+#     echo "GCP Profile Settings: "
+#     gcloud config configurations list
+#     echo
+#     echo "Azure Profile Settings: "
+#     az account show
+# }
 
 ## GCP
 # The next line updates PATH for the Google Cloud SDK.
@@ -213,12 +240,13 @@ alias gcls="gcloud compute instances list"
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias a="awsv1"
-alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{instance_id: InstanceId, type: InstanceType, ip_address_private: PrivateIpAddress, ip_address_public: PublicIpAddress, instance_state: State.Name, vpc_id: VpcId, subnet_id: SubnetId, availability_zone: Placement.AvailabilityZone, image_id: ImageId, ebs_volume_id: BlockDeviceMappings[0].Ebs.VolumeId}" --output table'
-alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}" --output table'
-alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}" --output table'
-alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subnet_id: SubnetId, availability_zone: AvailabilityZone, cidr_block: CidrBlock, public_network: MapPublicIpOnLaunch}" --output table'
-alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}" --output table'
-alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}" --output table'
+alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
+alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
+alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}"'
+alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subnet_id: SubnetId, availability_zone: AvailabilityZone, cidr_block: CidrBlock, public_network: MapPublicIpOnLaunch}"'
+alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}"'
+alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}"'
+export AWS_PROFILE="devhub-stage"
 # The next line enables shell command completion for aws.
 if [ -f '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh' ]; then source '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh'; fi
 
@@ -318,6 +346,9 @@ alias an='ansible'
 ## Terraform
 alias tf='terraform'
 
+## JFrog CLI
+alias jf="jfrog"
+
 ## Vault
 export VAULT_ADDR='https://internal-keeper.cisco.com'
 alias v='vault'
@@ -369,7 +400,7 @@ alias ungron="gron --ungron"
 # GATE=http://localhost:8084
 
 ## Multipass
-alias m='multipass'
+#alias m='multipass'
 
 ## Vangrant
 # alias v='vagrant'

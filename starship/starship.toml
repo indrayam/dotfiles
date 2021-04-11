@@ -74,7 +74,7 @@ style = "red"
 disabled = false
 
 [java]
-style = "bright-white"
+style = "#f77f00"
 format = "[|]($style) [java ${version}]($style) "
 
 [python]
