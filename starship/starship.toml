@@ -1,5 +1,5 @@
 # Print a new line at the start of the prompt
-add_newline = true
+add_newline = false
 # Don't print a new line at the start of the prompt
 # add_newline = false
 
@@ -50,20 +50,20 @@ format = "in [$path]($style)[$read_only]($read_only_style) "
 
 [git_status]
 conflicted = "🏳"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
+#ahead = "🏎💨"
+#behind = "😰"
+#diverged = "😵"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
 untracked = "🤷‍"
 stashed = "📦"
 modified = "📝"
-staged.value = "++"
-staged.style = "green"
-staged_count.enabled = true
-staged_count.style = "green"
+staged = '[++\($count\)](green)'
 renamed = "👅"
 deleted = "🗑"
 
-[go]
+[golang]
 symbol = "🏎💨 "
 style = "cyan"
 format = "[|]($style) [$symbol$version]($style) "
@@ -100,7 +100,6 @@ format = "[|]($style) [$symbol$profile(\\($region\\))]($style) "
 style = "#fb5607"
 # symbol = "🅰 "
 symbol = "AWS "
-displayed_items = "all"
 
 [aws.region_aliases]
 us-east-1 = "us-east-1"

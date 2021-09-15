@@ -240,13 +240,34 @@ alias gcls="gcloud compute instances list"
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias a="awsv1"
+export AWS_PROFILE="devhub-stage"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}"'
 alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subnet_id: SubnetId, availability_zone: AvailabilityZone, cidr_block: CidrBlock, public_network: MapPublicIpOnLaunch}"'
 alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}"'
 alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}"'
-export AWS_PROFILE="devhub-stage"
+alias awsalias='bat ~/.aws/cli/alias'
+function awslogs() {
+    if [[ ! -z $1 ]]; then
+        loggroupname=$1
+    else
+        loggroupname="undefined"
+    fi
+    if [[ ! -z $2 ]]; then
+        logstreamname=$2
+    else
+        logstreamname="undefined"
+    fi
+    if [[ ! -z $3 ]]; then
+        numofentries=$3
+    else
+        numofentries="50"
+    fi    
+    aws logs get-log-events --log-group-name "$loggroupname" --log-stream-name "$logstreamname" --limit "$numofentries"
+}
+
+
 # The next line enables shell command completion for aws.
 if [ -f '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh' ]; then source '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh'; fi
 
@@ -412,8 +433,15 @@ alias vb='vboxmanage'
 ### Data-Intensive App Tools
 ############################
 
+# Kafka
 export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
 #source /usr/local/lib/bazel/bin/bazel-complete.bash
+
+# PostgreSQL
+export PGDATABASE="consoledb" 
+export PGHOST="localhost" 
+export PGPORT="55432" 
+export PGUSER="devhubfcsadmin"
 
 ##################
 ### Security Tools
