@@ -77,6 +77,9 @@ function ssht () {
     /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
 }
 
+## Tidy Viewer
+alias tv='tidy-viewer'
+
 ###################################
 ### Editos and Software Programming
 ###################################
