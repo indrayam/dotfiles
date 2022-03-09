@@ -35,6 +35,7 @@ alias latest='find . -mtime -30 -type f | grep -v DS_Store'
 alias pping='prettyping --nolegend'
 export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
 alias sshc='ssh -F ~/.ssh/config-code'
+alias sshi='ssh -i ~/.ssh/indrayam_id_rsa'
 
 # Alias for fd
 alias fda='fd -IH'
@@ -304,6 +305,9 @@ alias ols='openstack server list'
 source ~/bin/rtp
 # Cisco Cloud Login
 source ~/.cec
+
+## Salesforce
+alias sfdx-code='/usr/local/bin/code --extensions-dir ~/.sfdx-code'
 
 ##############################################
 ### VMs, Containers & Container Orchestrators 
