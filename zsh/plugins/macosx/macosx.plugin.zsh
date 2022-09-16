@@ -23,11 +23,13 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 ###################
 
 export EDITOR='vim'
+alias lite-code='/usr/local/bin/code --extensions-dir ~/.lite-code'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
+
 # alias ls='exa'
 alias c='clear'
 alias tree='tree -C'
@@ -134,12 +136,30 @@ export WASI_SDK_PATH="/opt/wasi-sdk"
 ## Wasm Runtime: Wasmtime
 export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
-## Wasm Runtime: Wasmer
-source /Users/anasharm/.wasmer/wasmer.sh
+# Wasmer
+export WASMER_DIR="/Users/anasharm/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 ## Also installed 
 ## 1. Emscripten (brew install emscripten)
 ## 2. Binaryen (brew install binaryen)
 ## 3. wasm-pack (cargo install wasm-pack)
+
+## SDKMAN
+export SDKMAN_DIR="/Users/anasharm/.sdkman"
+[[ -s "/Users/anasharm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/anasharm/.sdkman/bin/sdkman-init.sh"
+
+# Jfrog CLI configurations
+autoload -Uz compinit
+compinit
+source /Users/anasharm/.jfrog/jfrog_zsh_completion
+
+# bun completions
+[ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 
 ## Cisco (codectl)
 ## codectl install or upgrade

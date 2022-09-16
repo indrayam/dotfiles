@@ -105,16 +105,3 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 eval "$(starship init zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/bitcomplete bit
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/anasharm/.sdkman"
-[[ -s "/Users/anasharm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/anasharm/.sdkman/bin/sdkman-init.sh"
-
-# Wasmer
-export WASMER_DIR="/Users/anasharm/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-# Jfrog CLI configurations
-autoload -Uz compinit
-compinit
-source /Users/anasharm/.jfrog/jfrog_zsh_completion
