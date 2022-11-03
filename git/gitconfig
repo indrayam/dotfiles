@@ -71,7 +71,7 @@
     r = reset
     cp = cherry-pick
     rv = remote -v
-    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s" --decorate --date=relative
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)%an=>%C(magenta)%ad%Cred%d\\ %Creset%s" --decorate --date=relative
     la = log --graph --decorate --oneline --all
     caa = commit -a --amend -C HEAD
     # reset 

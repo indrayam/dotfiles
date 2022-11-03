@@ -4,6 +4,9 @@
 ### MacOS specific
 ##################
 
+# Homebrew specific configuration
+export HOMEBREW_GITHUB_API_TOKEN="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"
+
 # alias tm='/usr/bin/time'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -96,6 +99,7 @@ alias g='git'
 alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`; do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1`\\t$k; done | sort -r'
 alias gll='gitloglive'
 alias grch='generaterandomchanges'
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 ## Go
 export GOPATH=$HOME/.go
@@ -116,7 +120,6 @@ alias kj='kotlinc-jvm'
 alias jsb='java -Djarmode=layertools -jar'
 
 ## Python
-export PATH="/Users/anasharm/Library/Python/2.7/bin:$PATH"
 alias p='python3'
 alias p2='python2'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
@@ -160,6 +163,10 @@ source /Users/anasharm/.jfrog/jfrog_zsh_completion
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# deno
+export DENO_INSTALL="/Users/anasharm/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 
 ## Cisco (codectl)
 ## codectl install or upgrade
@@ -196,6 +203,13 @@ source $HOME/.cargo/env
 ## Fortran
 alias f='gfortran'
 
+## Julia
+alias jl='julia'
+
+## PMD
+alias pmd='/usr/local/pmd-current/bin/run.sh pmd'
+alias cpd='/usr/local/pmd-current/bin/run.sh cpd'
+
 #################
 ### Public Clouds 
 #################
@@ -220,35 +234,35 @@ function 2aws() {
     echo "Switching to using $AWS_DEFAULT_REGION of AWS..."
 }
 
-# function csco() {
-#     profile="cisco"
-#     gcloud config configurations activate "${profile}" # switch GCP profile
-#     az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
-#     az account set --subscription "${az_subscription_id}" # switch Azure profile
-#     showcloud
-# }
+function csco() {
+    profile="cisco"
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
 
 # Switch to Personal Cloud Account(s)
-# function my() {
-#     profile="default"
-#     az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
+function my() {
+    profile="default"
+    az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
 
-#     export AWS_PROFILE="${profile}" # switch AWS profile
-#     gcloud config configurations activate "${profile}" # switch GCP profile
-#     az account set --subscription "${az_subscription_id}" # switch Azure profile
-#     showcloud
-# }
+    export AWS_PROFILE="${profile}" # switch AWS profile
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
 # Show Current Cloud Settings
-# function showcloud() {
-#     echo "AWS Profile Settings: "
-#     aws configure list
-#     echo
-#     echo "GCP Profile Settings: "
-#     gcloud config configurations list
-#     echo
-#     echo "Azure Profile Settings: "
-#     az account show
-# }
+function showcloud() {
+    echo "AWS Profile Settings: "
+    aws configure list
+    echo
+    echo "GCP Profile Settings: "
+    gcloud config configurations list
+    echo
+    echo "Azure Profile Settings: "
+    az account show
+}
 
 ## GCP
 # The next line updates PATH for the Google Cloud SDK.
@@ -264,7 +278,7 @@ alias gcls="gcloud compute instances list"
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias a="awsv1"
-export AWS_PROFILE="devhub-stage"
+export AWS_PROFILE="anand"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}"'
@@ -272,6 +286,7 @@ alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subne
 alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}"'
 alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}"'
 alias awsalias='bat ~/.aws/cli/alias'
+
 function awslogs() {
     if [[ ! -z $1 ]]; then
         loggroupname=$1
@@ -290,10 +305,7 @@ function awslogs() {
     fi    
     aws logs get-log-events --log-group-name "$loggroupname" --log-stream-name "$logstreamname" --limit "$numofentries"
 }
-
-
-# The next line enables shell command completion for aws.
-if [ -f '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh' ]; then source '/Users/anasharm/Library/Python/3.7/bin/aws_zsh_completer.sh'; fi
+complete -C '/usr/local/aws/bin/aws_completer' aws
 
 ## Azure
 alias azls='az vm list'
@@ -334,11 +346,20 @@ alias sfdx-code='/usr/local/bin/code --extensions-dir ~/.sfdx-code'
 ##############################################
 
 ## Containers
+
+## Podman
+# alias d='podman'
+# export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
+# alias drm='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
+# alias dls='podman image ls'
+# alias dcls='podman container ls -a'
+
+## Docker
 alias d='docker'
 alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias dls='docker image ls'
 alias dcls='docker container ls -a'
-alias dm='docker-machine'
+
 alias lzd='lazydocker'
 alias vbox='vboxmanage'
 
@@ -358,7 +379,6 @@ alias kon="kubeon"
 alias koff="kubeoff"
 alias i='istioctl'
 alias mk='minikube'
-alias ms='minishift'
 alias sk='skaffold'
 alias ky='ksync'
 alias dr='draft'
@@ -377,8 +397,7 @@ function dp() {
     kubectl exec -it "${podname}" -- "${command}"
 }
 
-## Local Kubernetes Configurations: Minikube and Minishift
-export PATH="/Users/anasharm/.minishift/cache/oc/v3.11.0/darwin:$PATH"
+## Local Kubernetes Configurations: Minikube
 alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
 
 # VMWare Fusion Command Line Tools
@@ -461,7 +480,6 @@ alias vb='vboxmanage'
 ############################
 
 # Kafka
-export PATH=/usr/local/Cellar/kafka/2.4.0/bin:$PATH
 #source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 # PostgreSQL
@@ -469,6 +487,9 @@ export PGDATABASE="consoledb"
 export PGHOST="localhost" 
 export PGPORT="55432" 
 export PGUSER="devhubfcsadmin"
+
+# Add sqlite3
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 ##################
 ### Security Tools

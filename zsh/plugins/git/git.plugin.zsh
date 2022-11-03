@@ -75,7 +75,8 @@ alias glog='git log --oneline --decorate --color --graph'
 compdef _git glog=git-log
 # Custom Aliases (AS) - gloga for all branches
 alias gloga='git log --oneline --decorate --color --graph --all'
-alias gh='git h'
+# alias gh='git h'
+alias ghi='git h'
 alias gha='git ha'
 alias gs='git status -s'
 compdef _git gs=git-status
