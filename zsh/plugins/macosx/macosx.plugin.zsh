@@ -33,7 +33,7 @@ export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
 
-# alias ls='exa'
+alias ls='exa --git --icons --color=always --group-directories-first'
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
@@ -55,6 +55,9 @@ ulimit -n 8192
 # Setting LSCOLORS. Set the folder colors to bold and yellow 
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+
+# Better rm (Rust based 'rip')
+export GRAVEYARD='~/.local/share/Trash'
 
 ## Zsh
 # Zsh completion

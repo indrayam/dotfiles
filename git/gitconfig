@@ -68,6 +68,7 @@
     co = checkout
     br = branch
     brv = branch -va
+    cat = show --compact-summary
     r = reset
     cp = cherry-pick
     rv = remote -v
