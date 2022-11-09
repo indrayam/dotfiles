@@ -25,7 +25,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 ### Unix-y specific
 ###################
 
-export EDITOR='vim'
+export EDITOR='nvim'
 alias lite-code='/usr/local/bin/code --extensions-dir ~/.lite-code'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
 export GPG_TTY=$(tty)
@@ -33,7 +33,7 @@ export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
 
-alias ls='exa --git --icons --color=always --group-directories-first'
+alias els='exa --git --icons --color=always --group-directories-first'
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
@@ -96,6 +96,8 @@ alias tv='tidy-viewer'
 ## Vim
 # Alias to run bare bones Vim
 alias vimn='vim -u .dotfiles/vim/vimrc-essential'
+alias vim='nvim'
+alias vi='vim'
 
 ## Git
 alias g='git'
@@ -129,7 +131,7 @@ alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 
 source ~/local-workspace/python-apps/env/python3-app/bin/activate
 
 ## Ruby
-export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:/Users/anasharm/.gem/ruby/3.1.0/bin:$PATH
 
 ## JavaScript/Node
 alias n='node'
