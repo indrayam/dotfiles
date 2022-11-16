@@ -13,7 +13,7 @@
 	email = anasharm@cisco.com
 	signingkey = 00E4DDC2E05C63B84A73F558F19896ACD4E00ECA
 [core]
-    editor = code
+    editor = nvim
     excludesfile = /Users/anasharm/.gitignore_global
     autocrlf = input
     pager = diff-so-fancy | less --tabs=4 -RFX
@@ -62,31 +62,45 @@
 [alias]
     # basic
     s = status --short
-    st = status
-    cl = clone
-    ci = commit
     co = checkout
     br = branch
-    brv = branch -va
     cat = show --compact-summary
     r = reset
-    cp = cherry-pick
-    rv = remote -v
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)%an=>%C(magenta)%ad%Cred%d\\ %Creset%s" --decorate --date=relative
     la = log --graph --decorate --oneline --all
-    caa = commit -a --amend -C HEAD
+    amend = commit --amend
     # reset 
     r1 = reset HEAD^
     r2 = reset HEAD^^
     rh = reset --hard
     rh1 = reset HEAD^ --hard
+    
     rh2 = reset HEAD^^ --hard
-    # remotes
-    up = "!git remote update -p; git merge --ff-only @{u}"
+    # remote update/sync
+    mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+    syncm = "!git remote update -p; git pull origin $(git mainbranch) --rebase"
+    up = "!git remote update -p; git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
+    upff = "!git remote update -p; git merge --ff-only @{u}"
+    pub = push origin HEAD --force-with-lease
+    squash = "!git rebase -v -i $(git mainbranch)"
     # for github remotes
     pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    open-pr = "!f() { \
+    open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
+    | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+    | sed 's|\\.git$||'; \
+    )/compare/$(\
+    git config --get branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d '/' -f 3- \
+    )?expand=1\"; \
+}; f"
+    hub = "!f() { \
+       open \"$(git ls-remote --get-url \
+       | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+       | sed 's|\\.git$||'; \
+       )\"; \
+  }; f"
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     # for bitbucket/stash remotes
-    spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
+    spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f" 
 [init]
 	defaultBranch = main

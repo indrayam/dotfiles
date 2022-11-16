@@ -109,3 +109,5 @@ export WASMER_DIR="/Users/anasharm/.wasmer"
 
 # bun completions
 [ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+
+source /Users/anasharm/.config/broot/launcher/bash/br

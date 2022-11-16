@@ -4,8 +4,8 @@
 ### MacOS specific
 ##################
 
-# Homebrew specific configuration
-export HOMEBREW_GITHUB_API_TOKEN="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"
+# sourcing my tijori
+source ~/.tijori
 
 # alias tm='/usr/bin/time'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -26,7 +26,7 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 ###################
 
 export EDITOR='nvim'
-alias lite-code='/usr/local/bin/code --extensions-dir ~/.lite-code'
+alias code-lite='/usr/local/bin/code --extensions-dir ~/.lite-code'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
@@ -96,8 +96,6 @@ alias tv='tidy-viewer'
 ## Vim
 # Alias to run bare bones Vim
 alias vimn='vim -u .dotfiles/vim/vimrc-essential'
-alias vim='nvim'
-alias vi='vim'
 
 ## Git
 alias g='git'
@@ -340,11 +338,15 @@ alias o='openstack'
 alias ols='openstack server list'
 # Source into Cisco RTP Cluster
 source ~/bin/rtp
-# Cisco Cloud Login
-source ~/.cec
 
 ## Salesforce
 alias sfdx-code='/usr/local/bin/code --extensions-dir ~/.sfdx-code'
+
+## Cloudflare workers
+alias wr='wrangler'
+
+## Deno Deploy
+alias dn='deno'
 
 ##############################################
 ### VMs, Containers & Container Orchestrators 
@@ -353,11 +355,11 @@ alias sfdx-code='/usr/local/bin/code --extensions-dir ~/.sfdx-code'
 ## Containers
 
 ## Podman
-# alias d='podman'
-# export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
-# alias drm='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
-# alias dls='podman image ls'
-# alias dcls='podman container ls -a'
+alias pd='podman'
+#export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
+alias pdrm='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
+alias pdls='podman image ls'
+alias pdcls='podman container ls -a'
 
 ## Docker
 alias d='docker'
