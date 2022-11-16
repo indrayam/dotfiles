@@ -74,7 +74,6 @@
     r2 = reset HEAD^^
     rh = reset --hard
     rh1 = reset HEAD^ --hard
-    
     rh2 = reset HEAD^^ --hard
     # remote update/sync
     mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
