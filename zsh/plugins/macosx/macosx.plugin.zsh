@@ -47,6 +47,7 @@ alias fda='fd -IH'
 
 # Alias for ripgrep
 alias rga='rg -uuu'
+alias rgf='rg --files | rg'
 
 function rand() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1

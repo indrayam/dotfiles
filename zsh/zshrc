@@ -111,3 +111,5 @@ export WASMER_DIR="/Users/anasharm/.wasmer"
 [ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
 
 source /Users/anasharm/.config/broot/launcher/bash/br
+
+export PATH="/opt/homebrew/bin/brew:$PATH"
