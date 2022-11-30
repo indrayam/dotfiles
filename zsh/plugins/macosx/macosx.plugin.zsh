@@ -7,48 +7,25 @@
 # sourcing my tijori
 source ~/.tijori
 
-# alias tm='/usr/bin/time'
+# MacOS-aliases
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias clocm='cloc --quiet --force-lang-def=$HOME/.cloc_definitions.txt --exclude-lang="Ant,Ada,Maven,DTD,XML,YAML,JSON,Visualforce Component" --exclude-dir=.settings,.openshift,.idea --counted=allc.txt .'
-alias chromedark='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --force-dark-mode'
 alias matrix='cmatrix'
 alias pb='pbcopy'
-
-## Swift
-export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
-alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
-alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk'
-
 
 ###################
 ### Unix-y specific
 ###################
 
+# Basic CLI setup
 export EDITOR='nvim'
-alias code-lite='/usr/local/bin/code --extensions-dir ~/.lite-code'
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/curl/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/opt/curl/bin"
 export GPG_TTY=$(tty)
-export PATH=$PATH:$HOME/bin
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias ls='ls --color=auto'
-
-alias els='exa --git --icons --color=always --group-directories-first'
 alias c='clear'
 alias tree='tree -C'
 alias latest='find . -mtime -30 -type f | grep -v DS_Store'
-alias pping='prettyping --nolegend'
-export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
-alias sshc='ssh -F ~/.ssh/config-code'
-alias sshi='ssh -i ~/.ssh/indrayam_id_rsa'
-
-# Alias for fd
-alias fda='fd -IH'
-
-# Alias for ripgrep
-alias rga='rg -uuu'
-alias rgf='rg --files | rg'
-
+export PATH=$PATH:$HOME/bin
 function rand() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
 }
@@ -57,8 +34,42 @@ ulimit -n 8192
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
 
+# Add GNU binaries (from Brew)
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
+# Exa
+alias els='exa --git --icons --color=always --group-directories-first'
+
+# Less
+export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
+
+# Alias for fd
+alias fda='fd -IH'
+
+# Alias for ripgrep
+alias rga='rg -uuu'
+alias rgf='rg --files | rg'
+
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Tmux
+alias t='tmux'
+# Settings for tmux window renaming
+export DISABLE_AUTO_TITLE=true
+# If you want to start a new tmux session remotely (while connecting using ssh)
+function ssht () {
+    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
+}
+
+## Tidy Viewer
+alias tv='tidy-viewer'
+
 # Better rm (Rust based 'rip')
 export GRAVEYARD='~/.local/share/Trash'
+
+# Broot
+source /Users/anasharm/.config/broot/launcher/bash/br
 
 ## Zsh
 # Zsh completion
@@ -73,26 +84,13 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
-## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias preview="fzf --preview 'bat --color \"always\" {}'"
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+## Gron/Ungron
+# Make JSON greppable!
+alias ungron="gron --ungron"
 
-## Tmux
-alias t='tmux'
-# Settings for tmux window renaming
-export DISABLE_AUTO_TITLE=true
-# If you want to start a new tmux session remotely (while connecting using ssh)
-function ssht () {
-    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
-}
-
-## Tidy Viewer
-alias tv='tidy-viewer'
-
-###################################
-### Editos and Software Programming
-###################################
+#####################################
+### Dev Tools, Programming Languages
+#####################################
 
 ## Vim
 # Alias to run bare bones Vim
@@ -105,16 +103,49 @@ alias gll='gitloglive'
 alias grch='generaterandomchanges'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
+## JavaScript: Node, Deno and Bun
+alias n='node'
+alias dn='deno'
+
+# Bun completions
+[ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Deno
+export DENO_INSTALL="/Users/anasharm/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+## Julia
+alias jl='julia'
+
+## Rust
+alias r='rustc'
+alias m='miniserve'
+source $HOME/.cargo/env
+
+## Python
+alias p='python3'
+alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+# Using virtual env with the latest version of Python (current 3.11)
+source ~/local-workspace/python-apps/env/python3-app/bin/activate
+
+## GNU Compiler Collection (gcc, g++ and gfortran)
+# gcc is softlinked to /opt/homebrew/bin/gcc-12
+# g++ is softlinked to /opt/homebrew/bin/g++-12
+# gfortran is softlinked to /opt/homebrew/bin/gfortran-12
+alias f='gfortran'
+
 ## Go
 export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
 
 ## JVM Languages
 export JAVA_HOME="/usr/local/java"
-export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-export GRADLE_HOME="/usr/local/opt/gradle"
+export GROOVY_HOME="/opt/homebrew/opt/groovy/libexec"
+export GRADLE_HOME="/opt/homebrew/opt/gradle"
 export GRADLE_OPTS="-Xmx1024m"
-export M2_HOME="/usr/local/opt/maven"
+export M2_HOME="/opt/homebrew/opt/maven"
 export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$PATH
 alias j='java'
 alias jc='javac'
@@ -123,54 +154,44 @@ alias kc='kotlinc'
 alias kj='kotlinc-jvm'
 alias jsb='java -Djarmode=layertools -jar'
 
-## Python
-alias p='python3'
-alias p2='python2'
-alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-source ~/local-workspace/python-apps/env/python3-app/bin/activate
-
 ## Ruby
-export PATH=/usr/local/opt/ruby/bin:/Users/anasharm/.gem/ruby/3.1.0/bin:$PATH
+export PATH=/opt/homebrew/opt/ruby/bin:/Users/anasharm/.gem/ruby/3.1.0/bin:$PATH
 
-## JavaScript/Node
-alias n='node'
+## Swift
+export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+alias swc='swiftc -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk'
+alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk'
 
 ## Clang/LLVM/Web Assembly
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
+# Clang/LLVM
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export PATH="/usr/local/opt/llvm/bin:/opt/wabt/bin:$PATH"
-export WASI_SDK_PATH="/opt/wasi-sdk"
-## Wasm Runtime: Wasmtime
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# WASI SDK (****I did not install WASI_SDK when I moved to Apple M1****)
+#export PATH="/opt/wabt/bin:$PATH"
+#export WASI_SDK_PATH="/opt/wasi-sdk" 
+
+# Wasmtime
 export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
+
 # Wasmer
 export WASMER_DIR="/Users/anasharm/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-## Also installed 
-## 1. Emscripten (brew install emscripten)
-## 2. Binaryen (brew install binaryen)
-## 3. wasm-pack (cargo install wasm-pack)
 
-## SDKMAN
-export SDKMAN_DIR="/Users/anasharm/.sdkman"
-[[ -s "/Users/anasharm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/anasharm/.sdkman/bin/sdkman-init.sh"
+# Emscripten (brew install emscripten)
+# Binaryen (brew install binaryen)
+# wasm-pack (install using shell script command shown on the web)
 
-# Jfrog CLI configurations
+## PMD
+alias pmd='/usr/local/pmd-current/bin/run.sh pmd'
+alias cpd='/usr/local/pmd-current/bin/run.sh cpd'
+
+## Jfrog CLI configurations
 autoload -Uz compinit
 compinit
 source /Users/anasharm/.jfrog/jfrog_zsh_completion
-
-# bun completions
-[ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# deno
-export DENO_INSTALL="/Users/anasharm/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
 
 ## Cisco (codectl)
 ## codectl install or upgrade
@@ -198,29 +219,45 @@ alias ctln='codectl-nightly'
 alias ctlr='codectl-rc'
 alias ctl='codectl'
 
-## Rust
-alias r='rustc'
-alias m='miniserve'
-source $HOME/.cargo/env
-
-
-## Fortran
-alias f='gfortran'
-
-## Julia
-alias jl='julia'
-
-## PMD
-alias pmd='/usr/local/pmd-current/bin/run.sh pmd'
-alias cpd='/usr/local/pmd-current/bin/run.sh cpd'
-
 #################
 ### Public Clouds 
 #################
 
 ## All Clouds
-# Switch to Cisco Cloud Account(s)
 
+# Show Current Cloud Settings
+function showcloud() {
+    echo "AWS Profile Settings: "
+    aws configure list
+    echo
+    echo "GCP Profile Settings: "
+    gcloud config configurations list
+    echo
+    echo "Azure Profile Settings: "
+    az account show
+}
+
+# Set to Cisco Cloud Account(s)
+function csco() {
+    profile="cisco"
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
+
+# Set to Personal Cloud Account(s)
+function my() {
+    profile="default"
+    az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
+
+    export AWS_PROFILE="${profile}" # switch AWS profile
+    gcloud config configurations activate "${profile}" # switch GCP profile
+    az account set --subscription "${az_subscription_id}" # switch Azure profile
+    showcloud
+}
+
+# Switch to Cisco Cloud Account(s)
 function 2aws() {
     if [[ ! -z $1 ]]; then
         profile="$1"
@@ -238,36 +275,6 @@ function 2aws() {
     echo "Switching to using $AWS_DEFAULT_REGION of AWS..."
 }
 
-function csco() {
-    profile="cisco"
-    gcloud config configurations activate "${profile}" # switch GCP profile
-    az_subscription_id="02187d59-a1ce-4f8c-9e59-0f3dd558e5c3"
-    az account set --subscription "${az_subscription_id}" # switch Azure profile
-    showcloud
-}
-
-# Switch to Personal Cloud Account(s)
-function my() {
-    profile="default"
-    az_subscription_id="8cf5d499-2e9b-4161-a3b7-8c6747241dbb"
-
-    export AWS_PROFILE="${profile}" # switch AWS profile
-    gcloud config configurations activate "${profile}" # switch GCP profile
-    az account set --subscription "${az_subscription_id}" # switch Azure profile
-    showcloud
-}
-# Show Current Cloud Settings
-function showcloud() {
-    echo "AWS Profile Settings: "
-    aws configure list
-    echo
-    echo "GCP Profile Settings: "
-    gcloud config configurations list
-    echo
-    echo "Azure Profile Settings: "
-    az account show
-}
-
 ## GCP
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi
@@ -281,7 +288,7 @@ alias gcls="gcloud compute instances list"
 #export AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | grep -i aws_access_key_id | awk -F ' = ' '{print $2}')
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
-alias a="awsv1"
+alias a="aws"
 export AWS_PROFILE="anand"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
@@ -330,9 +337,6 @@ function dossh() {
     fi
     doctl compute ssh "${instance}" --ssh-user "${userid}"
 }
-#export DO_TOKEN=$(head -1 ~/.config/doctl/config.yaml | awk '{print $2}')
-#SSH_ID=$(doctl compute ssh-key list | grep "anand" | cut -d' ' -f1)
-#export DO_SSH_KEY_FINGERPRINT=$(doctl compute ssh-key get $SSH_ID --format FingerPrint --no-header)
 
 ## OpenStack
 alias o='openstack'
@@ -340,57 +344,51 @@ alias ols='openstack server list'
 # Source into Cisco RTP Cluster
 source ~/bin/rtp
 
-## Salesforce
-alias sfdx-code='/usr/local/bin/code --extensions-dir ~/.sfdx-code'
-
 ## Cloudflare workers
 alias wr='wrangler'
-
-## Deno Deploy
-alias dn='deno'
 
 ##############################################
 ### VMs, Containers & Container Orchestrators 
 ##############################################
 
-## Containers
+## VMs
+# VMWare Fusion Command Line Tools
+# export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/Applications/VMware\ Fusion.app/Contents/Library"
 
-## Podman
+# VirtualBox
+alias vbox='vboxmanage'
+
+## Containers
+# Docker
+alias d='docker'
+alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias dls='docker image ls'
+alias dcls='docker container ls -a'
+alias lzd='lazydocker'
+
+# Podman (OPTIONAL)
 alias pd='podman'
 #export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
 alias pdrm='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
 alias pdls='podman image ls'
 alias pdcls='podman container ls -a'
 
-## Docker
-alias d='docker'
-alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-alias dls='docker image ls'
-alias dcls='docker container ls -a'
-
-alias lzd='lazydocker'
-alias vbox='vboxmanage'
-
-## Kubectl and related K8s tools
-# kubectl completion
-# source <(kubectl completion zsh)
-# stern completion
-# source <(stern --completion=zsh)
-export KUBE_EDITOR="subl"
-# export KUBECONFIG="merge:/Users/anasharm/.kube/config:/Users/anasharm/.kube/config.cisco"
+# Kubectl and related K8s tools
+source <(kubectl completion zsh)
+export KUBE_EDITOR="code"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
 alias kx='kubectx'
 alias kn='kubens'
+
+# stern completion
+source <(stern --completion=zsh)
 alias s="stern"
-alias kon="kubeon"
-alias koff="kubeoff"
-alias i='istioctl'
-alias mk='minikube'
-alias sk='skaffold'
-alias ky='ksync'
-alias dr='draft'
-alias rhc='rhc 2>/dev/null' #Or log into laeusr-prod2-01.cisco.com with anasharm
+
+# Minikube
+alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
+
+# Debugpod
 function dp() {
     if [[ ! -z $1 ]]; then
         podname=$1
@@ -405,11 +403,6 @@ function dp() {
     kubectl exec -it "${podname}" -- "${command}"
 }
 
-## Local Kubernetes Configurations: Minikube
-alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
-
-# VMWare Fusion Command Line Tools
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/Applications/VMware\ Fusion.app/Contents/Library"
 
 ################
 ### DevOps Tools
@@ -419,14 +412,19 @@ export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/App
 alias an='ansible'
 
 ## Terraform
+alias vg='vagrant'
+
+## Terraform
 alias tf='terraform'
 
 ## JFrog CLI
 alias jf="jfrog"
 
 ## Vault
+alias v="vault"
+
+# Cisco Vault configurations
 export VAULT_ADDR='https://internal-keeper.cisco.com'
-alias v='vault'
 function vls() {
     if [[ ! -z $1 ]]; then
         secret_path="secret/$1"
@@ -450,45 +448,9 @@ alias ctu='export VAULT_TOKEN=$CTU_TOKEN'
 # export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
 # export VAULT_NAMESPACE='ciscoit/ns_ciscoit-vaultnerds'
 
-## Gron/Ungron
-# Make JSON greppable!
-alias norg="gron --ungron"
-alias ungron="gron --ungron"
-
-
-## Spinnaker
-# Everything below is for a local Spinnaker install
-# NVM post-installation requirements
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# FRONT50=http://localhost:8080
-# FIAT=http://localhost:7003
-# ORCA=http://localhost:8083
-# ROSCO=http://localhost:8087
-# IGOR=http://localhost:8088
-# REDIS=redis://localhost:6379
-# ECHO=http://localhost:8089
-# CLOUDDRIVER=http://localhost:7002
-# DECK=http://localhost:9000
-# GATE=http://localhost:8084
-
-## Multipass
-#alias m='multipass'
-
-## Vangrant
-# alias v='vagrant'
-
-## VirtualBox
-alias vb='vboxmanage'
-
 ############################
 ### Data-Intensive App Tools
 ############################
-
-# Kafka
-#source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 # PostgreSQL
 export PGDATABASE="consoledb" 
@@ -497,7 +459,7 @@ export PGPORT="55432"
 export PGUSER="devhubfcsadmin"
 
 # Add sqlite3
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 
 ##################
 ### Security Tools
@@ -520,16 +482,6 @@ if [ -n "$(pgrep gpg-agent)" ]; then
 else
     eval $(gpg-agent --daemon --default-cache-ttl 31536000)
 fi
-
-#########################
-### Miscellaneous Goodies
-#########################
-
-# Philip's goodies
-# alias current-id='find-id git $(git config --get remote.origin.url)'
-# function bit() {
-#     chrome $(git config --get remote.origin.url | gsed -E 's-^(ssh|https?)://(git@)?(.*?)\.cisco\.com/(scm/)?(.*?)/(.*?)\.git$-https://\3.cisco.com/projects/\5/repos/\6/browse-')'?at='$(git rev-parse HEAD)
-# }
 
 
 ###############################

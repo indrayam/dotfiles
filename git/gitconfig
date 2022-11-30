@@ -21,8 +21,10 @@
     ui = true
 [credential]
     helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [push]
     default = simple
 [pull]
@@ -104,3 +106,5 @@
 	project-summary = !which onefetch && onefetch
 [init]
 	defaultBranch = main
+[credential "https://dev.azure.com"]
+	useHttpPath = true
