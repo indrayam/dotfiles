@@ -375,7 +375,7 @@ alias pdcls='podman container ls -a'
 
 # Kubectl and related K8s tools
 source <(kubectl completion zsh)
-export KUBE_EDITOR="code"
+export KUBE_EDITOR="nvim"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
 alias kx='kubectx'
