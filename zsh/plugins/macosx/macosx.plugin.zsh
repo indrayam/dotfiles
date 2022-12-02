@@ -414,8 +414,9 @@ alias an='ansible'
 ## Terraform
 alias vg='vagrant'
 
-## Terraform
+## Terraform/Terragrunt
 alias tf='terraform'
+alias tg='terragrunt'
 
 ## JFrog CLI
 alias jf="jfrog"
