@@ -88,6 +88,11 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 # Make JSON greppable!
 alias ungron="gron --ungron"
 
+## Dasel
+export fpath=(~/.dotfiles/zsh/site-functions $fpath)
+dasel completion zsh > ~/.dotfiles/zsh/site-functions/_dasel
+compinit
+
 #####################################
 ### Dev Tools, Programming Languages
 #####################################

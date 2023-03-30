@@ -11,7 +11,7 @@
     ui = true
 [credential]
     helper = osxkeychain
-    helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
 	program = /opt/homebrew/bin/gpg
 [push]
@@ -66,29 +66,18 @@
     rh = reset --hard
     rh1 = reset HEAD^ --hard
     rh2 = reset HEAD^^ --hard
-    # remote update/sync
+    # rebase workflow (Source: Idiot proof git https://softwaredoug.com/blog/2022/11/09/idiot-proof-git-aliases.html)
     mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
-    syncm = "!git remote update -p; git pull origin $(git mainbranch) --rebase"
-    up = "!git remote update -p; git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
-    upff = "!git remote update -p; git merge --ff-only @{u}"
-    pub = push origin HEAD --force-with-lease
+    rup = remote update -p
+    synced = "!git pull origin $(git mainbranch) --rebase"
+    update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
     squash = "!git rebase -v -i $(git mainbranch)"
+    publish = push origin HEAD --force-with-lease
+    pub = publish
+    # update and merge with fast-forward only
+    update-ff = "!git remote update -p; git merge --ff-only @{u}"
     # for github remotes
     pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-    open-pr = "!f() { \
-    open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
-    | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
-    | sed 's|\\.git$||'; \
-    )/compare/$(\
-    git config --get branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d '/' -f 3- \
-    )?expand=1\"; \
-}; f"
-    hub = "!f() { \
-       open \"$(git ls-remote --get-url \
-       | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
-       | sed 's|\\.git$||'; \
-       )\"; \
-  }; f"
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     # for bitbucket/stash remotes
     spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f" 
