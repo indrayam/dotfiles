@@ -133,7 +133,8 @@ source $HOME/.cargo/env
 alias p='python3'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
 # Using virtual env with the latest version of Python (current 3.11)
-source ~/local-workspace/python-apps/env/python3-app/bin/activate
+#source ~/local-workspace/python-apps/env/python3-app/bin/activate
+source ~/local-workspace/python-apps/env/python311-app/bin/activate
 
 ## GNU Compiler Collection (gcc, g++ and gfortran)
 # gcc is softlinked to /opt/homebrew/bin/gcc-12
@@ -146,12 +147,12 @@ export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
 
 ## JVM Languages
-export JAVA_HOME="/usr/local/java"
-export GROOVY_HOME="/opt/homebrew/opt/groovy/libexec"
-export GRADLE_HOME="/opt/homebrew/opt/gradle"
-export GRADLE_OPTS="-Xmx1024m"
-export M2_HOME="/opt/homebrew/opt/maven"
-export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$PATH
+# export JAVA_HOME="/usr/local/java"
+# export GROOVY_HOME="/opt/homebrew/opt/groovy/libexec"
+# export GRADLE_HOME="/opt/homebrew/opt/gradle"
+# export GRADLE_OPTS="-Xmx1024m"
+# export M2_HOME="/opt/homebrew/opt/maven"
+# export PATH=$JAVA_HOME/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$M2_HOME/bin:$PATH
 alias j='java'
 alias jc='javac'
 alias kt='kotlin'
@@ -184,6 +185,9 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # Wasmer
 export WASMER_DIR="/Users/anasharm/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# Wasm-edge
+source $HOME/.wasmedge/env
 
 # Emscripten (brew install emscripten)
 # Binaryen (brew install binaryen)
@@ -223,6 +227,14 @@ function getrc () {
 alias ctln='codectl-nightly'
 alias ctlr='codectl-rc'
 alias ctl='codectl'
+
+## OpenAI API
+## ChatGPT
+source ~/.openai
+
+## Mojo
+export MODULAR_HOME="/Users/anasharm/.modular"
+export PATH="/Users/anasharm/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 #################
 ### Public Clouds 

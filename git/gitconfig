@@ -11,6 +11,7 @@
     ui = true
 [credential]
     helper = osxkeychain
+	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
 	program = /opt/homebrew/bin/gpg

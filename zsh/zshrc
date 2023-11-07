@@ -55,9 +55,20 @@ ZSH_CUSTOM=$DOTFILES_HOME/zsh
 DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 
+# brew setup
+export PATH="/opt/homebrew/sbin:$PATH"
+
 # Starship CLI Prompt
 eval "$(starship init zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/bitcomplete bit
+
 # bun completions
 [ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+
+# tea package manager
+test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
