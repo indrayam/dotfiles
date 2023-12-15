@@ -132,9 +132,8 @@ source $HOME/.cargo/env
 ## Python
 alias p='python3'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-# Using virtual env with the latest version of Python (current 3.11)
-#source ~/local-workspace/python-apps/env/python3-app/bin/activate
-source ~/local-workspace/python-apps/env/python311-app/bin/activate
+# Using virtual env with the latest version of Python
+source ~/.pyenv/env1/bin/activate
 
 ## GNU Compiler Collection (gcc, g++ and gfortran)
 # gcc is softlinked to /opt/homebrew/bin/gcc-12
@@ -385,7 +384,7 @@ alias lzd='lazydocker'
 
 # Podman (OPTIONAL)
 alias pd='podman'
-#export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
+#export DOCKER_HOST='unix:///Users/anasharm/.local/share/containers/podman/machine/qemu/podman.sock'
 alias pdrm='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
 alias pdls='podman image ls'
 alias pdcls='podman container ls -a'
@@ -471,10 +470,6 @@ alias ctu='export VAULT_TOKEN=$CTU_TOKEN'
 ############################
 
 # PostgreSQL
-export PGDATABASE="consoledb" 
-export PGHOST="localhost" 
-export PGPORT="55432" 
-export PGUSER="devhubfcsadmin"
 
 # Add sqlite3
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
