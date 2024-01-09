@@ -126,14 +126,16 @@ alias jl='julia'
 
 ## Rust
 alias r='rustc'
+alias cr='cargo run'
 alias m='miniserve'
 source $HOME/.cargo/env
 
 ## Python
 alias p='python3'
 alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
-# Using virtual env with the latest version of Python
-source ~/.pyenv/env1/bin/activate
+# Using virtual env with the appropriate version of Python
+# source ~/.pyenv/env3.11/bin/activate
+source ~/.pyenv/env3.12/bin/activate
 
 ## GNU Compiler Collection (gcc, g++ and gfortran)
 # gcc is softlinked to /opt/homebrew/bin/gcc-12
