@@ -66,9 +66,8 @@ complete -o nospace -C /usr/local/bin/bitcomplete bit
 # bun completions
 [ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
 
-# tea package manager
-test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+source /Users/anasharm/.config/broot/launcher/bash/br

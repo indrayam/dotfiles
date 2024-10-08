@@ -71,6 +71,10 @@ export GRAVEYARD='~/.local/share/Trash'
 # Broot
 source /Users/anasharm/.config/broot/launcher/bash/br
 
+# bat
+export BAT_THEME="Monokai Extended"
+export BAT_STYLE="plain"
+
 ## Zsh
 # Zsh completion
 zstyle ':completion:*' use-cache on
@@ -126,7 +130,6 @@ alias jl='julia'
 
 ## Rust
 alias r='rustc'
-alias cr='cargo run'
 alias m='miniserve'
 source $HOME/.cargo/env
 
@@ -186,9 +189,6 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # Wasmer
 export WASMER_DIR="/Users/anasharm/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-# Wasm-edge
-source $HOME/.wasmedge/env
 
 # Emscripten (brew install emscripten)
 # Binaryen (brew install binaryen)
