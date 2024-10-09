@@ -1,7 +1,7 @@
 [user]
-	name = Anand Sharma
-	email = anasharm@cisco.com
-	signingkey = F19896ACD4E00ECA
+    name = Anand Sharma
+    email = anand.sharma@gmail.com
+    signingkey = A190E97F52B7DBAC
 [core]
     editor = nvim
     excludesfile = /Users/anasharm/.gitignore_global
@@ -10,7 +10,7 @@
 [color]
     ui = true
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [gpg]
