@@ -7,26 +7,16 @@ format = """\
   $username\
   $hostname\
   $directory\
-  $line_break\
   $git_branch\
   $git_commit\
   $git_state\
   $git_status\
-  $go\
-  $rust\
-  $java\
   $python\
-  $terraform\
-  $kubernetes\
-  $aws\
-  $gcloud\
-  $azure\
+  $java\
+  $rust\
+  $golang\
   $cmd_duration\
-  $custom\
   $line_break\
-  $jobs\
-  $battery\
-  $time\
   $character\
 """
 
@@ -43,14 +33,19 @@ disabled = false
 [hostname]
 ssh_only = false
 style = "#fca311"
-format =  "on [macbook-pro]($style) "
-trim_at = ".cisco.com"
+format = "on [$hostname]($style) "
+trim_at = "."
 disabled = false
 
 [directory]
 truncation_length = 8
+truncate_to_repo = false
 style = "#fca311"
 format = "in [$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+always_show_remote = true
+format = 'on git branch [$symbol$branch(:$remote_branch)]($style) '
 
 [git_status]
 conflicted = "🏳"
@@ -100,33 +95,29 @@ format = "[|]($style) [$symbol $context( \\($namespace\\))]($style) "
 disabled = false
 
 [aws]
-format = "[|]($style) [$symbol$profile(\\($region\\))]($style) "
+format = "[|]($style) [AWS $symbol$profile (\\($region\\))]($style) "
 style = "#fb5607"
-symbol = "🅰 "
-# symbol = "AWS "
 
 [aws.region_aliases]
 us-east-1 = "us-east-1"
+us-east-2 = "us-east-2"
 
 [gcloud]
-# symbol = "GCP "
-symbol = "️🇬️ "
 style = "#3a86ff"
-format = "[|]($style) [$symbol\\($active\\)]($style) "
+format = "[|]($style) [GCP $symbol\\($project@$region\\)]($style) "
 # format = "[|]($style) [$symbol(@$region)(\\($project\\))]($style) "
 
 [gcloud.project_aliases]
-evident-wind-163400 = "wind"
+evident-wind-163400 = "evident-wind"
 
 [gcloud.region_aliases]
 us-east4 = "us-east-4"
 
 [azure]
 disabled = false
-symbol = "AZ"
-format = "[|]($style) [$symbol \\($subscription\\)]($style) "
+symbol = "🌐"
+format = "[|]($style) [AZ $symbol ($subscription)]($style) "
 style = "blue bold"
-
 
 [battery]
 full_symbol = "🔋"
@@ -152,3 +143,4 @@ error_symbol = "[✗](bold red) "
 # Additional Configurations
 [package]
 disabled = true
+

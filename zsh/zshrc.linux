@@ -46,7 +46,7 @@ ZSH_THEME="dracula-linux"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git linux)
+plugins=(git linux z zsh-autosuggestions zsh-syntax-highlighting)
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES_HOME/zsh
@@ -70,5 +70,8 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Starship PROMPT
+eval "$(starship init zsh)"
 
 

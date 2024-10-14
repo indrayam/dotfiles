@@ -1,4 +1,5 @@
 ###### MacOSX
+export DOTFILES_HOME=$HOME/.dotfiles
 
 ##################
 ### MacOS specific
@@ -34,47 +35,6 @@ ulimit -n 8192
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
 
-# Add GNU binaries (from Brew)
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-
-# Exa
-alias els='exa --git --icons --color=always --group-directories-first'
-
-# Less
-export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
-
-# Alias for fd
-alias fda='fd -IH'
-
-# Alias for ripgrep
-alias rga='rg -uuu'
-alias rgf='rg --files | rg'
-
-## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## Tmux
-alias t='tmux'
-# Settings for tmux window renaming
-export DISABLE_AUTO_TITLE=true
-# If you want to start a new tmux session remotely (while connecting using ssh)
-function ssht () {
-    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
-}
-
-## Tidy Viewer
-alias tv='tidy-viewer'
-
-# Better rm (Rust based 'rip')
-export GRAVEYARD='~/.local/share/Trash'
-
-# Broot
-source /Users/anasharm/.config/broot/launcher/bash/br
-
-# bat
-export BAT_THEME="Monokai Extended"
-export BAT_STYLE="plain"
-
 ## Zsh
 # Zsh completion
 zstyle ':completion:*' use-cache on
@@ -88,22 +48,48 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
-## Gron/Ungron
-# Make JSON greppable!
-alias ungron="gron --ungron"
+# Add GNU binaries (from Brew)
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-## Dasel
-export fpath=(~/.dotfiles/zsh/site-functions $fpath)
-dasel completion zsh > ~/.dotfiles/zsh/site-functions/_dasel
-compinit
+# Less
+export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
+
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+
+# Alias for fd
+alias fda='fd -IH'
+
+# Alias for ripgrep
+alias rga='rg -uuu'
+alias rgf='rg --files | rg'
+
+## Tmux
+alias t='tmux'
+# Settings for tmux window renaming
+export DISABLE_AUTO_TITLE=true
+# If you want to start a new tmux session remotely (while connecting using ssh)
+function ssht () {
+    /usr/bin/ssh -X -t $@ "tmux attach -t development || tmux new -s development";
+}
+
+## z
+[ -f $DOTFILES_HOME/z/z.sh ] && source $DOTFILES_HOME/z/z.sh
+
+## Tidy Viewer
+alias tv='tidy-viewer'
+
+# bat
+export BAT_THEME="Monokai Extended"
+export BAT_STYLE="plain"
+
+## z
+[ -f $DOTFILES_HOME/z/z.sh ] && source $DOTFILES_HOME/z/z.sh
 
 #####################################
 ### Dev Tools, Programming Languages
 #####################################
-
-## Vim
-# Alias to run bare bones Vim
-alias vimn='vim -u .dotfiles/vim/vimrc-essential'
 
 ## Git
 alias g='git'
@@ -134,8 +120,8 @@ alias m='miniserve'
 source $HOME/.cargo/env
 
 ## Python
-alias p='python3'
-alias pipup='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U'
+alias p='python'
+alias pipup='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
 # Using virtual env with the appropriate version of Python
 # source ~/.pyenv/env3.11/bin/activate
 source ~/.pyenv/env3.12/bin/activate
@@ -506,10 +492,7 @@ fi
 # Get the terminal ready
 clear
 
-# Set this correctly please..;-)
-DOTFILES_HOME=$HOME/.dotfiles
 cat $DOTFILES_HOME/misc/om
-. $DOTFILES_HOME/z/z.sh
 w
 
 
