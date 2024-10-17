@@ -19,5 +19,7 @@ ln -s $DOTFILES_HOME/vim/vimrc $HOME/.vimrc
 rm -f $HOME/.zshrc
 ln -s $DOTFILES_HOME/zsh/zshrc.linux $HOME/.zshrc
 
-
+# Starship
+rm -f $HOME/.config/starship.toml
+ln -s $DOTFILES_HOME/starship/starship.toml $HOME/.config/starship.toml
 

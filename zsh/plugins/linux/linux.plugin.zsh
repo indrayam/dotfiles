@@ -89,12 +89,12 @@ UV_PYTHON_PREFERENCE="managed-only"
 # UV_PYTHON_DOWNLOADS="never"
 
 # conda settings
-source /opt/conda/etc/profile.d/conda.sh
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
 
 ## Rust
 alias r='rustc'
 alias m='miniserve'
-source $HOME/.cargo/env
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
 
 ## Go
 export GOPATH=$HOME/.go
@@ -115,7 +115,7 @@ export NVM_DIR="$HOME/.nvm"
 alias n='node'
 
 # deno
-source "$HOME/.deno/env"
+[ -f "$HOME/.deno/env" ] && source "$HOME/.deno/env"
 
 # bun
 # bun completions
@@ -125,7 +125,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 ## Ruby
 # Added by `rbenv init` on Fri Oct 11 20:23:55 UTC 2024
-eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+[ -f ~/.rbenv/bin/rbenv ] && eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
 
 ## Fortran
 alias f='gfortran'
@@ -249,7 +249,9 @@ alias pdcls='podman container ls -a'
 ## Kubectl and related K8s tools
 
 # kubectl completion
-source <(kubectl completion zsh)
+if [ -x /usr/bin/kubectl ]; then
+  source <(kubectl completion zsh)
+fi
 export KUBE_EDITOR="nvim"
 export KUBECONFIG="/home/ubuntu/.kube/config"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -258,7 +260,9 @@ alias kx='kubectx'
 alias kn='kubens'
 
 # stern completion
-source <(stern --completion=zsh)
+if [ -x /usr/local/bin/stern ]; then
+  source <(stern --completion=zsh)
+fi
 alias s="stern"
 
 # helm
