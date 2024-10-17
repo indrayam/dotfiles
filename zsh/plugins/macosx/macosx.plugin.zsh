@@ -34,9 +34,6 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 # VirtualBox
 # alias vbox='vboxmanage'
 
-# Minikube
-# alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
-
 ###################
 ### Unix-y specific
 ###################
@@ -330,6 +327,9 @@ function dp() {
     kubectl exec -it "${podname}" -- "${command}"
 }
 
+# Minikube
+# alias mkstart="minikube start --memory='2000mb' --cpus=2 --vm-driver=virtualbox"
+alias mk='minikube'
 
 ################
 ### DevOps Tools
