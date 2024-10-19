@@ -5,7 +5,7 @@ DOTFILES_HOME=$HOME/.dotfiles
 
 # Git related setup
 rm -f $HOME/.gitconfig
-ln -s $DOTFILES_HOME/git/gitconfig $HOME/.gitconfig
+ln -s $DOTFILES_HOME/git/gitconfig $HOME/.gitconfig.linux
 rm -f $HOME/.gitignore_global
 ln -s $DOTFILES_HOME/git/gitignore_global $HOME/.gitignore_global
 
