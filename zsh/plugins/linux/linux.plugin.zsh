@@ -81,7 +81,7 @@ alias grch='generaterandomchanges'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
 ## Python
-alias p='python'
+alias p='python3'
 alias pipup='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
 
 # uv settings
@@ -100,7 +100,8 @@ alias m='miniserve'
 export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
 # Add Go binary path
-export PATH=$HOME/.go/latest/bin:$PATH
+export GO_LATEST="go-1.23"
+export PATH=/usr/lib/$GO_LATEST/bin/:$PATH
 
 ## Java
 export SDKMAN_DIR="$HOME/.sdkman"
