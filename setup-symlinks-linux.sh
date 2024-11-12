@@ -21,5 +21,6 @@ ln -s $DOTFILES_HOME/zsh/zshrc.linux $HOME/.zshrc
 
 # Starship
 rm -f $HOME/.config/starship.toml
+mkdir -p $HOME/.config
 ln -s $DOTFILES_HOME/starship/starship.toml $HOME/.config/starship.toml
 

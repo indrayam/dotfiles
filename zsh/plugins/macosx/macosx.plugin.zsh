@@ -31,7 +31,13 @@ alias sw='swift -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 # export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/vkd/bin:/Applications/VMware\ Fusion.app/Contents/Library"
 
 # VirtualBox
-# alias vbox='vboxmanage'
+#alias vbox='vboxmanage'
+
+# Vagrant
+#alias v='vagrant'
+
+# Multipass
+alias m='multipass'
 
 ###################
 ### Unix-y specific
@@ -123,7 +129,7 @@ UV_PYTHON_PREFERENCE="managed-only"
 
 ## Rust
 alias r='rustc'
-alias m='miniserve'
+alias ms='miniserve'
 source $HOME/.cargo/env
 
 ## Go
@@ -195,14 +201,15 @@ function dossh() {
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias a="aws"
-export AWS_PROFILE="anand"
+export AWS_PROFILE="east2"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}"'
 alias awssub='aws ec2 describe-subnets --query "Subnets[*].{vpc_id: VpcId, subnet_id: SubnetId, availability_zone: AvailabilityZone, cidr_block: CidrBlock, public_network: MapPublicIpOnLaunch}"'
 alias awssec='aws ec2 describe-security-groups --query "SecurityGroups[*].{vpc_id: VpcId, group_id: GroupId, group_name: GroupName, group_description: Description}"'
 alias awsrt='aws ec2 describe-route-tables --query "RouteTables[*].{route_table_id: RouteTableId, vpc_id: VpcId}"'
-complete -C '/usr/local/aws/bin/aws_completer' aws
+## Turn it off if they start to take a lot of time
+# complete -C '/usr/local/aws/bin/aws_completer' aws
 function awslogs() {
     if [[ ! -z $1 ]]; then
         loggroupname=$1
@@ -226,7 +233,8 @@ function awslogs() {
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
+## Turn it off if they start to take a lot of time
+# if [ -f '/usr/local/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/google-cloud-sdk/completion.zsh.inc'; fi
 alias gcssh="gcloud compute ssh"
 alias gcls="gcloud compute instances list"
 #alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
@@ -284,7 +292,8 @@ alias pdcls='podman container ls -a'
 
 # Kubectl and related K8s tools
 # kubectl completion
-source <(kubectl completion zsh)
+## Turn it off if they start to take a lot of time
+# source <(kubectl completion zsh)
 export KUBE_EDITOR="nvim"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
@@ -305,7 +314,8 @@ function dp() {
 }
 
 # stern completion
-source <(stern --completion=zsh)
+## Turn it off if they start to take a lot of time
+# source <(stern --completion=zsh)
 alias s="stern"
 
 # helm
@@ -335,19 +345,21 @@ alias mk='minikube'
 ################
 
 ## Terraform/Terragrunt
-alias tf='terraform'
-alias tg='terragrunt'
+alias ti='terraform init'
+alias tf='terraform fmt'
+alias tv='terraform validate'
+alias ta='terraform apply'
+alias td='terraform destroy'
 
 ## Ansible
 alias an="ansible"
 
 ## Jfrog CLI configurations
-autoload -Uz compinit
-compinit
-source /Users/anasharm/.jfrog/jfrog_zsh_completion
+## Turn it off if they start to take a lot of time
+# autoload -Uz compinit
+# compinit
+# source /Users/anasharm/.jfrog/jfrog_zsh_completion
 
-## Hashicorp Vault
-alias v="vault"
 
 ############################
 ### Data-Intensive App Tools

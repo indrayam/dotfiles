@@ -9,7 +9,7 @@
 ###################
 
 export EDITOR='nvim'
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -42,6 +42,9 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+# To support fuzzy finding files within vim
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Alias for fd
 alias fda='fd -IH'
@@ -132,8 +135,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 alias f='gfortran'
 
 ## Julia
-path=('/Users/anasharm/.juliaup/bin' $path)
-export PATH
+export PATH="$HOME/.juliaup/bin:$PATH"
 alias jl='julia'
 
 #################

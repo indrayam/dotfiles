@@ -58,6 +58,5 @@ source $ZSH/oh-my-zsh.sh
 # Starship CLI Prompt
 eval "$(starship init zsh)"
 
-
-# bun completions
-[ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+# Zsh Autosuggestions
+# bindkey '\t' end-of-line
