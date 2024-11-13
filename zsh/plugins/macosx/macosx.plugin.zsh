@@ -345,11 +345,8 @@ alias mk='minikube'
 ################
 
 ## Terraform/Terragrunt
-alias ti='terraform init'
-alias tf='terraform fmt'
-alias tv='terraform validate'
-alias ta='terraform apply'
-alias td='terraform destroy'
+alias tf='terraform'
+alias tg='terragrunt'
 
 ## Ansible
 alias an="ansible"
