@@ -306,6 +306,72 @@ source $HOME/.jfrog/jfrog_zsh_completion
 alias v="vault"
 
 ############################
+### LLM Tools & Frameworks
+############################
+q() {
+local url="$1"
+local question="$2"
+
+# Fetch the URL content through Jina
+local content=$(curl -s "https://r.jina.ai/$url")
+# Check if the content was retrieved successfully
+if [ -z "$content" ]; then
+    echo "Failed to retrieve content from the URL."
+    return 1
+fi
+
+system="
+You are a helpful assistant that can answer questions about the content.
+Reply concisely, in a few sentences.
+
+The content:
+${content}
+"
+
+# Use llm with the fetched content as a system prompt
+llm prompt "$question" -s "$system"
+}
+
+qv() {
+local url="$1"
+local question="$2"
+
+# Fetch the URL content through Jina
+local subtitle_url=$(yt-dlp -q --skip-download --convert-subs srt --write-sub --sub-langs "en" --write-auto-sub --print "requested_subtitles.en.url" "$url")
+local content=$(curl -s "$subtitle_url" | sed '/^$/d' | grep -v '^[0-9]*$' | grep -v '\-->' | sed 's/<[^>]*>//g' | tr '\n' ' ')
+
+# Check if the content was retrieved successfully
+if [ -z "$content" ]; then
+    echo "Failed to retrieve content from the URL."
+    return 1
+fi
+
+
+system="
+
+You are a helpful assistant that can answer questions about YouTube videos.
+Reply concisely, in a few sentences.
+
+The content:
+${content}
+"
+
+# Use llm with the fetched content as a system prompt
+llm prompt "$question" -s "$system"
+}
+
+## LLM Tools
+# llm
+# ollama-cli
+alias o='ollama'
+# ttok
+# strip-tags
+# yt-dlp
+
+## Hugging Face CLI
+alias hf='huggingface-cli'
+
+############################
 ### Data-Intensive App Tools
 ############################
 

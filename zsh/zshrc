@@ -60,3 +60,8 @@ eval "$(starship init zsh)"
 
 # Zsh Autosuggestions
 # bindkey '\t' end-of-line
+
+# bun completions
+[ -s "/Users/anasharm/.bun/_bun" ] && source "/Users/anasharm/.bun/_bun"
+
+

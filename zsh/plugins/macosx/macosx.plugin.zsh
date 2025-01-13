@@ -59,6 +59,7 @@ ulimit -n 8192
 # Setting LSCOLORS. Set the folder colors to bold and yellow 
 # Source: https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+alias h='history'
 
 ## Zsh
 # Zsh completion
@@ -99,9 +100,15 @@ function ssht () {
 ## Tidy Viewer
 alias tv='tidy-viewer'
 
-# bat
+## bat
 export BAT_THEME="Monokai Extended"
 export BAT_STYLE="plain"
+
+## lsd (super beautiful ls)
+alias l='lsd -alF --group-dirs first --color=always'
+
+### jp (JMESPath Processor)
+export JP_UNQUOTED="true"
 
 #####################################
 ### Dev Tools, Programming Languages
@@ -115,17 +122,26 @@ alias grch='generaterandomchanges'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
 ## Python
-alias p='python'
+alias p='python3'
 alias pipup='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
-# source .venv/default/bin/activate
+
+# OpenBLAS configuration for Mac
+# OpenBLAS provides efficient implementations of BLAS (Basic Linear Algebra Subprograms) and LAPACK (Linear Algebra PACKage) routines. SciPy needs it.
+export LDFLAGS="-L/opt/homebrew/opt/openblas/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openblas/include"
+# For pkg-config to find openblas you may need to set:
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openblas/lib/pkgconfig"
 
 # uv settings
-UV_PYTHON_PREFERENCE="managed-only"
+UV_PYTHON_PREFERENCE="only-managed"
 # UV_PYTHON_DOWNLOADS="never"
+
+# Standalone Jupyter Notebook using uv
+alias jn='uvx --with jupyter --from jupyter-core jupyter lab'
+alias jnr='uvx --refresh --with jupyter --from jupyter-core jupyter lab'
 
 # conda settings
 # source /opt/conda/etc/profile.d/conda.sh
-# source ~/.pyenv/env3.12/bin/activate
 
 ## Rust
 alias r='rustc'
@@ -201,7 +217,10 @@ function dossh() {
 #export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | grep -i aws_secret_access_key | awk -F ' = ' '{print $2}')
 #export PATH=/usr/local/aws-cli/v2/current/bin:$PATH
 alias a="aws"
-export AWS_PROFILE="east2"
+## AWS Profile: seaz account
+export AWS_PROFILE="us-east-2"
+## AWS Profile: a-sandbox account
+# export AWS_PROFILE="a-sandbox-us-east-2"
 alias awsls='aws ec2 describe-instances --query "Reservations[*].Instances[*].{id: InstanceId, type: InstanceType, image: ImageId, ip: PrivateIpAddress, ip_pub: PublicIpAddress, state: State.Name, vpc: VpcId, subnet: SubnetId, az: Placement.AvailabilityZone, ebs: BlockDeviceMappings[0].Ebs.VolumeId}"'
 alias awsgw='aws ec2 describe-internet-gateways --query "InternetGateways[*].{internet_gateway_id: InternetGatewayId, vpc_id: Attachments[0].VpcId, state: Attachments[0].State}"'
 alias awsvpc='aws ec2 describe-vpcs --query "Vpcs[*].{vpc_id: VpcId, cidr_block: CidrBlock, state: State}"'
@@ -276,10 +295,11 @@ function showcloud() {
 
 ## Containers
 # Docker
-alias d='docker'
-alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-alias dls='docker image ls'
-alias dcls='docker container ls -a'
+alias d='podman'
+# alias d='docker'
+# alias drm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+# alias dls='docker image ls'
+# alias dcls='docker container ls -a'
 # Not installing this on a Cisco MacOS since we do not support docker
 # alias lzd='lazydocker'
 
@@ -319,7 +339,7 @@ function dp() {
 alias s="stern"
 
 # helm
-alias h="helm"
+# alias hm="helm"
 
 # Debugpod
 function dp() {
@@ -357,13 +377,79 @@ alias an="ansible"
 # compinit
 # source /Users/anasharm/.jfrog/jfrog_zsh_completion
 
+############################
+### LLM Tools & Frameworks
+############################
+q() {
+local url="$1"
+local question="$2"
+
+# Fetch the URL content through Jina
+local content=$(curl -s "https://r.jina.ai/$url")
+# Check if the content was retrieved successfully
+if [ -z "$content" ]; then
+    echo "Failed to retrieve content from the URL."
+    return 1
+fi
+
+system="
+You are a helpful assistant that can answer questions about the content.
+Reply concisely, in a few sentences.
+
+The content:
+${content}
+"
+
+# Use llm with the fetched content as a system prompt
+llm prompt "$question" -s "$system"
+}
+
+qv() {
+local url="$1"
+local question="$2"
+
+# Fetch the URL content through Jina
+local subtitle_url=$(yt-dlp -q --skip-download --convert-subs srt --write-sub --sub-langs "en" --write-auto-sub --print "requested_subtitles.en.url" "$url")
+local content=$(curl -s "$subtitle_url" | sed '/^$/d' | grep -v '^[0-9]*$' | grep -v '\-->' | sed 's/<[^>]*>//g' | tr '\n' ' ')
+
+# Check if the content was retrieved successfully
+if [ -z "$content" ]; then
+    echo "Failed to retrieve content from the URL."
+    return 1
+fi
+
+
+system="
+
+You are a helpful assistant that can answer questions about YouTube videos.
+Reply concisely, in a few sentences.
+
+The content:
+${content}
+"
+
+# Use llm with the fetched content as a system prompt
+llm prompt "$question" -s "$system"
+}
+
+## LLM Tools
+# llm
+# ollama-cli
+# ttok
+# strip-tags
+# yt-dlp
+
+## Hugging Face CLI
+alias hf='huggingface-cli'
 
 ############################
 ### Data-Intensive App Tools
 ############################
 
-# sqlite3
+## sqlite3
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+
+## mysql
 
 ## postgres
 
