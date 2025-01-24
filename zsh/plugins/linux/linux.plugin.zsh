@@ -375,8 +375,10 @@ alias o='ollama'
 ## Hugging Face CLI
 alias hf='huggingface-cli'
 
-## Cohere API Key
+## LLM API Keys
 export COHERE_API_KEY="$(cat $HOME/.cohere)"
+export OPENAI_API_KEY="$(cat $HOME/.openai)"
+export ANTHROPIC_API_KEY="$(cat $HOME/.anthropic)"
 
 ## llama.cpp
 export PATH="$PATH:/usr/local/llama.cpp/build/bin"
