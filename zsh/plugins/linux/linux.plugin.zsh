@@ -361,15 +361,29 @@ llm prompt "$question" -s "$system"
 }
 
 ## LLM Tools
-# llm
-# ollama-cli
+## llm
+
+## ollama-cli
 alias o='ollama'
-# ttok
-# strip-tags
-# yt-dlp
+
+## ttok
+
+## strip-tags
+
+## yt-dlp
 
 ## Hugging Face CLI
 alias hf='huggingface-cli'
+
+## Cohere API Key
+export COHERE_API_KEY="$(cat $HOME/.cohere)"
+
+## llama.cpp
+export PATH="$PATH:/usr/local/llama.cpp/build/bin"
+
+## CUDA configurations
+#export PATH=/usr/local/cuda-12.5/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH
 
 ############################
 ### Data-Intensive App Tools

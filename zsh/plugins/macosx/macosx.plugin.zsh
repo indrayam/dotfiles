@@ -137,8 +137,12 @@ UV_PYTHON_PREFERENCE="only-managed"
 # UV_PYTHON_DOWNLOADS="never"
 
 # Standalone Jupyter Notebook using uv
-alias jn='uvx --with jupyter --from jupyter-core jupyter lab'
-alias jnr='uvx --refresh --with jupyter --from jupyter-core jupyter lab'
+alias jl='uv run --with jupyter jupyter lab'
+alias jn='uv run --with jupyter jupyter notebook'
+alias tjl='uvx --with jupyter --from jupyter-core jupyter lab'
+alias tjn='uvx --with jupyter --from jupyter-core jupyter notebook'
+alias tjlr='uvx --refresh --with jupyter --from jupyter-core jupyter lab'
+alias tjnr='uvx --refresh --with jupyter --from jupyter-core jupyter notebook'
 
 # conda settings
 # source /opt/conda/etc/profile.d/conda.sh
@@ -186,7 +190,6 @@ alias f='gfortran'
 ## Julia
 path=('/Users/anasharm/.juliaup/bin' $path)
 export PATH
-alias jl='julia'
 
 #################
 ### Public Clouds 
@@ -259,7 +262,7 @@ alias gcls="gcloud compute instances list"
 #alias gcip='curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip'
 
 ## OpenStack
-alias o='openstack'
+# alias o='openstack'
 alias ols='openstack server list'
 
 # Set to Cisco Cloud Account(s)
@@ -433,14 +436,25 @@ llm prompt "$question" -s "$system"
 }
 
 ## LLM Tools
-# llm
-# ollama-cli
-# ttok
-# strip-tags
-# yt-dlp
+## llm
+
+## ollama-cli
+alias o='ollama'
+
+## ttok
+
+## strip-tags
+
+## yt-dlp
 
 ## Hugging Face CLI
 alias hf='huggingface-cli'
+
+## Cohere API Key
+export COHERE_API_KEY="$(cat $HOME/.cohere)"
+
+## llama.cpp
+export LLAMA_CACHE="$HOME/.cache/llama.cpp"
 
 ############################
 ### Data-Intensive App Tools
