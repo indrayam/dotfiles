@@ -4,6 +4,18 @@
 ### MacOS specific
 ##################
 
+# Ghostty
+alias gt='ghostty'
+
+function ssh() {
+  TERMINFO=/Applications/Ghostty.app/Contents/Resources/terminfo \
+  infocmp -x xterm-ghostty | command ssh "$@" 'tic -x - >/dev/null 2>&1 || true'
+  command ssh "$@"
+}
+
+# Mole shell completion
+if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
+
 # MacOS specific configurations
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -44,7 +56,7 @@ alias m='multipass'
 ###################
 
 # Basic CLI setup
-export EDITOR='nvim'
+export EDITOR="vim"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/opt/curl/bin"
 export GPG_TTY=$(tty)
 alias ls='ls --color=auto'
@@ -120,6 +132,15 @@ alias gbage='for k in `git branch -r | perl -pe '\''s/^..(.*?)( ->.*)?$/\1/'\''`
 alias gll='gitloglive'
 alias grch='generaterandomchanges'
 alias cdr='cd $(git rev-parse --show-toplevel)'
+alias current-id='find-id git $(git config --get remote.origin.url)'
+# Cisco-specific git commands
+function emu-git() {
+    export GIT_SSH_COMMAND="ssh -i /Users/anasharm/.ssh/anasharm-emu_key -o IdentitiesOnly=yes -F /dev/null"
+    git "$@"
+}
+
+# After cloning a repo, `cd` into the repo and run 
+#`git config --local core.sshCommand 'ssh -i $HOME/.ssh/anasharm-emu_key'`.
 
 ## Python
 alias p='python3'
@@ -137,12 +158,14 @@ UV_PYTHON_PREFERENCE="only-managed"
 # UV_PYTHON_DOWNLOADS="never"
 
 # Standalone Jupyter Notebook using uv
-alias jl='uv run --with jupyter jupyter lab'
+export JUPYTER_CONFIG_DIR="$HOME/.jupyter"
+export JUPYTER_DATA_DIR="$HOME/.jupyter-data"
+# Classic Notebook
 alias jn='uv run --with jupyter jupyter notebook'
-alias tjl='uvx --with jupyter --from jupyter-core jupyter lab'
-alias tjn='uvx --with jupyter --from jupyter-core jupyter notebook'
-alias tjlr='uvx --refresh --with jupyter --from jupyter-core jupyter lab'
-alias tjnr='uvx --refresh --with jupyter --from jupyter-core jupyter notebook'
+alias jnr='uv run --refresh --with jupyter jupyter notebook'
+# New Notebook
+alias jl='uv run --with jupyter jupyter lab'
+alias jlr='uv run --refresh --with jupyter jupyter lab'
 
 # conda settings
 # source /opt/conda/etc/profile.d/conda.sh
@@ -170,9 +193,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias n='node'
-
-# deno
-source "$HOME/.deno/env"
 
 # bun
 # bun completions
@@ -317,7 +337,7 @@ alias pdcls='podman container ls -a'
 # kubectl completion
 ## Turn it off if they start to take a lot of time
 # source <(kubectl completion zsh)
-export KUBE_EDITOR="nvim"
+export KUBE_EDITOR="vim"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
 alias kx='kubectx'
@@ -435,6 +455,22 @@ ${content}
 llm prompt "$question" -s "$system"
 }
 
+
+## Google Gemini based search
+google(){
+    gemini -p "Search google for <query>$1</query> and summarize  results"
+}
+
+## Codex based function
+cdx() {
+  if [[ "$1" == "update" ]]; then
+    npm install -g @openai/codex@latest
+  else
+    codex -m gpt-5-codex -c model_reasoning_effort="high" --search "$@"
+  fi
+}
+
+
 ## LLM Tools
 ## llm
 
@@ -451,12 +487,15 @@ alias o='ollama'
 alias hf='huggingface-cli'
 
 ## LLM API Keys
-export COHERE_API_KEY="$(cat $HOME/.cohere)"
-export OPENAI_API_KEY="$(cat $HOME/.openai)"
-export ANTHROPIC_API_KEY="$(cat $HOME/.anthropic)"
+export COHERE_API_KEY="$(security find-generic-password -a "$USER" -s cohere -w)"
+export HF_TOKEN="$(security find-generic-password -a "$USER" -s cohere -w)"
+export MISTRAL_API_KEY="$(security find-generic-password -a "$USER" -s mistral -w)"
+export OPENAI_API_KEY="$(security find-generic-password -a "$USER" -s openai -w)"
+
 
 ## llama.cpp
 export LLAMA_CACHE="$HOME/.cache/llama.cpp"
+
 
 ############################
 ### Data-Intensive App Tools
@@ -518,6 +557,7 @@ alias vpls='vault policy list'
 alias cta='export VAULT_TOKEN=$CTA_TOKEN'
 alias ctos='export VAULT_TOKEN=$CTOS_TOKEN'
 alias ctu='export VAULT_TOKEN=$CTU_TOKEN'
+export VAULT_ADDR='https://keeper.cisco.com'
 # export VAULT_ADDR='https://internal-keeper.cisco.com'
 # export VAULT_NAMESPACE='ciscoit/ns_ciscoit-codeon'
 export VAULT_NAMESPACE='ciscoit/ns_ciscoit-vaultnerds'
@@ -551,9 +591,6 @@ alias ctl='codectl'
 source ~/bin/rtp
 # sourcing my tijori
 source ~/.tijori
-
-# Philip's goodies
-alias current-id='find-id git $(git config --get remote.origin.url)'
 
 ###############################
 ### Let's make it look right...

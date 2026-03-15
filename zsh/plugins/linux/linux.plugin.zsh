@@ -8,7 +8,7 @@
 ### Unix-y specific
 ###################
 
-export EDITOR='nvim'
+export EDITOR='vim'
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/bin
@@ -91,8 +91,18 @@ alias pipup='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip in
 UV_PYTHON_PREFERENCE="managed-only"
 # UV_PYTHON_DOWNLOADS="never"
 
+# Standalone Jupyter Notebook using uv
+export JUPYTER_CONFIG_DIR="$HOME/.jupyter"
+export JUPYTER_DATA_DIR="$HOME/.jupyter-data"
+# Classic Notebook
+alias jn='uv run --with jupyter jupyter notebook'
+alias jnr='uv run --refresh --with jupyter jupyter notebook'
+# New Notebook
+alias jl='uv run --with jupyter jupyter lab'
+alias jlr='uv run --refresh --with jupyter jupyter lab'
+
 # conda settings
-[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+# [ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
 
 ## Rust
 alias r='rustc'
@@ -136,7 +146,7 @@ alias f='gfortran'
 
 ## Julia
 export PATH="$HOME/.juliaup/bin:$PATH"
-alias jl='julia'
+# alias jl='julia'
 
 #################
 ### Public Clouds 
@@ -255,7 +265,7 @@ alias pdcls='podman container ls -a'
 if [ -x /usr/bin/kubectl ]; then
   source <(kubectl completion zsh)
 fi
-export KUBE_EDITOR="nvim"
+export KUBE_EDITOR="vim"
 export KUBECONFIG="/home/ubuntu/.kube/config"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias k='kubectl'
@@ -379,13 +389,16 @@ alias hf='huggingface-cli'
 export COHERE_API_KEY="$(cat $HOME/.cohere)"
 export OPENAI_API_KEY="$(cat $HOME/.openai)"
 export ANTHROPIC_API_KEY="$(cat $HOME/.anthropic)"
+export GOOGLE_API_KEY="$(cat $HOME/.google)"
+export HF_TOKEN="$(cat $HOME/.hf)"
+export MISTRAL_API_KEY="$(cat $HOME/.mistral)"
 
 ## llama.cpp
 export PATH="$PATH:/usr/local/llama.cpp/build/bin"
 
-## CUDA configurations
-#export PATH=/usr/local/cuda-12.5/bin:$PATH
-#export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH
+## nvidia
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 ############################
 ### Data-Intensive App Tools
