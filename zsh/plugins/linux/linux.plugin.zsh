@@ -47,7 +47,8 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Alias for fd
-alias fda='fd -IH'
+alias fd='fdfind'
+alias fda='fdfind -IH'
 
 # Alias for ripgrep
 alias rga='rg -uuu'

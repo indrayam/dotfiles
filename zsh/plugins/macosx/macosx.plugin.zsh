@@ -491,7 +491,10 @@ alias hf='huggingface-cli'
 export COHERE_API_KEY="$(security find-generic-password -a "$USER" -s cohere -w)"
 export HF_TOKEN="$(security find-generic-password -a "$USER" -s cohere -w)"
 export MISTRAL_API_KEY="$(security find-generic-password -a "$USER" -s mistral -w)"
-export OPENAI_API_KEY="$(security find-generic-password -a "$USER" -s openai -w)"
+export XAI_API_KEY="$(security find-generic-password -a "$USER" -s xai -w)"
+
+## Claude Configuration
+export NODE_EXTRA_CA_CERTS="/Users/anasharm/Documents/corp-certs.pem"
 
 
 ## llama.cpp
@@ -590,8 +593,10 @@ alias ctl='codectl'
 
 # Source into Cisco Openstack RTP Cluster
 source ~/bin/rtp
-# sourcing my tijori
-source ~/.tijori
+
+# Sourcing personal API keys
+export OS_PASSWORD="$(security find-generic-password -a "$USER" -s os_password -w)"
+export HOMEBREW_GITHUB_API_TOKEN="$(security find-generic-password -a "$USER" -s homebrew_github -w)"
 
 ###############################
 ### Let's make it look right...
